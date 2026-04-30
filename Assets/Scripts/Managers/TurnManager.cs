@@ -14,7 +14,7 @@ public class TurnManager : MonoBehaviour
 
     private List<Entity> Entities;
     private List<Entity> TurnOrder;
-    private int currentTurn = 0;
+    private int currentTurnIndex = 0;
 
     private bool battleactive;
 
