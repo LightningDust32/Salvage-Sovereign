@@ -314,6 +314,7 @@ public class Player : Entity
         Debug.Log("Player Turn Ended");
     }
 
+    // This can be called on all entities in StartNewRound()
     public void ResetTurn()
     {
         turnFinished = false;
