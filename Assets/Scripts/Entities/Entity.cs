@@ -16,7 +16,7 @@ public abstract class Entity : MonoBehaviour, ITurnActor
     }
 
     public abstract bool TakeTurn();
-
+    public virtual void ResetTurn() { }
     public float GetSpeed()
     {
         return speed;
