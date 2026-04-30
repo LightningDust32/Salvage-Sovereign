@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{123B856E-695D-D9B2-99EF-1461867CC3CE}</ProjectGuid>
+    <ProjectGuid>{707C5ED2-4923-E7BC-C5A6-DEA71A8DB98E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Entities\ITurnActor.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Encounters\CombatEncounter.cs" />
+    <Compile Include="Assets\Scripts\Managers\TurnManager.cs" />
     <Compile Include="Assets\Scripts\Encounters\TreasureEncounter.cs" />
     <Compile Include="Assets\Scripts\Encounters\MerchantEncounter.cs" />
   </ItemGroup>
