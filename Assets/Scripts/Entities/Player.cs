@@ -37,6 +37,9 @@ public class Player : Entity
     private int currentItemIndex = -1;
     bool[] itemsUnlocked;
 
+    private bool isMyTurn = false;
+    private bool turnFinished = false;
+
 
     protected override void Awake()
     {
@@ -287,7 +290,33 @@ public class Player : Entity
     public override void TakeTurn()
     {
         Debug.Log("Player Turn");
+
+        isMyTurn = true;
+        turnFinished = false;
+
         // Later: Activate the Battle UI
+    }
+
+    public void PerformAttack()
+    {
+        if (!isMyTurn) return;
+
+        Debug.Log("Player performed attack");
+
+        EndTurn();
+    }
+
+    private void EndTurn()
+    {
+        isMyTurn = false;
+        turnFinished = true;
+
+        Debug.Log("Player Turn Ended");
+    }
+
+    public void ResetTurn()
+    {
+        turnFinished = false;
     }
 
     public override void TakeDamage(float amount)
