@@ -39,7 +39,7 @@ public class Player : Entity
 
     private bool isMyTurn = false;
     private bool turnFinished = false;
-
+    private bool inCombat = false;
 
     protected override void Awake()
     {
@@ -104,10 +104,29 @@ public class Player : Entity
     {
         if(Time.timeScale > 0)
         {
-            HandleStamina();
-            HandleMovement();
-            CheckInteractPrompt();
+            if (inCombat)
+            {
+                HandleCombat();
+            }
+            else
+            {
+                HandleExploration();
+            }
         }
+    }
+
+    void HandleExploration()
+    {
+        HandleStamina();
+        HandleMovement();
+        CheckInteractPrompt();
+    }
+
+    void HandleCombat()
+    {
+        if (!isMyTurn) return;
+
+        // only allow combat actions here
     }
 
     private void OnMove(Vector2 input)
@@ -287,14 +306,22 @@ public class Player : Entity
         return cameraTransform;
     }
 
-    public override void TakeTurn()
+    public override bool TakeTurn()
     {
+        // if turn hasn't started initialize it
+        if (!isMyTurn)
+        {
+
         Debug.Log("Player Turn");
 
         isMyTurn = true;
         turnFinished = false;
 
         // Later: Activate the Battle UI
+
+        }
+        
+        return turnFinished;
     }
 
     public void PerformAttack()

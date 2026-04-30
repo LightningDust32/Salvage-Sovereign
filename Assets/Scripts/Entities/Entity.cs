@@ -15,7 +15,7 @@ public abstract class Entity : MonoBehaviour, ITurnActor
         currentHealth = maxHealth;
     }
 
-    public abstract void TakeTurn();
+    public abstract bool TakeTurn();
 
     public float GetSpeed()
     {

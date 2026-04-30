@@ -1,7 +1,7 @@
 
 public interface ITurnActor
 {
-    void TakeTurn();
+    bool TakeTurn();
 
     float GetSpeed();
 
