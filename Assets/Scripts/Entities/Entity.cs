@@ -37,6 +37,11 @@ public abstract class Entity : MonoBehaviour, ITurnActor
         }
 
         currentHealth -= damage;
+
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
     }
 
     public float GetHealthPercent()
