@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     private PlayerInput inputActions;
 
@@ -10,14 +10,16 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     [Range(1, 10)]
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float rotationSpeed = 120f;
     [Range(0.5f, 5)]
     [SerializeField] float maxStamina = 5.0f;
 
+    private Room currentRoom;
+    [SerializeField] private float moveCooldown = 0.2f;
+    private float moveTimer = 0f;
+
 
     private Vector2 moveInput;
-    private Vector2 lookInput;
-    private float verticalSpeed;
-    private float cameraPitch;
     private float currentStamina;
 
     [SerializeField] Transform cameraTransform;
@@ -25,30 +27,47 @@ public class Player : MonoBehaviour
 
 
     [Header("Gameplay")]
-    [SerializeField] GameObject[] items; 
-    [SerializeField] float maxHealth = 5.0f;
+    [SerializeField] GameObject[] items;
 
     private int currentItemIndex = -1;
     bool[] itemsUnlocked;
-    bool[] progressUnlocked;
 
-    private float currentHealth;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         controller = GetComponent<CharacterController>();
 
         inputActions = new PlayerInput();
 
         itemsUnlocked = new bool[items.Length];
 
-        progressUnlocked = new bool[5];
-
         currentStamina = maxStamina;
 
-        currentHealth = maxHealth;
 
         cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraHeight, cameraTransform.localPosition.z);
+
+        
+    }
+
+    private void Start()
+    {
+        if (RoomManager.Instance == null)
+        {
+            Debug.Log("RoomManager not found in scene");
+            return;
+        }
+
+        currentRoom = RoomManager.Instance.GetStartingRoom();
+
+        if (currentRoom != null)
+        {
+            transform.position = currentRoom.GetCenter();
+        }
+        else
+        {
+            Debug.Log("No starting room found");
+        }
     }
 
     private void OnEnable()
@@ -56,11 +75,8 @@ public class Player : MonoBehaviour
         inputActions.Enable();
 
         // Movement
-        inputActions.Player.Move.performed += context => moveInput = context.ReadValue<Vector2>();
-        inputActions.Player.Move.canceled += context => moveInput = Vector2.zero;
-
-        inputActions.Player.Look.performed += context => lookInput = context.ReadValue<Vector2>();
-        inputActions.Player.Look.canceled += context => lookInput = Vector2.zero;
+        inputActions.Player.Move.performed += ctx => OnMove(ctx.ReadValue<Vector2>());
+        inputActions.Player.Move.canceled += ctx => OnMove(Vector2.zero);
 
         // Items
         inputActions.Player.Attack.performed += context => TryUseItem();
@@ -82,38 +98,90 @@ public class Player : MonoBehaviour
         {
             HandleStamina();
             HandleMovement();
-            HandleLook();
             CheckInteractPrompt();
         }
     }
 
-    private void HandleMovement()
+    private void OnMove(Vector2 input)
     {
-        if(controller.enabled == false) return;
-        if (controller.isGrounded && verticalSpeed < 0)
-        { 
-            verticalSpeed = -2f; 
-        }
-
-        float speed = moveSpeed;
-
-        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-
-        Vector3 velocity = move * speed;
-        velocity.y = verticalSpeed;
-
-        controller.Move(velocity * Time.deltaTime);
+        moveInput = input;
     }
 
-    private void HandleLook()
+    private void HandleMovement()
     {
-        
+        if (!controller.enabled) return;
+
+        // Cooldown to prevent spam movement
+        moveTimer -= Time.deltaTime;
+        if (moveTimer > 0f) return;
+
+        // Rotation (A/D)
+        float rotation = moveInput.x * rotationSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.up * rotation);
+
+        // Forward movement (W only)
+        if (moveInput.y > 0.5f)
+        {
+            TryMoveForward();
+        }
+    }
+
+    private void TryMoveForward()
+    {
+        if (currentRoom == null) return;
+
+        Direction dir = GetFacingDirection();
+
+        if (!currentRoom.HasConnection(dir))
+        {
+            Debug.Log("Blocked - no room in that direction");
+            return;
+        }
+
+        Room nextRoom = currentRoom.GetConnectedRoom(dir);
+
+        if (nextRoom == null)
+        {
+            Debug.Log("Connection exists but no room found");
+            return;
+        }
+
+        MoveToRoom(nextRoom);
+    }
+
+    private void MoveToRoom(Room room)
+    {
+        currentRoom = room;
+
+        // Disable controller briefly to avoid collision issues
+        controller.enabled = false;
+        transform.position = room.GetCenter();
+        controller.enabled = true;
+
+        moveTimer = moveCooldown;
+    }
+
+    private Direction GetFacingDirection()
+    {
+        Vector3 forward = transform.forward;
+
+        float dotForward = Vector3.Dot(forward, Vector3.forward);
+        float dotRight = Vector3.Dot(forward, Vector3.right);
+
+        if (Mathf.Abs(dotForward) > Mathf.Abs(dotRight))
+        {
+            return (dotForward > 0) ? Direction.North : Direction.South;
+        }
+        else
+        {
+            return (dotRight > 0) ? Direction.East : Direction.West;
+        }
     }
 
     private void HandleStamina()
     {
         float percent = currentStamina / maxStamina;
-        //UIManager.instance.SetStaminaBar(percent);
+        UIManager.instance.SetStaminaBar(percent);
     }
 
     public void UnlockItem(int itemID)
@@ -208,27 +276,20 @@ public class Player : MonoBehaviour
             return;
     }
 
-    public void UnlockProgress(int index)
-    {
-        progressUnlocked[index] = true;
-    }
-
     public Transform GetCameraTransform()
     {
         return cameraTransform;
     }
 
-    public void ChangeHealth(float health)
+    public override void TakeTurn()
     {
-        currentHealth += health;
+        Debug.Log("Player Turn");
+        // Later: Activate the Battle UI
+    }
 
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-
-        float percent = currentHealth / maxHealth;
-
-        //UIManager.instance.SetHealthBar(percent);
+    public override void TakeDamage(float amount)
+    {
+        base.TakeDamage(amount);
+        UIManager.instance.SetHealthBar(GetHealthPercent());
     }
 }

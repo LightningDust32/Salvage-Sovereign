@@ -3,7 +3,7 @@ public interface ITurnActor
 {
     void TakeTurn();
 
-    int GetSpeed();
+    float GetSpeed();
 
     bool IsAlive();
 }

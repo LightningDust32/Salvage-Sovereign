@@ -1,25 +1,23 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour, ITurnActor
+public abstract class Entity : MonoBehaviour, ITurnActor
 {
-    [SerializeField] int maxHealth;
-    private int currentHealth;
+    [Header("Stats")]
+    [SerializeField] protected float maxHealth = 10f;
+    [SerializeField] protected float strength = 2f;
+    [SerializeField] protected float defense = 1f;
+    [SerializeField] protected float speed = 1f;
 
-    [SerializeField] int strength;
-    [SerializeField] int defense;
-    [SerializeField] int speed;
+    protected float currentHealth;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeTurn()
-    {
+    public abstract void TakeTurn();
 
-    }
-
-    public int GetSpeed()
+    public float GetSpeed()
     {
         return speed;
     }
@@ -29,7 +27,7 @@ public class Entity : MonoBehaviour, ITurnActor
         return currentHealth <= 0;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         damage = damage - defense;
 
@@ -39,5 +37,10 @@ public class Entity : MonoBehaviour, ITurnActor
         }
 
         currentHealth -= damage;
+    }
+
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth;
     }
 }

@@ -1,20 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum Direction
+{
+    North,
+    East,
+    South,
+    West
+}
+
 public class Room : MonoBehaviour
 {
     public enum RoomType
     {
-        Corridor,
-        Corner,
-        Crossroads,
+        Start,
+        Normal,
+        Combat,
+        Treasure,
         DeadEnd,
-        Section
+        Section,
+        Exit
     }
 
     [SerializeField] private RoomType roomType;
 
-    [SerializeField] GameObject entrancePoint;
+    [SerializeField] GameObject[] entrances;
     [SerializeField] GameObject[] exits;
 
     [SerializeField] GameObject[] furnitureSlots;
@@ -26,6 +37,8 @@ public class Room : MonoBehaviour
     [SerializeField] GameObject roomCentre;
 
     List<GameObject> usedFurniture = new List<GameObject>();
+
+    private Dictionary<Direction, Room> connectedRooms = new Dictionary<Direction, Room>();
 
 
     private void Start()
@@ -108,9 +121,9 @@ public class Room : MonoBehaviour
         }
     }
 
-    public GameObject GetEntrance()
+    public GameObject[] GetEntrances()
     {
-        return entrancePoint;
+        return entrances;
     }
 
     public GameObject[] GetExits()
@@ -123,8 +136,38 @@ public class Room : MonoBehaviour
         return roomType;
     }
 
-    public GameObject GetRoomCentre()
+    public Vector3 GetCenter()
     {
-        return roomCentre;
+        if (roomCentre != null)
+            return roomCentre.transform.position;
+
+        return transform.position;
+    }
+
+    public void SetConnection(Direction dir, Room room)
+    {
+        if (connectedRooms.ContainsKey(dir))
+        {
+            connectedRooms[dir] = room;
+        }
+        else
+        {
+            connectedRooms.Add(dir, room);
+        }
+    }
+
+    public bool HasConnection(Direction dir)
+    {
+        return connectedRooms.ContainsKey(dir);
+    }
+
+    public Room GetConnectedRoom(Direction dir)
+    {
+        if (connectedRooms.TryGetValue(dir, out Room room))
+        {
+            return room;
+        }
+
+        return null;
     }
 }
