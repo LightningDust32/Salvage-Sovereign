@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -21,6 +22,10 @@ public class Player : Entity
 
     private Vector2 moveInput;
     private float currentStamina;
+
+    [SerializeField] private float moveDuration = 0.25f;
+    [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    bool isMoving;
 
     [SerializeField] Transform cameraTransform;
     [SerializeField] float cameraHeight = 1.0f;
@@ -62,7 +67,7 @@ public class Player : Entity
 
         if (currentRoom != null)
         {
-            transform.position = currentRoom.GetCenter();
+            transform.position = currentRoom.GetCentre();
         }
         else
         {
@@ -111,6 +116,8 @@ public class Player : Entity
     {
         if (!controller.enabled) return;
 
+        if (isMoving) return;
+
         // Cooldown to prevent spam movement
         moveTimer -= Time.deltaTime;
         if (moveTimer > 0f) return;
@@ -151,14 +158,10 @@ public class Player : Entity
 
     private void MoveToRoom(Room room)
     {
+        if (isMoving) return;
+
         currentRoom = room;
-
-        // Disable controller briefly to avoid collision issues
-        controller.enabled = false;
-        transform.position = room.GetCenter();
-        controller.enabled = true;
-
-        moveTimer = moveCooldown;
+        StartCoroutine(SmoothMove(room));
     }
 
     private Direction GetFacingDirection()
@@ -292,4 +295,40 @@ public class Player : Entity
         base.TakeDamage(amount);
         UIManager.instance.SetHealthBar(GetHealthPercent());
     }
+
+    private IEnumerator SmoothMove(Room targetRoom)
+    {
+        isMoving = true;
+
+        Vector3 startPos = transform.position;
+        Vector3 endPos = targetRoom.GetCentre();
+
+        float time = 0f;
+
+        // Disable controller to prevent interference
+        controller.enabled = false;
+
+        while (time < moveDuration)
+        {
+            time += Time.deltaTime;
+
+            float t = time / moveDuration;
+            float curvedT = moveCurve.Evaluate(t);
+
+            transform.position = Vector3.Lerp(startPos, endPos, curvedT);
+
+            yield return null;
+        }
+
+        transform.position = endPos;
+
+        controller.enabled = true;
+
+        isMoving = false;
+
+        // Trigger encounter AFTER movement completes
+        targetRoom.OnPlayerEntered(this);
+    }
 }
+
+

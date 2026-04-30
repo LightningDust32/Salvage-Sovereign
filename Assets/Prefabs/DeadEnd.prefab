@@ -108,6 +108,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2850775395280792506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7429878213158976500}
+  m_Layer: 0
+  m_Name: Furniture Slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7429878213158976500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850775395280792506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -2.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6113840103895947902}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3176574031588756807
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +181,7 @@ GameObject:
   - component: {fileID: 6113840103895947902}
   - component: {fileID: 2093556377818012617}
   m_Layer: 0
-  m_Name: Room
+  m_Name: DeadEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,6 +207,7 @@ Transform:
   - {fileID: 4249521572798734099}
   - {fileID: 7130630447643761527}
   - {fileID: 2963287600066510760}
+  - {fileID: 7429878213158976500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2093556377818012617
@@ -195,13 +227,17 @@ MonoBehaviour:
   - {fileID: 9062133990853903158}
   exits:
   - {fileID: 9062133990853903158}
-  furnitureSlots: []
-  wallSlots:
-  - {fileID: 3176574031588756807}
+  furnitureSlots:
+  - {fileID: 2850775395280792506}
+  wallSlots: []
   furniture: []
   wallFurniture: []
-  encounters: []
+  encounters:
+  - {fileID: 7737241647792531830, guid: d11f4274e019bbf46919f9124058877b, type: 3}
+  - {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
+  - {fileID: 7737241647792531830, guid: 3a82caa38a2a480498b1b359fcda6ac0, type: 3}
   roomCentre: {fileID: 3176574031588756807}
+  currentEncounter: {fileID: 0}
 --- !u!1 &7536875191412353482
 GameObject:
   m_ObjectHideFlags: 0

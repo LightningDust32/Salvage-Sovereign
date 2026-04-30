@@ -40,6 +40,8 @@ public class Room : MonoBehaviour
 
     private Dictionary<Direction, Room> connectedRooms = new Dictionary<Direction, Room>();
 
+    [SerializeField] private Encounter currentEncounter;
+
 
     private void Start()
     {
@@ -67,9 +69,14 @@ public class Room : MonoBehaviour
             // Small chance to place a puzzle if one hasn’t been placed yet
             if (!encounterPlaced && encounters != null && encounters.Length > 0)
             {
-                if (Random.value < 0.2f) // 20% chance per room to include an encounter (if applicable)
+                if (Random.value < 0.5f) // 50% chance per room to include an encounter
                 {
-                    prefabToSpawn = encounters[Random.Range(0, encounters.Length)];
+                    GameObject encounterPrefab = encounters[Random.Range(0, encounters.Length)];
+
+                    GameObject encounterObj = Instantiate(encounterPrefab, slot.transform.position, Quaternion.identity, transform);
+
+                    currentEncounter = encounterObj.GetComponent<Encounter>();
+
                     encounterPlaced = true;
                 }
             }
@@ -136,7 +143,7 @@ public class Room : MonoBehaviour
         return roomType;
     }
 
-    public Vector3 GetCenter()
+    public Vector3 GetCentre()
     {
         if (roomCentre != null)
             return roomCentre.transform.position;
@@ -169,5 +176,13 @@ public class Room : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void OnPlayerEntered(Player player)
+    {
+        if (currentEncounter != null)
+        {
+            currentEncounter.OnRoomEntered(player);
+        }
     }
 }
