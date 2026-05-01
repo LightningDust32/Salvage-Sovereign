@@ -233,7 +233,7 @@ MonoBehaviour:
   furniture: []
   wallFurniture: []
   encounters:
-  - {fileID: 7737241647792531830, guid: e24d773f60c87274a82d7f335cce1fc4, type: 3}
+  - {fileID: 7737241647792531830, guid: 2e733a71f54578740b1fc5b57c0abf46, type: 3}
   roomCentre: {fileID: 3176574031588756807}
   currentEncounter: {fileID: 0}
   encounterChance: 1
