@@ -17,11 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] GameObject endingScreen;
     [SerializeField] GameObject controlsScreen;
-
-    [Header("UI Puzzle")]
-    [SerializeField] GameObject questionObject;
-    [SerializeField] private TMP_Text questionText;
-    [SerializeField] TMP_InputField answerBox;
+    [SerializeField] GameObject combatScreen;
 
     [Header("Dialogue Settings")]
     [SerializeField] private float defaultTime;
@@ -81,6 +77,11 @@ public class UIManager : MonoBehaviour
     {
         dialogueBox.text = message;
         dialogueTimer = time;
+    }
+
+    public void ShowCombatUI(bool state)
+    {
+        combatScreen.SetActive(state);
     }
 
     public void Pause()
