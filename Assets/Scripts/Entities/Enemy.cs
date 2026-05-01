@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum BodyPart
+{
+    Head,
+    Torso,
+    Arms,
+    Legs
+}
+
 public class Enemy : Entity
 {
     private bool isMyTurn = false;
@@ -7,6 +15,15 @@ public class Enemy : Entity
 
     [SerializeField] private DamageType weakness;
     [SerializeField] private DamageType resistance;
+
+    [System.Serializable]
+    public struct BodyPartData
+    {
+        public BodyPart part;
+        public float damageMultiplier;
+    }
+
+    [SerializeField] private BodyPartData[] bodyParts;
 
     public override bool TakeTurn()
     {
@@ -44,5 +61,18 @@ public class Enemy : Entity
         turnFinished = true;
 
         Debug.Log(name + " ends its turn");
+    }
+
+    public float GetMultiplier(BodyPart targetPart)
+    {
+        foreach(var part in bodyParts)
+        {
+            if(part.part == targetPart)
+            {
+                return part.damageMultiplier;
+            }
+        }
+
+        return 1f; // no damage multiplier
     }
 }

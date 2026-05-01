@@ -33,6 +33,10 @@ public class Player : Entity
 
     [Header("Gameplay")]
     [SerializeField] GameObject[] items;
+    [SerializeField] private Weapon primaryWeapon;
+    [SerializeField] private Weapon secondaryWeapon;
+
+    private Weapon currentWeapon;
 
     private int currentItemIndex = -1;
     bool[] itemsUnlocked;
@@ -53,9 +57,7 @@ public class Player : Entity
         currentStamina = maxStamina;
 
 
-        cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraHeight, cameraTransform.localPosition.z);
-
-        
+        cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraHeight, cameraTransform.localPosition.z);  
     }
 
     private void Start()
@@ -324,11 +326,42 @@ public class Player : Entity
         return turnFinished;
     }
 
-    public void PerformAttack()
+    public void Attack(Entity target)
     {
         if (!isMyTurn) return;
 
-        Debug.Log("Player performed attack");
+        float damage = strength + currentWeapon.GetDamage();
+
+        target.TakeDamage(damage);
+
+        Debug.Log("Player attacked with:" + currentWeapon.name + " for: " + damage + " damage");
+
+        EndTurn();
+    }
+
+    public void PowerAttack()
+    {
+        if (!isMyTurn) return;
+
+        Debug.Log("Player performed power attack");
+
+        EndTurn();
+    }
+
+    public void SwitchWeapon()
+    {
+        if (!isMyTurn) return;
+
+        if(currentWeapon == primaryWeapon)
+        {
+            currentWeapon = secondaryWeapon;
+        }
+        else
+        {
+            currentWeapon = primaryWeapon;
+        }
+
+        Debug.Log("Switched weapon to: " + currentWeapon.name);
 
         EndTurn();
     }
@@ -339,12 +372,6 @@ public class Player : Entity
         turnFinished = true;
 
         Debug.Log("Player Turn Ended");
-    }
-
-    // This can be called on all entities in StartNewRound()
-    public void ResetTurn()
-    {
-        turnFinished = false;
     }
 
     public override void TakeDamage(float amount)
