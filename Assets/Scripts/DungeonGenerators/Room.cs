@@ -10,18 +10,20 @@ public enum Direction
     West
 }
 
+public enum RoomType
+{
+    Start,
+    Normal,
+    Combat,
+    Treasure,
+    DeadEnd,
+    Section,
+    Exit
+}
+
 public class Room : MonoBehaviour
 {
-    public enum RoomType
-    {
-        Start,
-        Normal,
-        Combat,
-        Treasure,
-        DeadEnd,
-        Section,
-        Exit
-    }
+    
 
     [SerializeField] private RoomType roomType;
 
@@ -41,6 +43,8 @@ public class Room : MonoBehaviour
     private Dictionary<Direction, Room> connectedRooms = new Dictionary<Direction, Room>();
 
     [SerializeField] private Encounter currentEncounter;
+    [Range(0, 1)]
+    [SerializeField] private float encounterChance;
 
 
     private void Start()
@@ -69,7 +73,7 @@ public class Room : MonoBehaviour
             // Small chance to place a puzzle if one hasn’t been placed yet
             if (!encounterPlaced && encounters != null && encounters.Length > 0)
             {
-                if (Random.value < 0.5f) // 50% chance per room to include an encounter
+                if (Random.value < encounterChance)
                 {
                     GameObject encounterPrefab = encounters[Random.Range(0, encounters.Length)];
 

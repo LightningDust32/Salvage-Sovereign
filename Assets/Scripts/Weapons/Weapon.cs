@@ -42,4 +42,15 @@ public abstract class Weapon : MonoBehaviour
     {
         return damageType;
     }
+
+    public void ApplyUpgrade(HarvestItem item)
+    {
+        damage += item.damageChange;
+        speed += item.speedChange;
+
+        if(item.changeDamageType)
+        {
+            damageType = item.damageTypeChange;
+        }
+    }
 }

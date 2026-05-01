@@ -53,7 +53,7 @@ public class RoomManager : MonoBehaviour
             }
         }
 
-        // Pair doors using best mach
+        // Pair doors using best match
         foreach (Transform doorA in allDoors)
         {
             if (usedDoors.Contains(doorA))

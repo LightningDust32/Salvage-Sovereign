@@ -16,6 +16,9 @@ public class Enemy : Entity
     [SerializeField] private DamageType weakness;
     [SerializeField] private DamageType resistance;
 
+    [SerializeField] private HarvestItem dropItem;
+    [SerializeField] private float baseDropChance;
+
     [System.Serializable]
     public struct BodyPartData
     {
@@ -74,5 +77,17 @@ public class Enemy : Entity
         }
 
         return 1f; // no damage multiplier
+    }
+
+    public HarvestItem TryDrop()
+    {
+        float roll = Random.value;
+
+        if(roll <= baseDropChance)
+        {
+            return dropItem;
+        }
+
+        return null;
     }
 }

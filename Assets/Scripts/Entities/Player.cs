@@ -45,6 +45,8 @@ public class Player : Entity
     private bool turnFinished = false;
     private bool inCombat = false;
 
+    private int currentGold;
+
     protected override void Awake()
     {
         base.Awake();
@@ -55,7 +57,6 @@ public class Player : Entity
         itemsUnlocked = new bool[items.Length];
 
         currentStamina = maxStamina;
-
 
         cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraHeight, cameraTransform.localPosition.z);  
     }
@@ -378,6 +379,11 @@ public class Player : Entity
     {
         base.TakeDamage(amount);
         UIManager.instance.SetHealthBar(GetHealthPercent());
+    }
+
+    public void ChangeGold(int amount)
+    {
+        currentGold += amount;
     }
 
     private IEnumerator SmoothMove(Room targetRoom)

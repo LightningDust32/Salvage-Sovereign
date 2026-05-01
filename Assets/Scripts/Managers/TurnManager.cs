@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
         // get all entitnes and put them in a list
-        entities = FindObjectsOfType<Entity>().ToList();
+        entities = FindObjectsByType<Entity>(FindObjectsSortMode.None).ToList();
 
         StartNewRound();
     }
