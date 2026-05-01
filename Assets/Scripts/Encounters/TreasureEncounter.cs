@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class TreasureEncounter : Encounter
 {
+    int goldAmount;
+
     protected override void TriggerEncounter(Player player)
     {
-        Debug.Log("Treasure Opened");
+        goldAmount = Random.Range(10, 30);
 
-        // Give loot here
+        player.ChangeGold(goldAmount);
 
         CompleteEncounter();
     }

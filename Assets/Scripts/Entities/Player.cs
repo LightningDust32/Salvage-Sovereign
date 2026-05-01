@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : Entity
@@ -40,8 +42,6 @@ public class Player : Entity
 
     private Weapon currentWeapon;
 
-    private int currentItemIndex = -1;
-    bool[] itemsUnlocked;
 
     private bool isMyTurn = false;
     private bool turnFinished = false;
@@ -49,14 +49,15 @@ public class Player : Entity
 
     private int currentGold;
 
+    private List<HarvestItem> inventory = new List<HarvestItem>();
+    [SerializeField] private Weapon[] weaponPool;
+
     protected override void Awake()
     {
         base.Awake();
         controller = GetComponent<CharacterController>();
 
         inputActions = new PlayerInput();
-
-        itemsUnlocked = new bool[items.Length];
 
         currentStamina = maxStamina;
 
@@ -81,6 +82,29 @@ public class Player : Entity
         {
             Debug.Log("No starting room found");
         }
+
+        ApplyPersistentData();
+    }
+
+    private void ApplyPersistentData()
+    {
+        // Apply permanent stat upgrades
+        maxHealth += PersistentData.bonusHealth;
+        strength += PersistentData.bonusStrength;
+        defense += PersistentData.bonusDefense;
+
+        // Equip weapons from weapon selection
+        if (PersistentData.primaryWeaponIndex >= 0 && PersistentData.primaryWeaponIndex < weaponPool.Length)
+        {
+            primaryWeapon = weaponPool[PersistentData.primaryWeaponIndex];
+        }
+
+        if (PersistentData.secondaryWeaponIndex >= 0 && PersistentData.secondaryWeaponIndex < weaponPool.Length)
+        {
+            secondaryWeapon = weaponPool[PersistentData.secondaryWeaponIndex];
+        }
+
+        currentWeapon = primaryWeapon;
     }
 
     private void OnEnable()
@@ -92,10 +116,7 @@ public class Player : Entity
         inputActions.Player.Move.canceled += ctx => OnMove(Vector2.zero);
 
         // Items
-        inputActions.Player.Attack.performed += context => TryUseItem();
         inputActions.Player.Interact.performed += context => TryInteract();
-        inputActions.Player.Previous.performed += context => EquipPrevious();
-        inputActions.Player.Next.performed += context => EquipNext();
 
         // Map
         inputActions.Player.ToggleMiniMap.performed += ctx => ToggleMiniMap();
@@ -225,37 +246,6 @@ public class Player : Entity
         UIManager.instance.SetStaminaBar(percent);
     }
 
-    public void UnlockItem(int itemID)
-    {
-        if (itemID < 0 || itemID >= itemsUnlocked.Length)
-            return;
-
-        itemsUnlocked[itemID] = true;
-
-        // If no item currently equipped, equip this one
-        if (currentItemIndex == -1)
-        {
-            EquipItem(itemID);
-        }
-    }
-
-    private void EquipItem(int index)
-    {
-        if (index < 0 || index >= items.Length)
-            return;
-
-        if (!itemsUnlocked[index])
-            return;
-
-        if (currentItemIndex >= 0 && currentItemIndex < items.Length)
-        {
-            items[currentItemIndex].SetActive(false);
-        }
-
-        currentItemIndex = index;
-        items[currentItemIndex].SetActive(true);
-    }
-
     private void TryInteract()
     {
         
@@ -264,57 +254,6 @@ public class Player : Entity
     private void CheckInteractPrompt()
     {
         
-    }
-
-    private void EquipNext()
-    {
-        if (currentItemIndex == -1)
-            return;
-
-        int startIndex = currentItemIndex;
-        int newIndex = currentItemIndex;
-
-        do
-        {
-            newIndex = (newIndex + 1) % items.Length;
-        }
-        while (!itemsUnlocked[newIndex] && newIndex != startIndex);
-
-        if (newIndex != currentItemIndex)
-        {
-            EquipItem(newIndex); 
-        }
-    }
-
-    private void EquipPrevious()
-    {
-        if (currentItemIndex == -1)
-            return;
-
-        int startIndex = currentItemIndex;
-        int newIndex = currentItemIndex;
-
-        do
-        {
-            newIndex--;
-            if (newIndex < 0)
-                newIndex = items.Length - 1;
-        }
-        while (!itemsUnlocked[newIndex] && newIndex != startIndex);
-
-        if (newIndex != currentItemIndex)
-            EquipItem(newIndex);
-    }
-
-    private void TryUseItem()
-    {
-        if (currentItemIndex < 0 || currentItemIndex >= items.Length)
-            return;
-
-        GameObject currentItem = items[currentItemIndex];
-
-        if (currentItem == null)
-            return;
     }
 
     public Transform GetCameraTransform()
@@ -344,6 +283,13 @@ public class Player : Entity
     {
         if (!isMyTurn) return;
 
+        if (currentWeapon == null)
+        {
+            Debug.Log("No weapon equipped");
+            EndTurn();
+            return;
+        }
+
         float damage = strength + currentWeapon.GetDamage();
 
         target.TakeDamage(damage);
@@ -353,11 +299,24 @@ public class Player : Entity
         EndTurn();
     }
 
-    public void PowerAttack()
+    public void PowerAttack(Entity target, BodyPart part)
     {
         if (!isMyTurn) return;
+        if (currentWeapon == null) return;
+        if(currentStamina <= 0)
+        {
+            Debug.Log("No Stamina");
+            return;
+        }
 
-        Debug.Log("Player performed power attack");
+        float multiplier = 1.5f; // placeholder until enemy system hooked
+        float damage = (strength + currentWeapon.GetDamage()) * multiplier;
+
+        target.TakeDamage(damage);
+
+        currentStamina -= currentStamina * 0.2f; // five power attacks limit for now
+
+        Debug.Log($"Power attack ({part}) for {damage}");
 
         EndTurn();
     }
@@ -399,7 +358,39 @@ public class Player : Entity
         currentGold += amount;
     }
 
-    private IEnumerator SmoothMove(Room targetRoom)
+    public void AddHarvestItem(HarvestItem item)
+    {
+        if (item == null) return;
+
+        inventory.Add(item);
+
+        Debug.Log("Collected: " + item.itemName);
+    }
+
+    public void EndRun()
+    {
+        int sellValue = 0;
+
+        foreach (HarvestItem item in inventory)
+        {
+            sellValue += Mathf.RoundToInt(item.sellValue * 0.5f); // cheap sell
+        }
+
+        PersistentData.Gold += currentGold + sellValue;
+
+        Debug.Log($"Run ended. Gold gained: {currentGold} + {sellValue}");
+
+        PersistentData.Save();
+
+        // Reset run data
+        inventory.Clear();
+        currentGold = 0;
+
+        SceneManager.LoadScene(1); // Lobby
+    }
+
+
+        private IEnumerator SmoothMove(Room targetRoom)
     {
         isMoving = true;
 
