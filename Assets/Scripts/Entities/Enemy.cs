@@ -1,10 +1,12 @@
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Enemy : Entity
 {
     private bool isMyTurn = false;
     private bool turnFinished = false;
+
+    [SerializeField] private DamageType weakness;
+    [SerializeField] private DamageType resistance;
 
     public override bool TakeTurn()
     {
@@ -20,6 +22,12 @@ public class Enemy : Entity
 
         }
         return turnFinished;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        // Reduce or increase damage from weakness/resistance, then pass it to the rest of the TakeDamage calculation
+        base.TakeDamage(damage);
     }
 
     private void PerformAction()
