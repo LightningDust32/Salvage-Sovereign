@@ -30,6 +30,8 @@ public class Player : Entity
     [SerializeField] Transform cameraTransform;
     [SerializeField] float cameraHeight = 1.0f;
 
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Camera minimapCamera;
 
     [Header("Gameplay")]
     [SerializeField] GameObject[] items;
@@ -95,6 +97,9 @@ public class Player : Entity
         inputActions.Player.Previous.performed += context => EquipPrevious();
         inputActions.Player.Next.performed += context => EquipNext();
 
+        // Map
+        inputActions.Player.ToggleMiniMap.performed += ctx => ToggleMiniMap();
+
         inputActions.Player.Pause.performed += context => UIManager.instance.Pause();
     }
 
@@ -156,6 +161,14 @@ public class Player : Entity
         {
             TryMoveForward();
         }
+    }
+
+    private void ToggleMiniMap() 
+    {
+        bool isActive = minimapCamera.enabled;
+
+        minimapCamera.enabled = !isActive;
+        playerCamera.enabled = isActive;
     }
 
     private void TryMoveForward()
