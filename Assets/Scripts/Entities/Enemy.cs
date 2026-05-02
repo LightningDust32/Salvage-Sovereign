@@ -16,8 +16,15 @@ public class Enemy : Entity
     [SerializeField] private DamageType weakness;
     [SerializeField] private DamageType resistance;
 
+    [SerializeField] string specialMove;
+    [SerializeField] int specialMoveDamage;
+    [Range(0, 1)]
+    [SerializeField] float attackChance;
+
     [SerializeField] private HarvestItem dropItem;
     [SerializeField] private float baseDropChance;
+
+    private Player player;
 
     [System.Serializable]
     public struct BodyPartData
@@ -37,7 +44,7 @@ public class Enemy : Entity
             isMyTurn = true;
             turnFinished = false;
             // Placeholder AI
-            // Later: attack player, move, etc.
+            // Later: attack player, special move, etc.
             PerformAction();
 
         }
@@ -52,12 +59,47 @@ public class Enemy : Entity
 
     private void PerformAction()
     {
-        Debug.Log(name + " attacks!");
+        if (player == null)
+        {
+            Debug.Log("Enemy has no player target");
+            EndTurn();
+            return;
+        }
 
-        // TODO: pick a target and deal damage
+        float roll = Random.value;
+
+        if (roll < attackChance)
+        {
+            BasicAttack();
+        }
+        else
+        {
+            SpecialAttack();
+        }
+    }
+
+    private void BasicAttack()
+    {
+        float damage = strength;
+
+        player.TakeDamage(damage);
+
+        Debug.Log(name + " attacks for " + damage);
 
         EndTurn();
     }
+
+    private void SpecialAttack()
+    {
+        float damage = specialMoveDamage;
+
+        player.TakeDamage(damage);
+
+        Debug.Log(name + " uses " + specialMove + " for " + damage);
+
+        EndTurn();
+    }
+
     private void EndTurn()
     {
         isMyTurn = false;
@@ -89,5 +131,11 @@ public class Enemy : Entity
         }
 
         return null;
+    }
+
+    // call in Encounter or turn 1, so enemy stores a reference to the player
+    public void SetPlayer(Player target)
+    {
+        player = target;
     }
 }
