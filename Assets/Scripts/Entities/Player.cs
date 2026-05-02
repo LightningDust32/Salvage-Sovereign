@@ -300,6 +300,7 @@ public class Player : Entity
 
         float damage = strength + currentWeapon.GetDamage();
 
+        currentEnemy.SetLastDamageType(currentWeapon.GetDamageType());
         currentEnemy.TakeDamage(damage);
 
         Debug.Log("Player attacked with:" + currentWeapon.name + " for: " + damage + " damage");
@@ -307,11 +308,26 @@ public class Player : Entity
         EndTurn();
     }
 
-    public void PowerAttack(BodyPart part)
+    public void PowerAttack()
+    {
+        if (!isMyTurn) return;
+
+        if (currentEnemy == null)
+        {
+            Debug.Log("No enemy to target");
+            return;
+        }
+
+        Debug.Log("Power attack targeting mode");
+
+        currentEnemy.SetTargetingActive(true);
+    }
+
+    public void ExecutePowerAttack(BodyPart part, Enemy target)
     {
         if (!isMyTurn) return;
         if (currentWeapon == null) return;
-        if(currentStamina <= 0)
+        if (currentStamina <= 0)
         {
             Debug.Log("No Stamina");
             return;
@@ -319,7 +335,10 @@ public class Player : Entity
 
         currentEnemy = TurnManager.Instance.GetFirstAliveEnemy();
 
-        float multiplier = 1.5f; // placeholder until enemy system hooked
+        currentEnemy.SetLastDamageType(currentWeapon.GetDamageType());
+        currentEnemy.SetTargetBodyPart(part);
+
+        float multiplier = currentEnemy.GetMultiplier(part);
         float damage = (strength + currentWeapon.GetDamage()) * multiplier;
 
         currentEnemy.TakeDamage(damage);

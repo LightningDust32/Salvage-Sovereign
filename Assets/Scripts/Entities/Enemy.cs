@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum BodyPart
@@ -31,9 +32,36 @@ public class Enemy : Entity
     {
         public BodyPart part;
         public float damageMultiplier;
+
+        public DamageType weakness;
+        public DamageType resistance;
+
+        public GameObject partObject;
     }
 
     [SerializeField] private BodyPartData[] bodyParts;
+
+    private DamageType lastDamageType;
+    private BodyPart lastTargetPart;
+    private bool hasTargetPart = false;
+
+    private void Start()
+    {
+        foreach(BodyPartData partData in bodyParts)
+        {
+            if (partData.partObject == null) continue;
+
+            EnemyBodyPart clickable = partData.partObject.GetComponent<EnemyBodyPart>();
+
+            if (clickable == null)
+            {
+                clickable = partData.partObject.AddComponent<EnemyBodyPart>();
+            }
+
+            clickable.Initialize(this, partData.part);
+            clickable.SetActive(false);
+        }
+    }
 
     public override bool TakeTurn()
     {
@@ -53,8 +81,50 @@ public class Enemy : Entity
 
     public override void TakeDamage(float damage)
     {
-        // Reduce or increase damage from weakness/resistance, then pass it to the rest of the TakeDamage calculation
-        base.TakeDamage(damage);
+        float finalDamage = damage;
+
+        if (lastDamageType == weakness)
+        {
+            finalDamage *= 1.5f;
+            Debug.Log(name + " is weak to " + lastDamageType);
+        }
+        else if (lastDamageType == resistance)
+        {
+            finalDamage *= 0.5f;
+            Debug.Log(name + " resists " + lastDamageType);
+        }
+
+        if (hasTargetPart)
+        {
+            foreach (BodyPartData partData in bodyParts)
+            {
+                if (partData.part == lastTargetPart)
+                {
+                    // Apply body part multiplier
+                    finalDamage *= partData.damageMultiplier;
+
+                    // Apply body part weakness/resistance
+                    if (lastDamageType == partData.weakness)
+                    {
+                        finalDamage *= 1.25f;
+                        Debug.Log(name + "'s " + partData.part + " is weak to " + lastDamageType);
+                    }
+                    else if (lastDamageType == partData.resistance)
+                    {
+                        finalDamage *= 0.75f;
+                        Debug.Log(name + "'s " + partData.part + " resists " + lastDamageType);
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        Debug.Log(name + " takes " + finalDamage + " damage");
+
+        base.TakeDamage(finalDamage);
+
+        ClearHitData();
     }
 
     private void PerformAction()
@@ -137,5 +207,50 @@ public class Enemy : Entity
     public void SetPlayer(Player target)
     {
         player = target;
+    }
+
+    public void SetLastDamageType(DamageType type)
+    {
+        lastDamageType = type;
+    }
+
+    public void SetTargetBodyPart(BodyPart part)
+    {
+        lastTargetPart = part;
+        hasTargetPart = true;
+    }
+
+    private void ClearHitData()
+    {
+        hasTargetPart = false;
+    }
+
+    public void SetTargetingActive(bool active)
+    {
+        foreach (BodyPartData partData in bodyParts)
+        {
+            if (partData.partObject == null) continue;
+
+            var clickable = partData.partObject.GetComponent<EnemyBodyPart>();
+            if (clickable != null)
+            {
+                clickable.SetActive(active);
+            }
+        }
+    }
+
+    public void OnBodyPartClicked(BodyPart part)
+    {
+        Debug.Log(name + " body part clicked: " + part);
+
+        SetTargetingActive(false);
+
+        // Tell player to execute power attack
+        Player player = TurnManager.Instance.GetComponent<TurnManager>() != null ? FindFirstObjectByType<Player>() : null;
+
+        if (player != null)
+        {
+            player.ExecutePowerAttack(part, this);
+        }
     }
 }
