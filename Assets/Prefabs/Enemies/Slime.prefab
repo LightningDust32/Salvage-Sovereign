@@ -133,7 +133,7 @@ MonoBehaviour:
   specialMove: 
   specialMoveDamage: 0
   attackChance: 0
-  dropItem: {fileID: 0}
+  dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   baseDropChance: 0
   bodyParts:
   - part: 0

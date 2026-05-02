@@ -30,6 +30,8 @@ public class CombatEncounter : Encounter
 
         player.FaceTarget(spawnedEnemy.transform);
 
+        spawnedEnemy.FaceTarget(player.transform);
+
         spawnedEnemy.SetPlayer(player);
 
         List<Entity> entities = new List<Entity>

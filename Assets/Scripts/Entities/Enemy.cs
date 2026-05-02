@@ -253,4 +253,15 @@ public class Enemy : Entity
             player.ExecutePowerAttack(part, this);
         }
     }
+
+    public void FaceTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position);
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude < 0.01f) return;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = lookRotation;
+    }
 }
