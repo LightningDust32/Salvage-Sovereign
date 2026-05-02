@@ -388,6 +388,7 @@ public class Player : Entity
         PersistentData.Gold += currentGold + sellValue;
 
         Debug.Log($"Run ended. Gold gained: {currentGold} + {sellValue}");
+        PersistentData.ResetRunSelections();
 
         PersistentData.Save();
 
