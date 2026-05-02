@@ -11409,7 +11409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptBox: {fileID: 0}
-  dialogueBox: {fileID: 0}
+  dialogueBox: {fileID: 2017542557}
   pauseScreen: {fileID: 0}
   staminaBar: {fileID: 1769035077}
   healthBar: {fileID: 94205266}
@@ -12217,7 +12217,7 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
