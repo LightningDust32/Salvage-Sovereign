@@ -304,8 +304,6 @@ public class Player : Entity
         currentEnemy.SetLastDamageType(currentWeapon.GetDamageType());
         currentEnemy.TakeDamage(damage);
 
-        Debug.Log("Player attacked with:" + currentWeapon.name + " for: " + damage + " damage");
-
         EndTurn();
     }
 

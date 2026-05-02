@@ -131,8 +131,7 @@ public class TurnManager : MonoBehaviour
     public void EndBattle(bool playerWon)
     {
         battleactive = false;
-
-        Debug.Log(playerWon ? "Player Victory" : "Player Defeat");
+        UIManager.instance.ShowDialogue(playerWon ? "Player Victory" : "Player Defeat");
 
         // Notify player
         if (player != null)

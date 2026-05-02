@@ -119,7 +119,7 @@ public class Enemy : Entity
             }
         }
 
-        Debug.Log(name + " takes " + finalDamage + " damage");
+        UIManager.instance.ShowDialogue(name + " takes " + finalDamage + " damage");
 
         base.TakeDamage(finalDamage);
 
