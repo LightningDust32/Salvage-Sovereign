@@ -41,6 +41,7 @@ public class Player : Entity
     [SerializeField] private Weapon secondaryWeapon;
 
     private Weapon currentWeapon;
+    private Enemy currentEnemy;
 
 
     private bool isMyTurn = false;
@@ -284,7 +285,7 @@ public class Player : Entity
         return turnFinished;
     }
 
-    public void Attack(Entity target)
+    public void Attack()
     {
         if (!isMyTurn) return;
 
@@ -295,16 +296,18 @@ public class Player : Entity
             return;
         }
 
+        currentEnemy = TurnManager.Instance.GetFirstAliveEnemy();
+
         float damage = strength + currentWeapon.GetDamage();
 
-        target.TakeDamage(damage);
+        currentEnemy.TakeDamage(damage);
 
         Debug.Log("Player attacked with:" + currentWeapon.name + " for: " + damage + " damage");
 
         EndTurn();
     }
 
-    public void PowerAttack(Entity target, BodyPart part)
+    public void PowerAttack(BodyPart part)
     {
         if (!isMyTurn) return;
         if (currentWeapon == null) return;
@@ -314,10 +317,12 @@ public class Player : Entity
             return;
         }
 
+        currentEnemy = TurnManager.Instance.GetFirstAliveEnemy();
+
         float multiplier = 1.5f; // placeholder until enemy system hooked
         float damage = (strength + currentWeapon.GetDamage()) * multiplier;
 
-        target.TakeDamage(damage);
+        currentEnemy.TakeDamage(damage);
 
         currentStamina -= currentStamina * 0.2f; // five power attacks limit for now
 

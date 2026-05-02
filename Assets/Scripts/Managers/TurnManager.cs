@@ -7,21 +7,33 @@ public class TurnManager : MonoBehaviour
     /*
 
         things needed:
-        List of entities
-        Sort the entites by speed
         Battle function that loops entites based on speed and ends when the player or all enemies are dead.
 
     */
+
+    public static TurnManager Instance;
 
     private List<Entity> entities;
     private List<Entity> turnOrder;
     private int currentTurnIndex = 0;
 
+    private Player player;
     private bool battleactive;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     void Start()
     {
-        // get all entitnes and put them in a list
+        // get all entities and put them in a list
         entities = FindObjectsByType<Entity>(FindObjectsSortMode.None).ToList();
 
         StartNewRound();
@@ -30,6 +42,8 @@ public class TurnManager : MonoBehaviour
     private void Update()
     {
         if (!battleactive) return;
+
+        if (!BattleIsActive()) return;
 
         // Safety check
         if (turnOrder == null || turnOrder.Count == 0) return;
@@ -54,11 +68,11 @@ public class TurnManager : MonoBehaviour
     {
         battleactive = true;
 
-        // fill in the turn order list based on speed highses first
+        // fill in the turn order list based on speed highest first
         turnOrder = entities
-            .Where(e => e.IsAlive())                // check if alive
-            .OrderByDescending(e => e.GetSpeed())   // order by speed
-            .ToList();                              // add to list
+            .Where(entity => entity != null && entity.IsAlive())
+            .OrderByDescending(entity => entity.GetSpeed())
+            .ToList();
         
         currentTurnIndex = 0;
 
@@ -70,13 +84,8 @@ public class TurnManager : MonoBehaviour
 
     void NextTurn()
     {
-        // once the first turn has happened next turn
         currentTurnIndex++;
-        // add 1 to the current index and start the round again
 
-        // if reached the end of the list
-        // all entities have taken their turn
-        // run startNewRound
         if (currentTurnIndex >= turnOrder.Count)
         {
             StartNewRound();
@@ -85,10 +94,36 @@ public class TurnManager : MonoBehaviour
 
     bool BattleIsActive()
     {
-        // add conditions for ending
-        // player dies
-        // all enemies killed
+        if (player == null || !player.IsAlive())
+        {
+            battleactive = false;
+            Debug.Log("Battle ended: Player defeated");
+            return battleactive;
+        }
+
+        bool anyEnemiesAlive = entities.Any(enemy => enemy is Enemy && enemy.IsAlive());
+
+        if (!anyEnemiesAlive)
+        {
+            battleactive = false;
+            Debug.Log("Battle ended: All enemies defeated");
+            return battleactive;
+        }
+
 
         return battleactive;
+    }
+
+    public Enemy GetFirstAliveEnemy()
+    {
+        foreach (Entity entity in entities)
+        {
+            if (entity is Enemy enemy && enemy.IsAlive())
+            {
+                return enemy;
+            }
+        }
+
+        return null;
     }
 }
