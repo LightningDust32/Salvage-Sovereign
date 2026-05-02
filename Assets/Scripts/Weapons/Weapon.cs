@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [Header("Weapon Stats")]
     [SerializeField] protected float damage = 2f;
-    [SerializeField] protected float speed = 1f; // attacks per turn or cooldown basis
+    [SerializeField] protected float speed = 1f; 
     [SerializeField] protected DamageType damageType;
 
     

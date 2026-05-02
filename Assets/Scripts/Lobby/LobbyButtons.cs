@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LobbyButtons : MonoBehaviour
 {
@@ -47,12 +48,27 @@ public class LobbyButtons : MonoBehaviour
     public void SelectPrimary(int index)
     {
         PersistentData.primaryWeaponIndex = index;
+        Debug.Log("Primary Weapon: " + index);
         PersistentData.Save();
     }
 
     public void SelectSecondary(int index)
     {
         PersistentData.secondaryWeaponIndex = index;
+        Debug.Log("Secondary Weapon: " + index);
         PersistentData.Save();
+    }
+
+    public bool CanStartRun()
+    {
+        return PersistentData.primaryWeaponIndex != -1 &&
+               PersistentData.secondaryWeaponIndex != -1;
+    }
+
+    public void StartRun()
+    {
+        if (!CanStartRun()) return;
+
+       SceneManager.LoadScene(2);
     }
 }

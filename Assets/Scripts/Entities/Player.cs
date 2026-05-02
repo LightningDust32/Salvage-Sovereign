@@ -84,6 +84,11 @@ public class Player : Entity
         }
 
         ApplyPersistentData();
+
+        if(currentWeapon != null)
+        {
+            currentWeapon.gameObject.SetActive(true);
+        }
     }
 
     private void ApplyPersistentData()
@@ -327,11 +332,15 @@ public class Player : Entity
 
         if(currentWeapon == primaryWeapon)
         {
+            currentWeapon.gameObject.SetActive(false);
             currentWeapon = secondaryWeapon;
+            currentWeapon.gameObject.SetActive(true);
         }
         else
         {
+            currentWeapon.gameObject.SetActive(false);
             currentWeapon = primaryWeapon;
+            currentWeapon.gameObject.SetActive(true);
         }
 
         Debug.Log("Switched weapon to: " + currentWeapon.name);
