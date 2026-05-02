@@ -24,7 +24,7 @@ public abstract class Entity : MonoBehaviour, ITurnActor
 
     public bool IsAlive()
     {
-        return currentHealth <= 0;
+        return currentHealth > 0;
     }
 
     public virtual void TakeDamage(float damage)

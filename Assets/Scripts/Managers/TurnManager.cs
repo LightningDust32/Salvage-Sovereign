@@ -31,10 +31,11 @@ public class TurnManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    public void InitializeBattle(List<Entity> newEntities)
     {
-        // get all entities and put them in a list
-        entities = FindObjectsByType<Entity>(FindObjectsSortMode.None).ToList();
+        entities = newEntities;
+
+        player = newEntities.OfType<Player>().FirstOrDefault();
 
         StartNewRound();
     }
@@ -94,7 +95,14 @@ public class TurnManager : MonoBehaviour
 
     bool BattleIsActive()
     {
-        if (player == null || !player.IsAlive())
+
+        if (entities == null || entities.Count == 0)
+            return false;
+
+        if (player == null)
+            return true;
+
+        if (!player.IsAlive())
         {
             battleactive = false;
             Debug.Log("Battle ended: Player defeated");

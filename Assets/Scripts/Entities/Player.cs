@@ -423,8 +423,28 @@ public class Player : Entity
         SceneManager.LoadScene(1); // Lobby
     }
 
+    public void EnterCombat()
+    {
+        inCombat = true;
 
-        private IEnumerator SmoothMove(Room targetRoom)
+        Debug.Log("Player entered combat");
+
+        // Optional safety reset
+        moveInput = Vector2.zero;
+    }
+
+    public void FaceTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position);
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude < 0.01f) return;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = lookRotation;
+    }
+
+    private IEnumerator SmoothMove(Room targetRoom)
     {
         isMoving = true;
 

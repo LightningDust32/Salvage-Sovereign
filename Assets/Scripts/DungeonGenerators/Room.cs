@@ -70,14 +70,14 @@ public class Room : MonoBehaviour
 
             GameObject prefabToSpawn = null;
 
-            // Small chance to place a puzzle if one hasn’t been placed yet
+            // Controlled chance to place an encounter
             if (!encounterPlaced && encounters != null && encounters.Length > 0)
             {
                 if (Random.value < encounterChance)
                 {
                     GameObject encounterPrefab = encounters[Random.Range(0, encounters.Length)];
 
-                    GameObject encounterObj = Instantiate(encounterPrefab, slot.transform.position, Quaternion.identity, transform);
+                    GameObject encounterObj = Instantiate(encounterPrefab, slot.transform.position, slot.transform.rotation, transform);
 
                     currentEncounter = encounterObj.GetComponent<Encounter>();
 
