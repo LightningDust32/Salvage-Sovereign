@@ -95,31 +95,24 @@ public class TurnManager : MonoBehaviour
 
     bool BattleIsActive()
     {
-
-        if (entities == null || entities.Count == 0)
-            return false;
-
         if (player == null)
             return true;
 
         if (!player.IsAlive())
         {
-            battleactive = false;
-            Debug.Log("Battle ended: Player defeated");
-            return battleactive;
+            EndBattle(false);
+            return false;
         }
 
-        bool anyEnemiesAlive = entities.Any(enemy => enemy is Enemy && enemy.IsAlive());
+        bool anyEnemiesAlive = entities.Any(entity => entity is Enemy && entity.IsAlive());
 
         if (!anyEnemiesAlive)
         {
-            battleactive = false;
-            Debug.Log("Battle ended: All enemies defeated");
-            return battleactive;
+            EndBattle(true);
+            return false;
         }
 
-
-        return battleactive;
+        return true;
     }
 
     public Enemy GetFirstAliveEnemy()
@@ -133,5 +126,43 @@ public class TurnManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void EndBattle(bool playerWon)
+    {
+        battleactive = false;
+
+        Debug.Log(playerWon ? "Player Victory" : "Player Defeat");
+
+        // Notify player
+        if (player != null)
+        {
+            player.ExitCombat();
+        }
+
+        // Handle enemies
+        foreach (Entity entity in entities)
+        {
+            if (entity is Enemy enemy)
+            {
+                if (playerWon)
+                {
+                    HarvestItem drop = enemy.TryDrop();
+
+                    if (drop != null)
+                    {
+                        player.AddHarvestItem(drop);
+                    }
+                }
+
+                Destroy(enemy.gameObject);
+            }
+        }
+
+        // Clear list
+        entities.Clear();
+
+        // Hide UI
+        UIManager.instance.ShowCombatUI(false);
     }
 }

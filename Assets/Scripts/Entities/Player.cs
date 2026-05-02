@@ -127,6 +127,7 @@ public class Player : Entity
         // Map
         inputActions.Player.ToggleMiniMap.performed += ctx => ToggleMiniMap();
 
+        // Pause
         inputActions.Player.Pause.performed += context => UIManager.instance.Pause();
     }
 
@@ -429,8 +430,17 @@ public class Player : Entity
 
         Debug.Log("Player entered combat");
 
-        // Optional safety reset
         moveInput = Vector2.zero;
+    }
+
+    public void ExitCombat()
+    {
+        inCombat = false;
+
+        Debug.Log("Player exited combat");
+
+        isMyTurn = false;
+        turnFinished = false;
     }
 
     public void FaceTarget(Transform target)

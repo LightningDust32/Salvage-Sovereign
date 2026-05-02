@@ -71,8 +71,7 @@ public class Enemy : Entity
 
             isMyTurn = true;
             turnFinished = false;
-            // Placeholder AI
-            // Later: attack player, special move, etc.
+
             PerformAction();
 
         }
