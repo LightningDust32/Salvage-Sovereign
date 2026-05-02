@@ -34,8 +34,6 @@ public class RoomManager : MonoBehaviour
         Room[] foundRooms = FindObjectsByType<Room>(FindObjectsSortMode.None);
 
         rooms = new List<Room>(foundRooms);
-
-        Debug.Log($"RoomManager: Found {rooms.Count} rooms");
     }
 
     private void LinkAllRooms()
@@ -98,36 +96,6 @@ public class RoomManager : MonoBehaviour
                 Debug.LogWarning($"No match found for door: {doorA.name}");
             }
         }
-
-        Debug.Log("RoomManager: Door linking complete");
-    }
-
-    private Room FindMatchingRoom(GameObject exit, Room sourceRoom)
-    {
-        Vector3 exitPos = exit.transform.position;
-
-        foreach (Room room in rooms)
-        {
-            if (room == sourceRoom)
-                continue;
-
-            GameObject[] entrances = room.GetEntrances();
-
-            if (entrances == null)
-                continue;
-            for(int  i = 0; i < entrances.Length; i++)
-            {
-                float distance = Vector3.Distance(exitPos, entrances[i].transform.position);
-
-                if (distance <= connectionThreshold)
-                {
-                    return room;
-                }
-            }
-            
-        }
-
-        return null;
     }
 
     private Direction GetDirectionFromTransform(Transform t)
@@ -145,19 +113,6 @@ public class RoomManager : MonoBehaviour
         {
             return (dotRight > 0) ? Direction.East : Direction.West;
         }
-    }
-
-    private Direction GetOppositeDirection(Direction dir)
-    {
-        switch (dir)
-        {
-            case Direction.North: return Direction.South;
-            case Direction.South: return Direction.North;
-            case Direction.East: return Direction.West;
-            case Direction.West: return Direction.East;
-        }
-
-        return Direction.North;
     }
 
     public Room GetStartingRoom()
