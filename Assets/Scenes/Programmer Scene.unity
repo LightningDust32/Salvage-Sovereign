@@ -8504,7 +8504,6 @@ MonoBehaviour:
   strength: 2
   defense: 1
   speed: 1
-  moveSpeed: 5
   rotationSpeed: 120
   maxStamina: 5
   moveCooldown: 0.2
@@ -8540,6 +8539,7 @@ MonoBehaviour:
   items: []
   primaryWeapon: {fileID: 0}
   secondaryWeapon: {fileID: 0}
+  maxInventorySize: 5
   weaponPool:
   - {fileID: 354844914}
   - {fileID: 2113051122}
@@ -11502,6 +11502,9 @@ MonoBehaviour:
   endingScreen: {fileID: 0}
   controlsScreen: {fileID: 0}
   combatScreen: {fileID: 1106970188}
+  merchantScreen: {fileID: 0}
+  sellButtons: []
+  sellButtonTexts: []
   defaultTime: 0
   compendiumScreen: {fileID: 0}
   entryText: {fileID: 0}
@@ -12404,7 +12407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

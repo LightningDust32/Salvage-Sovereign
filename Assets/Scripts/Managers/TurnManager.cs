@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class TurnManager : MonoBehaviour
 {
@@ -143,7 +144,10 @@ public class TurnManager : MonoBehaviour
 
                     if (drop != null)
                     {
-                        player.AddHarvestItem(drop);
+                        if (player.AddHarvestItem(drop))
+                        {
+                            Debug.Log("Collected: " + drop.itemName);
+                        }
                     }
                 }
 

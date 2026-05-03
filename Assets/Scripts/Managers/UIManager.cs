@@ -19,6 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject combatScreen;
 
+    [Header("Merchant UI")]
+    [SerializeField] private GameObject merchantScreen;
+    [SerializeField] private Button[] sellButtons;
+    [SerializeField] private TMP_Text[] sellButtonTexts;
+
     [Header("Dialogue Settings")]
     [SerializeField] private float defaultTime;
 
@@ -115,6 +120,47 @@ public class UIManager : MonoBehaviour
             return;
 
         staminaBar.fillAmount = Mathf.Lerp(staminaBar.fillAmount, percent, 10f * Time.deltaTime);
+    }
+
+    public void SetMerchantText(string[] itemNames)
+    {
+        if (sellButtons == null || sellButtonTexts == null)
+            return;
+
+        merchantScreen.SetActive(true);
+
+        for (int i = 0; i < sellButtons.Length; i++)
+        {
+            int index = i;
+
+            if (i < itemNames.Length)
+            {
+                // Enable button
+                sellButtons[i].gameObject.SetActive(true);
+
+                // Set text
+                sellButtonTexts[i].text = "Sell " + itemNames[i];
+
+                // Clear previous listeners (IMPORTANT)
+                sellButtons[i].onClick.RemoveAllListeners();
+
+                // Add new listener
+                sellButtons[i].onClick.AddListener(() =>
+                {
+                    Player player = FindFirstObjectByType<Player>();
+
+                    if (player != null)
+                    {
+                        player.SellItem(index);
+                    }
+                });
+            }
+            else
+            {
+                // Disable unused slots
+                sellButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void End()

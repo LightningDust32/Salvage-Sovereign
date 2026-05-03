@@ -48,7 +48,11 @@ public class Player : Entity
 
     private int currentGold;
 
+    [Header("Inventory")]
+    [SerializeField, Range(5, 10)] private int maxInventorySize = 5;
+
     private List<HarvestItem> inventory = new List<HarvestItem>();
+
     [SerializeField] private Weapon[] weaponPool;
 
     protected override void Awake()
@@ -390,14 +394,39 @@ public class Player : Entity
         currentGold += amount;
     }
 
-    public void AddHarvestItem(HarvestItem item)
+    public bool AddHarvestItem(HarvestItem item)
     {
-        if (item == null) return;
+        if (item == null) return false;
+
+        if (inventory.Count >= maxInventorySize)
+        {
+            Debug.Log("Inventory Full");
+            return false;
+        }
 
         inventory.Add(item);
 
-        Debug.Log("Collected: " + item.itemName);
+        return true;
     }
+
+    public List<HarvestItem> GetInventory()
+    {
+        return inventory;
+    }
+
+    public void RemoveHarvestItem(HarvestItem item)
+    {
+        if (inventory.Contains(item))
+        {
+            inventory.Remove(item);
+        }
+    }
+
+    public bool IsInventoryFull()
+    {
+        return inventory.Count >= maxInventorySize;
+    }
+
 
     public void EndRun()
     {
@@ -450,6 +479,39 @@ public class Player : Entity
 
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = lookRotation;
+    }
+
+    public void SellItem(int index)
+    {
+        if (index < 0 || index >= inventory.Count)
+            return;
+
+        HarvestItem item = inventory[index];
+
+        if (item == null)
+            return;
+
+        int value = item.sellValue;
+
+        inventory.RemoveAt(index);
+        ChangeGold(value);
+
+        Debug.Log($"Sold {item.itemName} for {value} gold");
+
+        // Refresh merchant UI
+        UpdateMerchantUI();
+    }
+
+    public void UpdateMerchantUI()
+    {
+        string[] itemNames = new string[inventory.Count];
+
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            itemNames[i] = inventory[i].itemName;
+        }
+
+        UIManager.instance.SetMerchantText(itemNames);
     }
 
     private IEnumerator SmoothMove(Room targetRoom)
