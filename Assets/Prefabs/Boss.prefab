@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3966617454258982273}
   - component: {fileID: 6275509077097909360}
   - component: {fileID: 8717878591421693560}
-  - component: {fileID: 4109534519603330382}
+  - component: {fileID: 3221420691957832220}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4109534519603330382
+--- !u!114 &3221420691957832220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7737241647792531830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa73a70c9b1f492459a3243b55cc46da, type: 3}
+  m_Script: {fileID: 11500000, guid: d71e2ded5664ec849b5d851b47fb85f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 1
+  enemyPrefabs:
+  - {fileID: 5486176314842578595, guid: d2f4629fc0ed3b84497b3ac8cca67d8b, type: 3}

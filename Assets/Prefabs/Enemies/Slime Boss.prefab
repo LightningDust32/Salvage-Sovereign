@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5486176314842578595}
   - component: {fileID: 1615769663601078471}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Slime Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.1, z: 7}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5991625872050750975}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526178056349b3844bafc61fe0e3ceb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 30
   strength: 2
   defense: 1
   speed: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   resistance: 2
   specialMove: Dissolve
   specialMoveDamage: 5
-  attackChance: 0.9
+  attackChance: 0.7
   dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   baseDropChance: 1
   bodyParts:

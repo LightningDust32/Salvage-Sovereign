@@ -4,8 +4,8 @@ public class ExitEncounter : Encounter
 {
     protected override void TriggerEncounter(Player player)
     {
-        Debug.Log("Fight Boss");
+        Debug.Log("Next Level");
 
-        // Start Combat encounter with Boss, then choose what to do on complete
+        // UIManager.ShowEndingScreen (make ending screen take back to Main Menu, or to level 2 if we have one)
     }
 }

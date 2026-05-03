@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject endingScreen;
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject combatScreen;
+    [SerializeField] private TMP_Text playerGold;
 
     [Header("Merchant UI")]
     [SerializeField] private GameObject merchantScreen;

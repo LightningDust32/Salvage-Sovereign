@@ -235,11 +235,10 @@ MonoBehaviour:
   furniture: []
   wallFurniture: []
   encounters:
-  - {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
   - {fileID: 7737241647792531830, guid: 3a82caa38a2a480498b1b359fcda6ac0, type: 3}
   roomCentre: {fileID: 3176574031588756807}
   currentEncounter: {fileID: 0}
-  encounterChance: 0.021
+  encounterChance: 0
 --- !u!1 &7536875191412353482
 GameObject:
   m_ObjectHideFlags: 0

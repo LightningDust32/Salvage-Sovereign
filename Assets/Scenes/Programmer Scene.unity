@@ -7241,6 +7241,18 @@ PrefabInstance:
       propertyPath: 'encounters.Array.data[0]'
       value: 
       objectReference: {fileID: 7737241647792531830, guid: e24d773f60c87274a82d7f335cce1fc4, type: 3}
+    - target: {fileID: 2963287600066510760, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963287600066510760, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963287600066510760, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3535423458089180740, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -7292,6 +7304,10 @@ PrefabInstance:
     - target: {fileID: 6308286995458994081, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429878213158976500, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
