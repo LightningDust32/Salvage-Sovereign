@@ -135,7 +135,7 @@ MonoBehaviour:
   specialMoveDamage: 5
   attackChance: 1
   dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
-  baseDropChance: 0
+  baseDropChance: 1
   bodyParts:
   - part: 0
     damageMultiplier: 4

@@ -4,6 +4,10 @@ public class MerchantEncounter : Encounter
 {
     protected override void TriggerEncounter(Player player)
     {
-        Debug.Log("Open Merchant UI");
+        if (player == null) return;
+
+        player.UpdateMerchantUI();
+
+        player.SetInteractionState(true);
     }
 }

@@ -163,6 +163,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void CloseMerchant()
+    {
+        merchantScreen.SetActive(false);
+
+        Player player = FindFirstObjectByType<Player>();
+
+        if (player != null)
+        {
+            player.SetInteractionState(false);
+        }
+    }
+
     public void End()
     {
         Time.timeScale = 0.0f;

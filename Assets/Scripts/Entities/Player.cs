@@ -55,6 +55,8 @@ public class Player : Entity
 
     [SerializeField] private Weapon[] weaponPool;
 
+    private bool isInteracting = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -146,7 +148,7 @@ public class Player : Entity
             {
                 HandleCombat();
             }
-            else
+            else if (!isInteracting)
             {
                 HandleExploration();
             }
@@ -512,6 +514,12 @@ public class Player : Entity
         }
 
         UIManager.instance.SetMerchantText(itemNames);
+    }
+
+    // Helper function to lock movement in states other than combat
+    public void SetInteractionState(bool state)
+    {
+        isInteracting = state;
     }
 
     private IEnumerator SmoothMove(Room targetRoom)
