@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    /*
-
-        things needed:
-        Battle function that loops entites based on speed and ends when the player or all enemies are dead.
-
-    */
-
     public static TurnManager Instance;
 
     private List<Entity> entities;

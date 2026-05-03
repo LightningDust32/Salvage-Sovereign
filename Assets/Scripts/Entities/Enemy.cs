@@ -153,7 +153,7 @@ public class Enemy : Entity
 
         player.TakeDamage(damage);
 
-        Debug.Log(name + " attacks for " + damage);
+        UIManager.instance.ShowDialogue(name + " attacks for " + damage);
 
         EndTurn();
     }
@@ -164,7 +164,7 @@ public class Enemy : Entity
 
         player.TakeDamage(damage);
 
-        Debug.Log(name + " uses " + specialMove + " for " + damage);
+        UIManager.instance.ShowDialogue(name + " uses " + specialMove + " for " + damage);
 
         EndTurn();
     }
@@ -175,6 +175,12 @@ public class Enemy : Entity
         turnFinished = true;
 
         Debug.Log(name + " ends its turn");
+    }
+
+    public override void ResetTurn()
+    {
+        turnFinished = false;
+        isMyTurn = false;
     }
 
     public float GetMultiplier(BodyPart targetPart)

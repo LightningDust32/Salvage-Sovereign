@@ -11,8 +11,6 @@ public class Player : Entity
     private CharacterController controller;
 
     [Header("Movement")]
-    [Range(1, 10)]
-    [SerializeField] float moveSpeed = 5f;
     [SerializeField] float rotationSpeed = 120f;
     [Range(0.5f, 5)]
     [SerializeField] float maxStamina = 5.0f;
@@ -270,19 +268,13 @@ public class Player : Entity
 
     public override bool TakeTurn()
     {
-        // if turn hasn't started initialize it
-        if (!isMyTurn)
+        if (!isMyTurn && !turnFinished)
         {
+            Debug.Log("Player Turn Start");
 
-        Debug.Log("Player Turn");
-
-        isMyTurn = true;
-        turnFinished = false;
-
-        // Later: Activate the Battle UI
-
+            isMyTurn = true;
         }
-        
+
         return turnFinished;
     }
 
@@ -310,6 +302,8 @@ public class Player : Entity
     public void PowerAttack()
     {
         if (!isMyTurn) return;
+
+        currentEnemy = TurnManager.Instance.GetFirstAliveEnemy();
 
         if (currentEnemy == null)
         {
@@ -377,6 +371,12 @@ public class Player : Entity
         turnFinished = true;
 
         Debug.Log("Player Turn Ended");
+    }
+
+    public override void ResetTurn()
+    {
+        turnFinished = false;
+        isMyTurn = false;
     }
 
     public override void TakeDamage(float amount)
