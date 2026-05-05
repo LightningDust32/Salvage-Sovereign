@@ -9369,6 +9369,9 @@ MonoBehaviour:
   - {fileID: 354844914}
   - {fileID: 2113051122}
   - {fileID: 801081137}
+  bodyPartLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!143 &1392750698
 CharacterController:
   m_ObjectHideFlags: 0

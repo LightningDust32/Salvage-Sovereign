@@ -1,11 +1,10 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum BodyPart
 {
     Head,
-    Torso,
-    Arms,
+    Body,
+    WeakPoint,
     Legs
 }
 
@@ -16,6 +15,8 @@ public class Enemy : Entity
 
     [SerializeField] private DamageType weakness;
     [SerializeField] private DamageType resistance;
+
+    private BodyPartTarget[] targets;
 
     [SerializeField] string specialMove;
     [SerializeField] int specialMoveDamage;
@@ -230,18 +231,24 @@ public class Enemy : Entity
         hasTargetPart = false;
     }
 
-    public void SetTargetingActive(bool active)
-    {
-        foreach (BodyPartData partData in bodyParts)
-        {
-            if (partData.partObject == null) continue;
+    private bool targetingActive = false;
 
-            var clickable = partData.partObject.GetComponent<EnemyBodyPart>();
-            if (clickable != null)
-            {
-                clickable.SetActive(active);
-            }
+    public void SetTargetingActive(bool state)
+    {
+        targetingActive = state;
+
+        BodyPartTarget[] bodyParts = GetComponentsInChildren<BodyPartTarget>();
+
+        foreach (BodyPartTarget part in bodyParts)
+        {
+            part.gameObject.SetActive(state);
+            Debug.Log("Part active: " + part.name + ": " + state);
         }
+    }
+
+    public bool IsTargetingActive()
+    {
+        return targetingActive;
     }
 
     public void OnBodyPartClicked(BodyPart part)

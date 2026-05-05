@@ -166,7 +166,6 @@ public class Player : Entity
     {
         if (!isMyTurn) return;
 
-        // only allow combat actions here
     }
 
     private void OnMove(Vector2 input)
@@ -317,7 +316,7 @@ public class Player : Entity
             return;
         }
 
-        Debug.Log("Power attack targeting mode");
+        UIManager.instance.ShowDialogue("Select a body part to target", 10f);
 
         currentEnemy.SetTargetingActive(true);
     }
@@ -326,6 +325,7 @@ public class Player : Entity
     {
         if (!isMyTurn) return;
         if (currentWeapon == null) return;
+
         if (currentStamina <= 0)
         {
             Debug.Log("No Stamina");
@@ -344,7 +344,8 @@ public class Player : Entity
 
         currentStamina -= currentStamina * 0.2f; // five power attacks limit for now
 
-        Debug.Log($"Power attack ({part}) for {damage}");
+        UIManager.instance.ShowDialogue($"Power attack ({part}) for {damage}");
+        currentEnemy.SetTargetingActive(false);
 
         EndTurn();
     }

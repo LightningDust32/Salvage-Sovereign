@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 6313603437041143654}
   - component: {fileID: 5486176314842578595}
   - component: {fileID: 1615769663601078471}
-  m_Layer: 0
+  - component: {fileID: 3543174468490465708}
+  m_Layer: 6
   m_Name: Slime Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,6 +170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9800a25690f444289370520ae44e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3543174468490465708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182144103625087291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e4a0bd2c4d90c46b76b69b38869e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 0
+  highlightColour: {r: 0.16818678, g: 0.335849, b: 0.012039822, a: 0}
 --- !u!1 &1641988649622545388
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +197,8 @@ GameObject:
   - component: {fileID: 851405962879024718}
   - component: {fileID: 3827307581556909202}
   - component: {fileID: 6197038175839173363}
-  m_Layer: 0
+  - component: {fileID: 7443239305807158306}
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,6 +306,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9800a25690f444289370520ae44e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7443239305807158306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641988649622545388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e4a0bd2c4d90c46b76b69b38869e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
+  highlightColour: {r: 0.3207547, g: 0, b: 0, a: 0}
 --- !u!1 &4391340299344682252
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +333,8 @@ GameObject:
   - component: {fileID: 7183446013840262034}
   - component: {fileID: 6669093357941804779}
   - component: {fileID: 8651326095897922111}
-  m_Layer: 0
+  - component: {fileID: 6743885150838802296}
+  m_Layer: 6
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,6 +442,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9800a25690f444289370520ae44e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6743885150838802296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391340299344682252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e4a0bd2c4d90c46b76b69b38869e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 2
+  highlightColour: {r: 0.3207547, g: 0, b: 0, a: 0}
 --- !u!1 &9143224159503698171
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +469,8 @@ GameObject:
   - component: {fileID: 4133023326215272812}
   - component: {fileID: 1985320291907779417}
   - component: {fileID: 1019645181872022738}
-  m_Layer: 0
+  - component: {fileID: 1099976003213556056}
+  m_Layer: 6
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,3 +578,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9800a25690f444289370520ae44e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1099976003213556056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143224159503698171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e4a0bd2c4d90c46b76b69b38869e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
+  highlightColour: {r: 0.3207547, g: 0, b: 0, a: 0}

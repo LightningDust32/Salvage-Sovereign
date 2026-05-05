@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class EnemyBodyPart : MonoBehaviour
 {
     private Enemy owner;
