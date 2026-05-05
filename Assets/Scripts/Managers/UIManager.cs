@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image staminaBar;
     [SerializeField] private Image healthBar;
     [SerializeField] GameObject endingScreen;
+    [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject combatScreen;
     [SerializeField] private TMP_Text playerGold;
@@ -180,6 +181,24 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         endingScreen.SetActive(true);
+    }
+
+    public void Death()
+    {
+        Time.timeScale = 0.0f;
+        deathScreen.SetActive(true);
+    }
+
+    public void ContinueAfterDeath()
+    {
+        Time.timeScale = 1f;
+
+        Player player = FindFirstObjectByType<Player>();
+
+        if (player != null)
+        {
+            player.EndRun();
+        }
     }
 
     // Compiles compendium entries into the compendium's text

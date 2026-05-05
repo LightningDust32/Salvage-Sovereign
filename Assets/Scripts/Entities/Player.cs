@@ -142,7 +142,9 @@ public class Player : Entity
 
     private void Update()
     {
-        if(Time.timeScale > 0)
+        if (!IsAlive()) return;
+
+        if (Time.timeScale > 0)
         {
             if (inCombat)
             {
@@ -430,7 +432,19 @@ public class Player : Entity
         return inventory.Count >= maxInventorySize;
     }
 
+    public override void Die()
+    {
+        base.Die();
 
+        Debug.Log("Player Died");
+
+        SetInteractionState(true);
+        moveInput = Vector2.zero;
+
+        ExitCombat();
+
+        UIManager.instance.Death();
+    }
     public void EndRun()
     {
         int sellValue = 0;

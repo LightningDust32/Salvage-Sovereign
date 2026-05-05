@@ -24,7 +24,7 @@ public abstract class Entity : MonoBehaviour, ITurnActor
 
     public bool IsAlive()
     {
-        return currentHealth > 0;
+        return currentHealth >= 0;
     }
 
     public virtual void TakeDamage(float damage)
@@ -38,11 +38,14 @@ public abstract class Entity : MonoBehaviour, ITurnActor
 
         currentHealth -= damage;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
+            Die();
         }
     }
+
+    public virtual void Die() { }
 
     public float GetHealthPercent()
     {
