@@ -124,4 +124,4 @@ MonoBehaviour:
   triggerOnEnter: 1
   disableWhenCleared: 1
   enemyPrefabs:
-  - {fileID: 5486176314842578595, guid: 937a4ce309e481a438bb330c0b3c616f, type: 3}
+  - {fileID: 5740559982730120742, guid: 937a4ce309e481a438bb330c0b3c616f, type: 3}

@@ -3,6 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class LobbyButtons : MonoBehaviour
 {
+    public void UpgradeHealth(int cost)
+    {
+        if (PersistentData.bonusHealth > 0)
+        {
+            cost *= PersistentData.bonusHealth;
+        }
+
+        if (PersistentData.Gold < cost)
+        {
+            Debug.Log("Not enough Gold");
+            return;
+        }
+
+        PersistentData.Gold -= cost;
+        PersistentData.bonusHealth++;
+
+        PersistentData.Save();
+
+        Debug.Log("Health upgraded");
+    }
+
     public void UpgradeStrength(int cost)
     {
         if (PersistentData.bonusStrength > 0)
