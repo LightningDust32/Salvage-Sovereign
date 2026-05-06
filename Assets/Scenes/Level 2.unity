@@ -6675,6 +6675,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1645928365601580937, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645928365601580937, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.218
+      objectReference: {fileID: 0}
     - target: {fileID: 2268600586332230174, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -6751,6 +6759,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: encounterChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: 'encounters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
     - target: {fileID: 8802165960969201506, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -13491,6 +13507,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1645928365601580937, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645928365601580937, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.14
+      objectReference: {fileID: 0}
     - target: {fileID: 2268600586332230174, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -13567,6 +13591,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: encounterChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: 'encounters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
     - target: {fileID: 8802165960969201506, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
