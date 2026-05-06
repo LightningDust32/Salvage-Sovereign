@@ -27,6 +27,7 @@ public class Enemy : Entity
     [SerializeField] private float baseDropChance;
 
     private Player player;
+    bool isAlive;
 
     [System.Serializable]
     public struct BodyPartData
@@ -176,6 +177,11 @@ public class Enemy : Entity
         turnFinished = true;
 
         Debug.Log(name + " ends its turn");
+    }
+
+    public override void Die()
+    {
+        currentHealth = -5;
     }
 
     public override void ResetTurn()
