@@ -93,7 +93,7 @@ public class RoomManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"No match found for door: {doorA.name}");
+                Debug.LogWarning($"No match found for door: {doorA.name}" + " Room: " + doorA.parent.name + " Position: " + doorA.parent.transform.position);
             }
         }
     }
