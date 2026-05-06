@@ -128,6 +128,13 @@ public class Player : Entity
         // Items
         inputActions.Player.Interact.performed += context => TryInteract();
 
+        // Switch target
+        inputActions.Player.Previous.performed += context => SelectPrevious();
+        inputActions.Player.Next.performed += context => SelectNext();
+
+        // Confirm Target
+        inputActions.Player.Attack.performed += context => ConfirmSelect();
+
         // Map
         inputActions.Player.ToggleMiniMap.performed += ctx => ToggleMiniMap();
 
@@ -372,6 +379,21 @@ public class Player : Entity
         Debug.Log("Switched weapon to: " + currentWeapon.name);
 
         EndTurn();
+    }
+
+    private void SelectNext()
+    {
+        // Move between activated targeting part in power attack (instead of using mouse positions)
+    }
+
+    private void SelectPrevious()
+    {
+        // Move between activated targeting part in power attack (instead of using mouse positions)
+    }
+
+    private void ConfirmSelect()
+    {
+        // Send message to currently selected part to do power attack on that one
     }
 
     private void EndTurn()
