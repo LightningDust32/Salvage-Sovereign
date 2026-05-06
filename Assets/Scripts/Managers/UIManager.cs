@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
     private List<string> collectedEntries = new List<string>();
     private StringBuilder entryBuilder = new StringBuilder();
 
+    private Player player;
+
 
     private void Awake()
     {
@@ -50,6 +52,11 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        player = FindFirstObjectByType<Player>();
     }
 
 
@@ -150,8 +157,6 @@ public class UIManager : MonoBehaviour
                 // Add new listener
                 sellButtons[i].onClick.AddListener(() =>
                 {
-                    Player player = FindFirstObjectByType<Player>();
-
                     if (player != null)
                     {
                         player.SellItem(index);
@@ -168,9 +173,9 @@ public class UIManager : MonoBehaviour
 
     public void BuyHeal(int cost)
     {
-        Player player = FindFirstObjectByType<Player>();
 
-        if (player != null && player.GetGold() > cost)
+
+        if (player != null && player.GetGold() >= cost)
         {
             player.Heal(player.GetMaxHealth() / 2);
             player.ChangeGold(-cost);
@@ -184,8 +189,6 @@ public class UIManager : MonoBehaviour
     public void CloseMerchant()
     {
         merchantScreen.SetActive(false);
-
-        Player player = FindFirstObjectByType<Player>();
 
         if (player != null)
         {
@@ -208,8 +211,6 @@ public class UIManager : MonoBehaviour
     public void ContinueAfterDeath()
     {
         Time.timeScale = 1f;
-
-        Player player = FindFirstObjectByType<Player>();
 
         if (player != null)
         {
