@@ -117,7 +117,17 @@ public class RoomManager : MonoBehaviour
 
     public Room GetStartingRoom()
     {
-        // Simple version: return first room
+        Room startRoom;
+
+        for(int i = 0; i < rooms.Count; i++)
+        {
+            if (rooms[i].GetRoomType() == RoomType.Start)
+            {
+                startRoom = rooms[i];
+                return startRoom;
+            }
+        }
+
         return rooms.Count > 0 ? rooms[0] : null;
     }
 
