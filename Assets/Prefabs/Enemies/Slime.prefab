@@ -381,7 +381,7 @@ MonoBehaviour:
   resistance: 2
   specialMove: Dissolve
   specialMoveDamage: 5
-  attackChance: 0
+  attackChance: 0.8
   dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   baseDropChance: 70
   bodyParts:

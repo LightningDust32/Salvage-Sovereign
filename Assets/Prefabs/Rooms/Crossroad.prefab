@@ -138,7 +138,7 @@ MonoBehaviour:
   - {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
   roomCentre: {fileID: 453900374537115961}
   currentEncounter: {fileID: 0}
-  encounterChance: 0.5
+  encounterChance: 0
 --- !u!1 &3499355597429926657
 GameObject:
   m_ObjectHideFlags: 0

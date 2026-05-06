@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject merchantScreen;
     [SerializeField] private Button[] sellButtons;
     [SerializeField] private TMP_Text[] sellButtonTexts;
+    [SerializeField] private GameObject HealButton;
 
     [Header("Dialogue Settings")]
     [SerializeField] private float defaultTime;
@@ -163,6 +164,21 @@ public class UIManager : MonoBehaviour
                 sellButtons[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void BuyHeal(int cost)
+    {
+        Player player = FindFirstObjectByType<Player>();
+
+        if (player != null && player.GetGold() > cost)
+        {
+            player.Heal(player.GetMaxHealth() / 2);
+            player.ChangeGold(-cost);
+
+            HealButton.SetActive(false);
+        }
+
+
     }
 
     public void CloseMerchant()

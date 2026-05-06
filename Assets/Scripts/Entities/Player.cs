@@ -394,9 +394,30 @@ public class Player : Entity
         UIManager.instance.SetHealthBar(GetHealthPercent());
     }
 
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        UIManager.instance.SetHealthBar(GetHealthPercent());
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void ChangeGold(int amount)
     {
         currentGold += amount;
+    }
+
+    public int GetGold()
+    {
+        return currentGold;
     }
 
     public bool AddHarvestItem(HarvestItem item)

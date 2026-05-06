@@ -342,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f2e76cbd027346648b1649c93cdf82b2, type: 2}
     - target: {fileID: 919132149155446097, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
       propertyPath: m_Name
-      value: Slime 1
+      value: Slime Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -397,7 +397,7 @@ MonoBehaviour:
   resistance: 2
   specialMove: Dissolve
   specialMoveDamage: 5
-  attackChance: 0
+  attackChance: 0.7
   dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   baseDropChance: 70
   bodyParts:
