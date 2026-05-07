@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private TMP_Text promptBox;
     [SerializeField] private TMP_Text dialogueBox;
-    [SerializeField] GameObject pauseScreen;
     [SerializeField] private Image staminaBar;
     [SerializeField] private Image healthBar;
     [SerializeField] GameObject endingScreen;
@@ -26,6 +25,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button[] sellButtons;
     [SerializeField] private TMP_Text[] sellButtonTexts;
     [SerializeField] private GameObject HealButton;
+
+    [Header("Inventory UI")]
+    [SerializeField] GameObject inventoryScreen;
+    [SerializeField] private Button[] itemButtons;
+    [SerializeField] private TMP_Text[] itemButtonTexts;
 
     [Header("Dialogue Settings")]
     [SerializeField] private float defaultTime;
@@ -104,12 +108,12 @@ public class UIManager : MonoBehaviour
         if (Time.timeScale > 0f)
         {
             Time.timeScale = 0.0f;
-            pauseScreen.SetActive(true);
+            inventoryScreen.SetActive(true);
         }
         else
         {
             Time.timeScale = 1.0f;
-            pauseScreen.SetActive(false);
+            inventoryScreen.SetActive(false);
         }
     }
 
@@ -242,20 +246,20 @@ public class UIManager : MonoBehaviour
     public void OpenCompendium()
     {
         compendiumScreen.SetActive(true);
-        pauseScreen.SetActive(false);
+        inventoryScreen.SetActive(false);
     }
 
     public void CloseCompendium()
     {
         compendiumScreen.SetActive(false);
         controlsScreen.SetActive(false);
-        pauseScreen.SetActive(true);
+        inventoryScreen.SetActive(true);
     }
 
     public void OpenControls()
     {
         controlsScreen.SetActive(true);
-        pauseScreen.SetActive(false);
+        inventoryScreen.SetActive(false);
     }
 
     public void BackToMenu()
