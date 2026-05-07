@@ -13,7 +13,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float speed = 1f; 
     [SerializeField] protected DamageType damageType;
 
-    
+    [SerializeField] private HarvestItem currentMod; // serialized so you can see if it equipped in editor
+
+
     public virtual void Use(Entity attacker, Entity target)
     {
         if (target == null || !target.IsAlive())
@@ -24,13 +26,19 @@ public abstract class Weapon : MonoBehaviour
 
         Debug.Log(attacker.name + " attacks " + target.name + " with " + damageType);
 
-        // For now: simple direct damage
-        target.TakeDamage(damage);
+        target.TakeDamage(GetDamage());
     }
 
     public float GetDamage()
     {
-        return damage;
+        float finalDamage = damage;
+
+        if (currentMod != null)
+        {
+            finalDamage += currentMod.GetStrengthBonus();
+        }
+
+        return finalDamage;
     }
 
     public float GetSpeed()
@@ -40,17 +48,29 @@ public abstract class Weapon : MonoBehaviour
 
     public DamageType GetDamageType()
     {
+        if (currentMod != null && currentMod.ChangesDamageType())
+        {
+            return currentMod.GetDamageType();
+        }
+
         return damageType;
     }
 
-    public void ApplyUpgrade(HarvestItem item)
+    public HarvestItem GetCurrentMod()
     {
-        damage += item.damageChange;
-        speed += item.speedChange;
+        return currentMod;
+    }
 
-        if(item.changeDamageType)
+    public void EquipMod(HarvestItem mod)
+    {
+        if (mod == null) return;
+
+        if (mod.GetItemType() != ItemType.WeaponMod)
         {
-            damageType = item.damageTypeChange;
+            Debug.Log("Tried to equip non-weapon mod");
+            return;
         }
+
+        currentMod = mod;
     }
 }

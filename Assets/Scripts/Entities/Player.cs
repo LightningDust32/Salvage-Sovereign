@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,6 +55,10 @@ public class Player : Entity
 
     [Header("Inventory")]
     [SerializeField, Range(5, 10)] private int maxInventorySize = 5;
+
+    [Header("Equipment")]
+    [SerializeField] private HarvestItem currentArmour;
+    [SerializeField] private HarvestItem currentGear;
 
     private List<HarvestItem> inventory = new List<HarvestItem>();
 
@@ -508,6 +513,16 @@ public class Player : Entity
         return maxHealth;
     }
 
+    public HarvestItem GetCurrentArmour()
+    {
+        return currentArmour;
+    }
+
+    public HarvestItem GetCurrentGear()
+    {
+        return currentGear;
+    }
+
     public void ChangeGold(int amount)
     {
         currentGold += amount;
@@ -649,6 +664,124 @@ public class Player : Entity
 
         UIManager.instance.SetMerchantText(itemNames);
     }
+
+    public void EquipArmour(int index)
+    {
+        if (index < 0 || index >= inventory.Count)
+            return;
+
+        HarvestItem item = inventory[index];
+        if (item == null) return;
+
+        if (item.GetItemType() != ItemType.Armour)
+        {
+            Debug.Log("Item is not armour");
+            return;
+        }
+
+        // returns currently equipped item to inventory, swapping it.
+        if (currentArmour != null)
+        {
+            RemoveEquipmentStats(currentArmour);
+            inventory.Add(currentArmour);
+        }
+
+        currentArmour = item;
+
+        ApplyEquipmentStats(currentArmour);
+
+        inventory.Remove(item);
+
+        Debug.Log("Equipped armour: " + item.itemName);
+    }
+
+    public void EquipGear(int index)
+    {
+        if (index < 0 || index >= inventory.Count)
+            return;
+
+        HarvestItem item = inventory[index];
+
+        if (item == null) return;
+
+        if (item.GetItemType() != ItemType.Gear)
+        {
+            Debug.Log("Item is not gear");
+            return;
+        }
+
+        if (currentGear != null)
+        {
+            RemoveEquipmentStats(currentGear);
+            inventory.Add(currentGear);
+        }
+
+        currentGear = item;
+
+        ApplyEquipmentStats(currentGear);
+
+        inventory.Remove(item);
+
+        Debug.Log("Equipped gear: " + item.itemName);
+    }
+
+    public void EquipWeaponMod(int index, Weapon targetWeapon)
+    {
+        if (index < 0 || index >= inventory.Count)
+            return;
+
+        HarvestItem item = inventory[index];
+
+        if (item == null || targetWeapon == null) return;
+
+        if (item.GetItemType() != ItemType.WeaponMod)
+        {
+            Debug.Log("Item is not a weapon mod");
+            return;
+        }
+
+        HarvestItem oldMod = targetWeapon.GetCurrentMod();
+
+        if (oldMod != null)
+        {
+            inventory.Add(oldMod);
+        }
+
+        targetWeapon.EquipMod(item);
+
+        inventory.Remove(item);
+
+        Debug.Log("Equipped mod " + item.itemName + " to " + targetWeapon.name);
+    }
+
+    private void ApplyEquipmentStats(HarvestItem item)
+    {
+        if (item == null) return;
+
+        maxHealth += item.GetHealthBonus();
+        maxStamina += item.GetStaminaBonus();
+
+        strength += item.GetStrengthBonus();
+        defense += item.GetDefenseBonus();
+        speed += item.GetSpeedBonus();
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+    }
+
+    private void RemoveEquipmentStats(HarvestItem item)
+    {
+        if (item == null) return;
+
+        maxHealth -= item.GetHealthBonus();
+        maxStamina -= item.GetStaminaBonus();
+
+        strength -= item.GetStrengthBonus();
+        defense -= item.GetDefenseBonus();
+        speed -= item.GetSpeedBonus();
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+    }
+
 
     // Helper function to lock movement in states other than combat
     public void SetInteractionState(bool state)
