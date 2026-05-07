@@ -23,38 +23,12 @@ public class BodyPartTarget : MonoBehaviour
         parentEnemy = GetComponentInParent<Enemy>();
     }
 
-    private void OnMouseEnter()
+    public BodyPart GetBodyPart()
     {
-        if (!CanInteract()) return;
-
-        SetHighlight(true);
+        return bodyPart;
     }
 
-    private void OnMouseExit()
-    {
-        SetHighlight(false);
-    }
-
-    private void OnMouseDown()
-    {
-        if (!CanInteract()) return;
-
-        Player player = FindFirstObjectByType<Player>();
-
-        if (player != null && parentEnemy != null)
-        {
-            player.ExecutePowerAttack(bodyPart, parentEnemy);
-        }
-    }
-
-    private bool CanInteract()
-    {
-        if (parentEnemy == null) return false;
-
-        return parentEnemy.IsTargetingActive();
-    }
-
-    private void SetHighlight(bool state)
+    public void SetHighlight(bool state)
     {
         if (rend == null) return;
 

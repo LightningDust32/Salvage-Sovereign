@@ -232,6 +232,12 @@ public class Enemy : Entity
         hasTargetPart = true;
     }
 
+    public BodyPartTarget[] GetBodyPartTargets()
+    {
+        targets = GetComponentsInChildren<BodyPartTarget>();
+        return targets;
+    }
+
     private void ClearHitData()
     {
         hasTargetPart = false;
@@ -255,21 +261,6 @@ public class Enemy : Entity
     public bool IsTargetingActive()
     {
         return targetingActive;
-    }
-
-    public void OnBodyPartClicked(BodyPart part)
-    {
-        Debug.Log(name + " body part clicked: " + part);
-
-        SetTargetingActive(false);
-
-        // Tell player to execute power attack
-        Player player = TurnManager.Instance.GetComponent<TurnManager>() != null ? FindFirstObjectByType<Player>() : null;
-
-        if (player != null)
-        {
-            player.ExecutePowerAttack(part, this);
-        }
     }
 
     public void FaceTarget(Transform target)

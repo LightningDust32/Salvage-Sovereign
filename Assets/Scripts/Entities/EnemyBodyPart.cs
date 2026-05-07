@@ -17,14 +17,4 @@ public class EnemyBodyPart : MonoBehaviour
     {
         isActive = active;
     }
-
-    private void OnMouseDown()
-    {
-        if (!isActive) return;
-
-        if (owner != null)
-        {
-            owner.OnBodyPartClicked(bodyPart);
-        }
-    }
 }

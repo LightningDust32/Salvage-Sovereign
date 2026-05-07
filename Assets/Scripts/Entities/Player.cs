@@ -46,6 +46,10 @@ public class Player : Entity
     private bool turnFinished = false;
     private bool inCombat = false;
 
+    private BodyPartTarget[] currentTargets;
+    private int currentTargetIndex = 0;
+    private bool selectingBodyPart = false;
+
     private int currentGold;
 
     [Header("Inventory")]
@@ -325,9 +329,23 @@ public class Player : Entity
             return;
         }
 
-        UIManager.instance.ShowDialogue("Select a body part to target", 10f);
+        currentTargets = currentEnemy.GetBodyPartTargets();
+
+        if (currentTargets == null || currentTargets.Length == 0)
+        {
+            Debug.Log("Enemy has no body parts");
+            return;
+        }
+
+        selectingBodyPart = true;
+
+        currentTargetIndex = 0;
 
         currentEnemy.SetTargetingActive(true);
+
+        HighlightCurrentTarget();
+
+        UIManager.instance.ShowDialogue("Select a body part");
     }
 
     public void ExecutePowerAttack(BodyPart part, Enemy target)
@@ -356,6 +374,11 @@ public class Player : Entity
         UIManager.instance.ShowDialogue($"Power attack ({part}) for {damage}");
         currentEnemy.SetTargetingActive(false);
 
+        ClearCurrentHighlight();
+
+        currentTargets = null;
+        currentTargetIndex = 0;
+
         EndTurn();
     }
 
@@ -383,17 +406,70 @@ public class Player : Entity
 
     private void SelectNext()
     {
-        // Move between activated targeting part in power attack (instead of using mouse positions)
+        if (!selectingBodyPart) return;
+
+        ClearCurrentHighlight();
+
+        currentTargetIndex++;
+
+        if (currentTargetIndex >= currentTargets.Length)
+        {
+            currentTargetIndex = 0;
+        }
+
+        HighlightCurrentTarget();
     }
 
     private void SelectPrevious()
     {
-        // Move between activated targeting part in power attack (instead of using mouse positions)
+        if (!selectingBodyPart) return;
+
+        ClearCurrentHighlight();
+
+        currentTargetIndex--;
+
+        if (currentTargetIndex < 0)
+        {
+            currentTargetIndex = currentTargets.Length - 1;
+        }
+
+        HighlightCurrentTarget();
     }
 
     private void ConfirmSelect()
     {
-        // Send message to currently selected part to do power attack on that one
+        if (!selectingBodyPart) return;
+
+        BodyPartTarget target = currentTargets[currentTargetIndex];
+
+        if (target == null)
+        {
+            Debug.Log("Target missing");
+            return;
+        }
+
+        selectingBodyPart = false;
+
+        ExecutePowerAttack(target.GetBodyPart(), currentEnemy);
+    }
+
+    private void HighlightCurrentTarget()
+    {
+        if (currentTargets == null || currentTargets.Length == 0)
+            return;
+
+        currentTargets[currentTargetIndex].SetHighlight(true);
+
+        UIManager.instance.ShowDialogue("Targeting: " + currentTargets[currentTargetIndex].GetBodyPart().ToString()
+        );
+    }
+
+    private void ClearCurrentHighlight()
+    {
+        if (currentTargets == null || currentTargets.Length == 0)
+            return;
+
+        currentTargets[currentTargetIndex].SetHighlight(false);
     }
 
     private void EndTurn()
