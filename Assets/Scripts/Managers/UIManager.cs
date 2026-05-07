@@ -182,6 +182,31 @@ public class UIManager : MonoBehaviour
 
         inventoryListText.text = builder.ToString();
     }
+    private string BuildWeaponStats(Weapon weapon)
+    {
+        if (weapon == null)
+            return "No Weapon";
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.AppendLine(weapon.name);
+        builder.AppendLine();
+
+        builder.AppendLine($"Damage: {weapon.GetDamage()}");
+        builder.AppendLine($"Type: {weapon.GetDamageType()}");
+
+        HarvestItem mod = weapon.GetCurrentMod();
+
+        if (mod != null)
+        {
+            builder.AppendLine();
+            builder.AppendLine("MOD:");
+            builder.AppendLine(mod.itemName);
+        }
+
+        return builder.ToString();
+    }
+
     // All bar setters do the same things, setting the percentage of the UI bar proportional to their related stat elswhere.
     public void SetHealthBar(float percent)
     {
