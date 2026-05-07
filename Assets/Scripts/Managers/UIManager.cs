@@ -159,6 +159,22 @@ public class UIManager : MonoBehaviour
         playerGold.text = $"Gold: {gold}";
     }
 
+    public void RefreshInventoryUI()
+    {
+        if (player == null)
+            return;
+
+        UpdateInventoryList();
+
+        armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
+
+        gearStatsText.text = BuildItemStats(player.GetCurrentGear());
+
+        primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
+
+        secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
+    }
+
     private void UpdateInventoryList()
     {
         List<HarvestItem> inventory = player.GetInventory();
