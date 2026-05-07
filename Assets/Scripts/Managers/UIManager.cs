@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject combatScreen;
-    [SerializeField] private TMP_Text playerGold;
+   
 
     [Header("Merchant UI")]
     [SerializeField] private GameObject merchantScreen;
@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject inventoryScreen;
     [SerializeField] private Button[] itemButtons;
     [SerializeField] private TMP_Text[] itemButtonTexts;
+    [SerializeField] private TMP_Text playerGold;
 
     [Header("Dialogue Settings")]
     [SerializeField] private float defaultTime;
@@ -138,6 +139,10 @@ public class UIManager : MonoBehaviour
             inventoryScreen.SetActive(false);
             pauseScreen.SetActive(true);
         }
+    }
+    public void SetGoldText(int gold)
+    {
+        playerGold.text = $"Gold: {gold}";
     }
 
     // All bar setters do the same things, setting the percentage of the UI bar proportional to their related stat elswhere.

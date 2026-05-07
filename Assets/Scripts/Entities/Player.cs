@@ -529,6 +529,8 @@ public class Player : Entity
     public void ChangeGold(int amount)
     {
         currentGold += amount;
+
+        UIManager.instance.SetGoldText(GetGold());
     }
 
     public int GetGold()
