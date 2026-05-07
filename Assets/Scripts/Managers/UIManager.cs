@@ -34,7 +34,21 @@ public class UIManager : MonoBehaviour
 
     [Header("Inventory UI")]
     [SerializeField] GameObject inventoryScreen;
-    [SerializeField] private Button[] itemButtons;
+
+    // Specific fields based on the example UI
+    [SerializeField] private TMP_Text inventoryListText; // left hand list
+
+    [SerializeField] private TMP_Text armourStatsText; // middle stats of equipped item
+    [SerializeField] private TMP_Text gearStatsText;
+    [SerializeField] private TMP_Text primaryWeaponStatsText;
+    [SerializeField] private TMP_Text secondaryWeaponStatsText;
+
+    [SerializeField] private Button armourButton; // right hand buttons to socket the item
+    [SerializeField] private Button gearButton;
+    [SerializeField] private Button primaryWeaponButton;
+    [SerializeField] private Button secondaryWeaponButton;
+
+    [SerializeField] private Button[] itemButtons; // Buttons that show up after the right hand button is pressed
     [SerializeField] private TMP_Text[] itemButtonTexts;
     [SerializeField] private TMP_Text playerGold;
 
