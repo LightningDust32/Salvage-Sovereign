@@ -182,6 +182,38 @@ public class UIManager : MonoBehaviour
 
         inventoryListText.text = builder.ToString();
     }
+
+    private string BuildItemStats(HarvestItem item)
+    {
+        if (item == null)
+            return "Empty";
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.AppendLine(item.itemName);
+        builder.AppendLine();
+
+        if (item.GetHealthBonus() != 0)
+            builder.AppendLine($"Health: +{item.GetHealthBonus()}");
+
+        if (item.GetStaminaBonus() != 0)
+            builder.AppendLine($"Stamina: +{item.GetStaminaBonus()}");
+
+        if (item.GetStrengthBonus() != 0)
+            builder.AppendLine($"Strength: +{item.GetStrengthBonus()}");
+
+        if (item.GetDefenseBonus() != 0)
+            builder.AppendLine($"Defense: +{item.GetDefenseBonus()}");
+
+        if (item.GetSpeedBonus() != 0)
+            builder.AppendLine($"Speed: +{item.GetSpeedBonus()}");
+
+        if (item.ChangesDamageType())
+            builder.AppendLine($"Type: {item.GetDamageType()}");
+
+        return builder.ToString();
+    }
+
     private string BuildWeaponStats(Weapon weapon)
     {
         if (weapon == null)
