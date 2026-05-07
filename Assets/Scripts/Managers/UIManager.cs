@@ -159,6 +159,29 @@ public class UIManager : MonoBehaviour
         playerGold.text = $"Gold: {gold}";
     }
 
+    private void UpdateInventoryList()
+    {
+        List<HarvestItem> inventory = player.GetInventory();
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.AppendLine("INVENTORY");
+        builder.AppendLine();
+
+        if (inventory.Count == 0)
+        {
+            builder.AppendLine("Empty");
+        }
+        else
+        {
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                builder.AppendLine($"{i + 1}. {inventory[i].itemName}");
+            }
+        }
+
+        inventoryListText.text = builder.ToString();
+    }
     // All bar setters do the same things, setting the percentage of the UI bar proportional to their related stat elswhere.
     public void SetHealthBar(float percent)
     {

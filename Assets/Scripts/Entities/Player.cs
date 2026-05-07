@@ -809,6 +809,16 @@ public class Player : Entity
         isInteracting = state;
     }
 
+    public Weapon GetPrimaryWeapon()
+    {
+        return primaryWeapon;
+    }
+
+    public Weapon GetSecondaryWeapon()
+    {
+        return secondaryWeapon;
+    }
+
     private IEnumerator SmoothMove(Room targetRoom)
     {
         isMoving = true;
