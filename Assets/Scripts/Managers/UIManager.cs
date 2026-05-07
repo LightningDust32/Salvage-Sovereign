@@ -26,6 +26,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text[] sellButtonTexts;
     [SerializeField] private GameObject HealButton;
 
+
+    [Header("Pause UI")]
+    [SerializeField] GameObject pauseScreen;
+    // Also would like to show the player stats here
+    // along with their equipped weapon and its stats added to the players
+
     [Header("Inventory UI")]
     [SerializeField] GameObject inventoryScreen;
     [SerializeField] private Button[] itemButtons;
@@ -108,12 +114,29 @@ public class UIManager : MonoBehaviour
         if (Time.timeScale > 0f)
         {
             Time.timeScale = 0.0f;
+            pauseScreen.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            pauseScreen.SetActive(false);
+            inventoryScreen.SetActive(false);
+        }
+    }
+
+    public void Inventory()
+    {
+        if (Time.timeScale > 0f)
+        {
+            Time.timeScale = 0.0f;
             inventoryScreen.SetActive(true);
+            pauseScreen.SetActive(false);
         }
         else
         {
             Time.timeScale = 1.0f;
             inventoryScreen.SetActive(false);
+            pauseScreen.SetActive(true);
         }
     }
 
