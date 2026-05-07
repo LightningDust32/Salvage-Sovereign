@@ -13160,7 +13160,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1392750697}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: SwitchWeapon
+        m_MethodName: SwitchWeaponPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15171,7 +15171,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1392750697}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: SwitchWeapon
+        m_MethodName: SwitchWeaponCombat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

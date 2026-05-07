@@ -382,7 +382,7 @@ public class Player : Entity
         EndTurn();
     }
 
-    public void SwitchWeapon()
+    public void SwitchWeaponCombat()
     {
         if (!isMyTurn) return;
 
@@ -402,6 +402,24 @@ public class Player : Entity
         Debug.Log("Switched weapon to: " + currentWeapon.name);
 
         EndTurn();
+    }
+
+    public void SwitchWeaponPause()
+    {
+        if (currentWeapon == primaryWeapon)
+        {
+            currentWeapon.gameObject.SetActive(false);
+            currentWeapon = secondaryWeapon;
+            currentWeapon.gameObject.SetActive(true);
+        }
+        else
+        {
+            currentWeapon.gameObject.SetActive(false);
+            currentWeapon = primaryWeapon;
+            currentWeapon.gameObject.SetActive(true);
+        }
+
+        Debug.Log("Switched weapon to: " + currentWeapon.name);
     }
 
     private void SelectNext()
