@@ -3199,6 +3199,7 @@ MonoBehaviour:
   damage: 2
   speed: 2
   damageType: 0
+  currentMod: {fileID: 0}
 --- !u!1001 &358102999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6693,6 +6694,7 @@ MonoBehaviour:
   damage: 1
   speed: 3
   damageType: 2
+  currentMod: {fileID: 0}
 --- !u!1001 &818980472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11674,6 +11676,8 @@ MonoBehaviour:
   primaryWeapon: {fileID: 0}
   secondaryWeapon: {fileID: 0}
   maxInventorySize: 5
+  currentArmour: {fileID: 0}
+  currentGear: {fileID: 0}
   weaponPool:
   - {fileID: 354844914}
   - {fileID: 1474401394384914274}
@@ -14917,7 +14921,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -15691,6 +15695,15 @@ MonoBehaviour:
   HealButton: {fileID: 544520551}
   pauseScreen: {fileID: 57161457}
   inventoryScreen: {fileID: 1157090233}
+  inventoryListText: {fileID: 0}
+  armourStatsText: {fileID: 0}
+  gearStatsText: {fileID: 0}
+  primaryWeaponStatsText: {fileID: 0}
+  secondaryWeaponStatsText: {fileID: 0}
+  armourButton: {fileID: 0}
+  gearButton: {fileID: 0}
+  primaryWeaponButton: {fileID: 0}
+  secondaryWeaponButton: {fileID: 0}
   itemButtons: []
   itemButtonTexts: []
   playerGold: {fileID: 540785109}

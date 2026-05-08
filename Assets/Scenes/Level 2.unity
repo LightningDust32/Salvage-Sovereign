@@ -3853,7 +3853,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -15894,6 +15894,15 @@ MonoBehaviour:
   HealButton: {fileID: 2007350425}
   pauseScreen: {fileID: 1994335558}
   inventoryScreen: {fileID: 1638670505}
+  inventoryListText: {fileID: 0}
+  armourStatsText: {fileID: 0}
+  gearStatsText: {fileID: 0}
+  primaryWeaponStatsText: {fileID: 0}
+  secondaryWeaponStatsText: {fileID: 0}
+  armourButton: {fileID: 0}
+  gearButton: {fileID: 0}
+  primaryWeaponButton: {fileID: 0}
+  secondaryWeaponButton: {fileID: 0}
   itemButtons: []
   itemButtonTexts: []
   playerGold: {fileID: 1032637553}
