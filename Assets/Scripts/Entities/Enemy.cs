@@ -150,7 +150,15 @@ public abstract class Enemy : Entity
         }
         else
         {
-            SpecialAttack();
+            if(currentStamina > specialAttackCost)
+            {
+                currentStamina -= specialAttackCost;
+                SpecialAttack();
+            }
+            else
+            {
+                BasicAttack();
+            }
         }
     }
 
