@@ -340,10 +340,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5740559982730120742}
+      addedObject: {fileID: 5194635526156051798}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5194635526156051798}
+      addedObject: {fileID: 4142531895385217500}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
       insertIndex: -1
       addedObject: {fileID: 76916856337334211}
@@ -361,45 +361,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
   m_PrefabInstance: {fileID: 1349532766381367393}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5740559982730120742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196605666861538608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526178056349b3844bafc61fe0e3ceb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  strength: 2
-  defense: 1
-  speed: 1
-  weakness: 1
-  resistance: 2
-  specialMove: Dissolve
-  specialMoveDamage: 5
-  attackChance: 0.8
-  dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
-  baseDropChance: 70
-  bodyParts:
-  - part: 1
-    damageMultiplier: 1.5
-    weakness: 1
-    resistance: 2
-    partObject: {fileID: 2196605666861538608}
-  - part: 2
-    damageMultiplier: 2
-    weakness: 2
-    resistance: 1
-    partObject: {fileID: 8438829158108205295}
-  - part: 2
-    damageMultiplier: 2
-    weakness: 2
-    resistance: 1
-    partObject: {fileID: 2040083611266637104}
 --- !u!64 &5194635526156051798
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -422,6 +383,48 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1013006867569979, guid: 2334872a3d898e7459a7066c3d060866, type: 3}
+--- !u!114 &4142531895385217500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196605666861538608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a38727841aeeb4e88eb2c445cbdeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  strength: 2
+  defense: 1
+  speed: 1
+  weakness: 1
+  resistance: 2
+  maxStamina: 10
+  currentStamina: 10
+  specialAttackCost: 5
+  specialMove: Dissolve
+  specialMoveDamage: 3
+  attackChance: 0.8
+  dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
+  baseDropChance: 1
+  bodyParts:
+  - part: 1
+    damageMultiplier: 2
+    weakness: 1
+    resistance: 2
+    partObject: {fileID: 2196605666861538608}
+  - part: 2
+    damageMultiplier: 3
+    weakness: 2
+    resistance: 0
+    partObject: {fileID: 8438829158108205295}
+  - part: 2
+    damageMultiplier: 3
+    weakness: 2
+    resistance: 0
+    partObject: {fileID: 2040083611266637104}
 --- !u!114 &76916856337334211
 MonoBehaviour:
   m_ObjectHideFlags: 0

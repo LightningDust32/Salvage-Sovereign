@@ -8,7 +8,7 @@ public enum BodyPart
     Legs
 }
 
-public class Enemy : Entity
+public abstract class Enemy : Entity
 {
     private bool isMyTurn = false;
     private bool turnFinished = false;
@@ -18,15 +18,20 @@ public class Enemy : Entity
 
     private BodyPartTarget[] targets;
 
-    [SerializeField] string specialMove;
-    [SerializeField] int specialMoveDamage;
+    [Header("Stamina")]
+    [SerializeField] protected float maxStamina = 10f;
+    [SerializeField] protected float currentStamina = 10f;
+    [SerializeField] protected float specialAttackCost = 5f;
+
+    [SerializeField] protected string specialMove;
+    [SerializeField] protected int specialMoveDamage;
     [Range(0, 1)]
     [SerializeField] float attackChance;
 
     [SerializeField] private HarvestItem dropItem;
     [SerializeField] private float baseDropChance;
 
-    private Player player;
+    protected Player player;
     bool isAlive;
 
     [System.Serializable]
@@ -160,18 +165,9 @@ public class Enemy : Entity
         EndTurn();
     }
 
-    private void SpecialAttack()
-    {
-        float damage = specialMoveDamage;
+    protected abstract void SpecialAttack();
 
-        player.TakeDamage(damage);
-
-        UIManager.instance.ShowDialogue(name + " uses " + specialMove + " for " + damage);
-
-        EndTurn();
-    }
-
-    private void EndTurn()
+    protected void EndTurn()
     {
         isMyTurn = false;
         turnFinished = true;
