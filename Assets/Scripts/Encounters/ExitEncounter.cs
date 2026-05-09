@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitEncounter : Encounter
 {
@@ -6,6 +7,14 @@ public class ExitEncounter : Encounter
     {
         player.SetInteractionState(true);
 
-        UIManager.instance.End();
+        if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount)
+        {
+            Debug.Log("Last Level won");
+            UIManager.instance.End();
+        }
+        else
+        {
+            UIManager.instance.ShowNextLevel();
+        }
     }
 }

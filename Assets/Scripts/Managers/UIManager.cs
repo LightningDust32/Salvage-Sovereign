@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image staminaBar;
     [SerializeField] private Image healthBar;
     [SerializeField] GameObject endingScreen;
+    [SerializeField] GameObject nextLevelScreen;
     [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject combatScreen;
@@ -344,6 +345,18 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         endingScreen.SetActive(true);
+    }
+
+    public void ShowNextLevel()
+    {
+        Time.timeScale = 0.0f;
+        nextLevelScreen.SetActive(true);
+    }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Death()
