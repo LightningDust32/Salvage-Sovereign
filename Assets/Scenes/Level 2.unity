@@ -12270,7 +12270,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 330585546}
   cameraHeight: 1
   playerCamera: {fileID: 330585545}
-  minimapCamera: {fileID: 0}
+  minimapCamera: {fileID: 1000169787}
   items: []
   primaryWeapon: {fileID: 0}
   secondaryWeapon: {fileID: 0}
