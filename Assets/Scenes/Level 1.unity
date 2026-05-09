@@ -15695,7 +15695,7 @@ MonoBehaviour:
   HealButton: {fileID: 544520551}
   pauseScreen: {fileID: 57161457}
   inventoryScreen: {fileID: 1157090233}
-  inventoryListText: {fileID: 0}
+  inventoryListText: {fileID: 1088740356}
   armourStatsText: {fileID: 0}
   gearStatsText: {fileID: 0}
   primaryWeaponStatsText: {fileID: 0}

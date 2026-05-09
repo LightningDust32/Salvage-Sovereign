@@ -146,6 +146,8 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0.0f;
             inventoryScreen.SetActive(true);
             pauseScreen.SetActive(false);
+
+            RefreshInventoryUI();
         }
         else
         {
@@ -166,13 +168,15 @@ public class UIManager : MonoBehaviour
 
         UpdateInventoryList();
 
-        armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
+        // Had to comment these out until they are implimented
 
-        gearStatsText.text = BuildItemStats(player.GetCurrentGear());
+        //armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
 
-        primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
+        //gearStatsText.text = BuildItemStats(player.GetCurrentGear());
 
-        secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
+        //primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
+
+        //secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
     }
 
     private void UpdateInventoryList()

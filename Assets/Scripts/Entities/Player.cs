@@ -565,6 +565,8 @@ public class Player : Entity
 
         inventory.Add(item);
 
+        UIManager.instance.RefreshInventoryUI();
+
         return true;
     }
 
@@ -578,6 +580,9 @@ public class Player : Entity
         if (inventory.Contains(item))
         {
             inventory.Remove(item);
+
+            UIManager.instance.RefreshInventoryUI();
+
         }
     }
 
