@@ -189,7 +189,9 @@ public class UIManager : MonoBehaviour
 
                 string color = selected ? ColorUtility.ToHtmlStringRGB(selectedColor) : ColorUtility.ToHtmlStringRGB(normalColor);
 
-                builder.AppendLine($"<color=#{color}>• {item.itemName}</color>");
+                string equippedMarker = item.GetIsEquipped() ? "E" : "-";
+
+                builder.AppendLine($"<color=#{color}>{equippedMarker} {item.itemName}</color>");
             }
         }
 
@@ -364,7 +366,9 @@ public class UIManager : MonoBehaviour
 
                 string color = selected ? ColorUtility.ToHtmlStringRGB(selectedColor) : ColorUtility.ToHtmlStringRGB(normalColor);
 
-                builder.AppendLine($"<color=#{color}>• {item.itemName}</color>");
+                string equippedMarker = item.GetIsEquipped() ? "E" : "-";
+
+                builder.AppendLine($"<color=#{color}>{equippedMarker} {item.itemName}</color>");
             }
         }
 

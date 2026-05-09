@@ -721,16 +721,16 @@ public class Player : Entity
             return;
         }
 
-        // returns currently equipped item to inventory, swapping it.
         if (currentArmour != null)
         {
+            currentArmour.SetEquipped(false);
             RemoveEquipmentStats(currentArmour);
         }
 
         currentArmour = item;
 
         ApplyEquipmentStats(currentArmour);
-
+        currentArmour.SetEquipped(true);
         Debug.Log("Equipped armour: " + item.itemName);
     }
 
@@ -751,12 +751,14 @@ public class Player : Entity
 
         if (currentGear != null)
         {
+            currentGear.SetEquipped(false);
             RemoveEquipmentStats(currentGear);
         }
 
         currentGear = item;
 
         ApplyEquipmentStats(currentGear);
+        currentGear.SetEquipped(true);
 
         Debug.Log("Equipped gear: " + item.itemName);
     }
@@ -777,6 +779,7 @@ public class Player : Entity
         }
 
         targetWeapon.EquipMod(item);
+        item.SetEquipped(true);
 
         Debug.Log("Equipped mod " + item.itemName + " to " + targetWeapon.name);
     }

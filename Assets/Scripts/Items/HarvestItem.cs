@@ -28,6 +28,8 @@ public class HarvestItem : ScriptableObject
     [SerializeField] private DamageType overrideDamageType;
     [SerializeField] private bool changeDamageType;
 
+    bool isEquipped = false;
+
     public ItemType GetItemType()
     {
         return itemType;
@@ -66,5 +68,15 @@ public class HarvestItem : ScriptableObject
     public DamageType GetDamageType()
     {
         return overrideDamageType;
+    }
+
+    public void SetEquipped(bool state)
+    {
+        isEquipped = state;
+    }
+
+    public bool GetIsEquipped()
+    {
+        return isEquipped;
     }
 }
