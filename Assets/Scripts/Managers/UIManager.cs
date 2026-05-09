@@ -168,15 +168,13 @@ public class UIManager : MonoBehaviour
 
         UpdateInventoryList();
 
-        // Had to comment these out until they are implimented
+        armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
 
-        //armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
+        gearStatsText.text = BuildItemStats(player.GetCurrentGear());
 
-        //gearStatsText.text = BuildItemStats(player.GetCurrentGear());
+        primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
 
-        //primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
-
-        //secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
+        secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
     }
 
     private void UpdateInventoryList()
