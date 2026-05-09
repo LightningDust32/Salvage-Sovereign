@@ -37,20 +37,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject inventoryScreen;
 
     // Specific fields based on the example UI
-    [SerializeField] private TMP_Text inventoryListText; // left hand list
+    [SerializeField] private TMP_Text inventoryListText; // centre
 
-    [SerializeField] private TMP_Text armourStatsText; // middle stats of equipped item
-    [SerializeField] private TMP_Text gearStatsText;
-    [SerializeField] private TMP_Text primaryWeaponStatsText;
-    [SerializeField] private TMP_Text secondaryWeaponStatsText;
+    [SerializeField] private TMP_Text selectedItemStats;
 
-    [SerializeField] private Button armourButton; // right hand buttons to socket the item
-    [SerializeField] private Button gearButton;
-    [SerializeField] private Button primaryWeaponButton;
-    [SerializeField] private Button secondaryWeaponButton;
+    [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private Color selectedColor = Color.yellow;
 
-    [SerializeField] private Button[] itemButtons; // Buttons that show up after the right hand button is pressed
-    [SerializeField] private TMP_Text[] itemButtonTexts;
     [SerializeField] private TMP_Text playerGold;
 
     [Header("Dialogue Settings")]
@@ -67,6 +60,8 @@ public class UIManager : MonoBehaviour
 
     private Player player;
 
+    private List<HarvestItem> currentInventory = new List<HarvestItem>();
+    private int selectedItemIndex = 0;
 
     private void Awake()
     {
@@ -147,6 +142,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0.0f;
             inventoryScreen.SetActive(true);
             pauseScreen.SetActive(false);
+            currentInventory = player.GetInventory();
 
             RefreshInventoryUI();
         }
@@ -169,47 +165,51 @@ public class UIManager : MonoBehaviour
 
         UpdateInventoryList();
 
-        armourStatsText.text = BuildItemStats(player.GetCurrentArmour());
-
-        gearStatsText.text = BuildItemStats(player.GetCurrentGear());
-
-        primaryWeaponStatsText.text = BuildWeaponStats(player.GetPrimaryWeapon());
-
-        secondaryWeaponStatsText.text = BuildWeaponStats(player.GetSecondaryWeapon());
+        BuildItemStats();
     }
 
     private void UpdateInventoryList()
     {
-        List<HarvestItem> inventory = player.GetInventory();
 
         StringBuilder builder = new StringBuilder();
 
-        builder.AppendLine("INVENTORY");
-        builder.AppendLine();
-
-        if (inventory.Count == 0)
+        if (currentInventory.Count == 0)
         {
             builder.AppendLine("Empty");
         }
         else
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < currentInventory.Count; i++)
             {
-                builder.AppendLine($"{i + 1}. {inventory[i].itemName}");
+                HarvestItem item = currentInventory[i];
+
+                bool selected = i == selectedItemIndex;
+
+                string color = selected ? ColorUtility.ToHtmlStringRGB(selectedColor) : ColorUtility.ToHtmlStringRGB(normalColor);
+
+                builder.AppendLine($"<color=#{color}>• {item.itemName}</color>");
             }
         }
 
         inventoryListText.text = builder.ToString();
     }
 
-    private string BuildItemStats(HarvestItem item)
+    private void BuildItemStats()
     {
-        if (item == null)
-            return "Empty";
+        if (currentInventory.Count == 0)
+        {
+            selectedItemStats.text = "No Item Selected";
+            return;
+        }
+
+        HarvestItem item = currentInventory[selectedItemIndex];
 
         StringBuilder builder = new StringBuilder();
 
         builder.AppendLine(item.itemName);
+        builder.AppendLine();
+
+        builder.AppendLine($"Type: {item.GetItemType()}");
         builder.AppendLine();
 
         if (item.GetHealthBonus() != 0)
@@ -228,37 +228,88 @@ public class UIManager : MonoBehaviour
             builder.AppendLine($"Speed: +{item.GetSpeedBonus()}");
 
         if (item.ChangesDamageType())
-            builder.AppendLine($"Type: {item.GetDamageType()}");
+            builder.AppendLine($"Damage Type: {item.GetDamageType()}");
 
-        return builder.ToString();
+        selectedItemStats.text = builder.ToString();
     }
 
-    private string BuildWeaponStats(Weapon weapon)
+    public void SelectNextInventoryItem()
     {
-        if (weapon == null)
-            return "No Weapon";
+        if (!inventoryScreen.activeSelf)
+            return;
 
-        StringBuilder builder = new StringBuilder();
+        if (currentInventory.Count == 0)
+            return;
 
-        builder.AppendLine(weapon.name);
-        builder.AppendLine();
+        selectedItemIndex++;
 
-        builder.AppendLine($"Damage: {weapon.GetDamage()}");
-        builder.AppendLine($"Type: {weapon.GetDamageType()}");
-
-        HarvestItem mod = weapon.GetCurrentMod();
-
-        if (mod != null)
+        if (selectedItemIndex >= currentInventory.Count)
         {
-            builder.AppendLine();
-            builder.AppendLine("MOD:");
-            builder.AppendLine(mod.itemName);
+            selectedItemIndex = 0;
         }
 
-        return builder.ToString();
+        RefreshInventoryUI();
     }
 
-    // All bar setters do the same things, setting the percentage of the UI bar proportional to their related stat elswhere.
+    public void SelectPreviousInventoryItem()
+    {
+        if (!inventoryScreen.activeSelf)
+            return;
+
+        if (currentInventory.Count == 0)
+            return;
+
+        selectedItemIndex--;
+
+        if (selectedItemIndex < 0)
+        {
+            selectedItemIndex = currentInventory.Count - 1;
+        }
+
+        RefreshInventoryUI();
+    }
+
+    public void ConfirmInventorySelection()
+    {
+        if (!inventoryScreen.activeSelf)
+            return;
+
+        if (currentInventory.Count == 0)
+            return;
+
+        HarvestItem item = currentInventory[selectedItemIndex];
+
+        switch (item.GetItemType())
+        {
+            case ItemType.Armour:
+                player.EquipArmour(selectedItemIndex);
+                break;
+
+            case ItemType.Gear:
+                player.EquipGear(selectedItemIndex);
+                break;
+
+            case ItemType.WeaponMod:
+                player.EquipWeaponMod(selectedItemIndex, player.GetPrimaryWeapon());
+                break;
+        }
+
+        currentInventory = player.GetInventory();
+
+        if (selectedItemIndex >= currentInventory.Count)
+        {
+            selectedItemIndex = Mathf.Max(0, currentInventory.Count - 1);
+        }
+
+        RefreshInventoryUI();
+    }
+
+    public bool InventoryOpen()
+    {
+        return inventoryScreen.activeSelf;
+    }
+
+
     public void SetHealthBar(float percent)
     {
         if (healthBar == null)
@@ -319,7 +370,6 @@ public class UIManager : MonoBehaviour
     public void BuyHeal(int cost)
     {
 
-
         if (player != null && player.GetGold() >= cost)
         {
             player.Heal(player.GetMaxHealth() / 2);
@@ -327,8 +377,6 @@ public class UIManager : MonoBehaviour
 
             HealButton.SetActive(false);
         }
-
-
     }
 
     public void CloseMerchant()

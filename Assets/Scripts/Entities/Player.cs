@@ -426,6 +426,12 @@ public class Player : Entity
 
     private void SelectNext()
     {
+        if (UIManager.instance.InventoryOpen())
+        {
+            UIManager.instance.SelectNextInventoryItem();
+            return;
+        }
+
         if (!selectingBodyPart) return;
 
         ClearCurrentHighlight();
@@ -442,6 +448,12 @@ public class Player : Entity
 
     private void SelectPrevious()
     {
+        if (UIManager.instance.InventoryOpen())
+        {
+            UIManager.instance.SelectPreviousInventoryItem();
+            return;
+        }
+
         if (!selectingBodyPart) return;
 
         ClearCurrentHighlight();
@@ -458,6 +470,12 @@ public class Player : Entity
 
     private void ConfirmSelect()
     {
+        if (UIManager.instance.InventoryOpen())
+        {
+            UIManager.instance.ConfirmInventorySelection();
+            return;
+        }
+
         if (!selectingBodyPart) return;
 
         BodyPartTarget target = currentTargets[currentTargetIndex];
