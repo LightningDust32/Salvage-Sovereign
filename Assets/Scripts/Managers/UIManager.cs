@@ -23,9 +23,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Merchant UI")]
     [SerializeField] private GameObject merchantScreen;
-    [SerializeField] private Button[] sellButtons;
-    [SerializeField] private TMP_Text[] sellButtonTexts;
+    [SerializeField] private TMP_Text merchantListText;
     [SerializeField] private GameObject HealButton;
+
+    private List<HarvestItem> merchantInventory = new List<HarvestItem>();
+    private int selectedMerchantIndex = 0;
 
 
     [Header("Pause UI")]
@@ -36,7 +38,7 @@ public class UIManager : MonoBehaviour
     [Header("Inventory UI")]
     [SerializeField] GameObject inventoryScreen;
 
-    // Specific fields based on the example UI
+    // Updated inventory method
     [SerializeField] private TMP_Text inventoryListText; // centre
 
     [SerializeField] private TMP_Text selectedItemStats;
@@ -328,43 +330,106 @@ public class UIManager : MonoBehaviour
         staminaBar.fillAmount = Mathf.Lerp(staminaBar.fillAmount, percent, 10f * Time.deltaTime);
     }
 
-    public void SetMerchantText(string[] itemNames)
+    public void OpenMerchant(List<HarvestItem> inventory)
     {
-        if (sellButtons == null || sellButtonTexts == null)
-            return;
-
         merchantScreen.SetActive(true);
 
-        for (int i = 0; i < sellButtons.Length; i++)
+        merchantInventory = inventory;
+
+        selectedMerchantIndex = 0;
+
+        RefreshMerchantUI();
+    }
+
+    public void RefreshMerchantUI()
+    {
+        UpdateMerchantList();
+    }
+
+    private void UpdateMerchantList()
+    {
+        StringBuilder builder = new StringBuilder();
+
+        if (merchantInventory.Count == 0)
         {
-            int index = i;
-
-            if (i < itemNames.Length)
+            builder.AppendLine("Nothing to Sell");
+        }
+        else
+        {
+            for (int i = 0; i < merchantInventory.Count; i++)
             {
-                // Enable button
-                sellButtons[i].gameObject.SetActive(true);
+                HarvestItem item = merchantInventory[i];
 
-                // Set text
-                sellButtonTexts[i].text = "Sell " + itemNames[i];
+                bool selected = i == selectedMerchantIndex;
 
-                // Clear previous listeners (IMPORTANT)
-                sellButtons[i].onClick.RemoveAllListeners();
+                string color = selected ? ColorUtility.ToHtmlStringRGB(selectedColor) : ColorUtility.ToHtmlStringRGB(normalColor);
 
-                // Add new listener
-                sellButtons[i].onClick.AddListener(() =>
-                {
-                    if (player != null)
-                    {
-                        player.SellItem(index);
-                    }
-                });
-            }
-            else
-            {
-                // Disable unused slots
-                sellButtons[i].gameObject.SetActive(false);
+                builder.AppendLine($"<color=#{color}>• {item.itemName}</color>");
             }
         }
+
+        merchantListText.text = builder.ToString();
+    }
+
+    public void SelectNextMerchantItem()
+    {
+        if (!merchantScreen.activeSelf)
+            return;
+
+        if (merchantInventory.Count == 0)
+            return;
+
+        selectedMerchantIndex++;
+
+        if (selectedMerchantIndex >= merchantInventory.Count)
+        {
+            selectedMerchantIndex = 0;
+        }
+
+        RefreshMerchantUI();
+    }
+
+    public void SelectPreviousMerchantItem()
+    {
+        if (!merchantScreen.activeSelf)
+            return;
+
+        if (merchantInventory.Count == 0)
+            return;
+
+        selectedMerchantIndex--;
+
+        if (selectedMerchantIndex < 0)
+        {
+            selectedMerchantIndex = merchantInventory.Count - 1;
+        }
+
+        RefreshMerchantUI();
+    }
+
+    public void ConfirmMerchantSelection()
+    {
+        if (!merchantScreen.activeSelf)
+            return;
+
+        if (merchantInventory.Count == 0)
+            return;
+
+        player.SellItem(selectedMerchantIndex);
+
+        merchantInventory = player.GetInventory();
+
+        if (selectedMerchantIndex >= merchantInventory.Count)
+        {
+            selectedMerchantIndex = Mathf.Max(0, merchantInventory.Count - 1);
+        }
+
+        RefreshMerchantUI();
+    }
+
+    public bool MerchantOpen()
+    {
+        return merchantScreen.activeSelf;
     }
 
     public void BuyHeal(int cost)

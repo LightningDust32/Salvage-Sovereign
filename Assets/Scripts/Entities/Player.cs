@@ -432,6 +432,13 @@ public class Player : Entity
             return;
         }
 
+        if (UIManager.instance.MerchantOpen())
+        {
+            UIManager.instance.SelectNextMerchantItem();
+            return;
+        }
+
+
         if (!selectingBodyPart) return;
 
         ClearCurrentHighlight();
@@ -454,6 +461,13 @@ public class Player : Entity
             return;
         }
 
+        if (UIManager.instance.MerchantOpen())
+        {
+            UIManager.instance.SelectPreviousMerchantItem();
+            return;
+        }
+
+
         if (!selectingBodyPart) return;
 
         ClearCurrentHighlight();
@@ -473,6 +487,12 @@ public class Player : Entity
         if (UIManager.instance.InventoryOpen())
         {
             UIManager.instance.ConfirmInventorySelection();
+            return;
+        }
+
+        if (UIManager.instance.MerchantOpen())
+        {
+            UIManager.instance.ConfirmMerchantSelection();
             return;
         }
 
@@ -684,14 +704,7 @@ public class Player : Entity
 
     public void UpdateMerchantUI()
     {
-        string[] itemNames = new string[inventory.Count];
-
-        for (int i = 0; i < inventory.Count; i++)
-        {
-            itemNames[i] = inventory[i].itemName;
-        }
-
-        UIManager.instance.SetMerchantText(itemNames);
+        UIManager.instance.OpenMerchant(inventory);
     }
 
     public void EquipArmour(int index)
@@ -712,14 +725,11 @@ public class Player : Entity
         if (currentArmour != null)
         {
             RemoveEquipmentStats(currentArmour);
-            inventory.Add(currentArmour);
         }
 
         currentArmour = item;
 
         ApplyEquipmentStats(currentArmour);
-
-        inventory.Remove(item);
 
         Debug.Log("Equipped armour: " + item.itemName);
     }
@@ -742,14 +752,11 @@ public class Player : Entity
         if (currentGear != null)
         {
             RemoveEquipmentStats(currentGear);
-            inventory.Add(currentGear);
         }
 
         currentGear = item;
 
         ApplyEquipmentStats(currentGear);
-
-        inventory.Remove(item);
 
         Debug.Log("Equipped gear: " + item.itemName);
     }
@@ -769,16 +776,7 @@ public class Player : Entity
             return;
         }
 
-        HarvestItem oldMod = targetWeapon.GetCurrentMod();
-
-        if (oldMod != null)
-        {
-            inventory.Add(oldMod);
-        }
-
         targetWeapon.EquipMod(item);
-
-        inventory.Remove(item);
 
         Debug.Log("Equipped mod " + item.itemName + " to " + targetWeapon.name);
     }
