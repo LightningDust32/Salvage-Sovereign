@@ -53,9 +53,6 @@ public class Player : Entity
 
     private int currentGold;
 
-    [Header("Inventory")]
-    [SerializeField, Range(5, 10)] private int maxInventorySize = 5;
-
     [Header("Equipment")]
     [SerializeField] private HarvestItem currentArmour;
     [SerializeField] private HarvestItem currentGear;
@@ -557,12 +554,6 @@ public class Player : Entity
     {
         if (item == null) return false;
 
-        if (inventory.Count >= maxInventorySize)
-        {
-            Debug.Log("Inventory Full");
-            return false;
-        }
-
         inventory.Add(item);
 
         UIManager.instance.RefreshInventoryUI();
@@ -584,11 +575,6 @@ public class Player : Entity
             UIManager.instance.RefreshInventoryUI();
 
         }
-    }
-
-    public bool IsInventoryFull()
-    {
-        return inventory.Count >= maxInventorySize;
     }
 
     public override void Die()
