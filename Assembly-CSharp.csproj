@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Encounters\TreasureEncounter.cs" />
     <Compile Include="Assets\Scripts\Lobby\LobbyButtons.cs" />
     <Compile Include="Assets\Scripts\Items\HarvestItem.cs" />
+    <Compile Include="Assets\Scripts\Entities\WolfSpider.cs" />
     <Compile Include="Assets\Scripts\Encounters\MerchantEncounter.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MenuButtons.cs" />
   </ItemGroup>

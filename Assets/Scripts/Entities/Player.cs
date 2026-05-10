@@ -53,6 +53,8 @@ public class Player : Entity
 
     private int currentGold;
 
+    private int statusTurns;
+
     [Header("Equipment")]
     [SerializeField] private HarvestItem currentArmour;
     [SerializeField] private HarvestItem currentGear;
@@ -293,9 +295,29 @@ public class Player : Entity
             Debug.Log("Player Turn Start");
 
             isMyTurn = true;
+
+            if(statusTurns > 0)
+            {
+                statusTurns--;
+            }
         }
 
         return turnFinished;
+    }
+
+    public void SetStatusTurns(int turns)
+    {
+        statusTurns = turns;
+    }
+
+    public int RemainingStatusTurns()
+    {
+        return statusTurns;
+    }
+
+    public void ChangeDefense(int value)
+    {
+        defense += value;
     }
 
     public void Attack()
