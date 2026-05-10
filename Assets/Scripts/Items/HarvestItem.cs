@@ -2,9 +2,17 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Armour, // Armour is for items in the top centre slot of inventory mockup
-    Gear, // Gear is for second slot down
-    WeaponMod // WeaponMod is for equipping to weapon
+    Armour,
+    Gear,
+    WeaponMod,
+    None
+}
+
+public enum Rarity
+{
+    Common,
+    Uncommon,
+    Rare
 }
 
 [CreateAssetMenu(fileName = "HarvestItem", menuName = "Combat/HarvestItem")]
@@ -13,6 +21,7 @@ public class HarvestItem : ScriptableObject
     [Header("Info")]
     public string itemName;
     public int sellValue;
+    [SerializeField] private Rarity rarity;
 
     [Header("Type")]
     [SerializeField] private ItemType itemType;
@@ -68,6 +77,11 @@ public class HarvestItem : ScriptableObject
     public DamageType GetDamageType()
     {
         return overrideDamageType;
+    }
+
+    public Rarity GetRarity()
+    {
+        return rarity;
     }
 
     public void SetEquipped(bool state)
