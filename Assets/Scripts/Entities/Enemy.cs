@@ -175,10 +175,14 @@ public abstract class Enemy : Entity
 
     protected abstract void SpecialAttack();
 
+    protected abstract void EndSpecialAttack();
+
     protected void EndTurn()
     {
         isMyTurn = false;
         turnFinished = true;
+
+        EndSpecialAttack();
 
         Debug.Log(name + " ends its turn");
     }

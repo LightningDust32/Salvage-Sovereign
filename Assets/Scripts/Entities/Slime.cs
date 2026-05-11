@@ -5,6 +5,8 @@ public class Slime : Enemy
     [SerializeField] int effectTurns = 2;
     [SerializeField] int weaknessAmount = 4;
 
+    bool effectActive;
+
     protected override void SpecialAttack()
     {
         float damage = specialMoveDamage;
@@ -18,5 +20,14 @@ public class Slime : Enemy
         UIManager.instance.ShowDialogue(name + " uses " + specialMove + "! You are weakened!");
 
         EndTurn();
+    }
+
+    protected override void EndSpecialAttack()
+    {
+        if(player.RemainingStatusTurns() == 0 && effectActive)
+        {
+            player.ChangeDefense(weaknessAmount);
+            effectActive = false;
+        }
     }
 }
