@@ -6725,6 +6725,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1999620177}
     m_Modifications:
+    - target: {fileID: 133605269976388804, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 453900374537115961, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -7758,6 +7762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 387423879}
     m_Modifications:
+    - target: {fileID: 133605269976388804, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 133605269976388804, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_LocalPosition.z
       value: 60
@@ -9340,13 +9348,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000169784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6981529, y: 0, z: 0, w: 0.7159487}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 73.3, y: 130.30504, z: 57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 88.558, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1012396430
 GameObject:
   m_ObjectHideFlags: 0
@@ -12425,6 +12433,7 @@ MonoBehaviour:
   secondaryWeapon: {fileID: 0}
   currentArmour: {fileID: 0}
   currentGear: {fileID: 0}
+  inventorySize: 5
   weaponPool:
   - {fileID: 354844914}
   - {fileID: 1474401394384914274}
@@ -15477,6 +15486,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
+    - target: {fileID: 3601114564775584532, guid: ae819e5fb833a3f4f81d5aec60f7c18e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3662835106077276116, guid: ae819e5fb833a3f4f81d5aec60f7c18e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -17449,6 +17462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 387423879}
     m_Modifications:
+    - target: {fileID: 133605269976388804, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 133605269976388804, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_LocalPosition.z
       value: 20

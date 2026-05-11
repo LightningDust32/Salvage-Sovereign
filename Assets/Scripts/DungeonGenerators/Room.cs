@@ -38,6 +38,8 @@ public class Room : MonoBehaviour
 
     [SerializeField] GameObject roomCentre;
 
+    [SerializeField] GameObject coverTile;
+
     List<GameObject> usedFurniture = new List<GameObject>();
 
     private Dictionary<Direction, Room> connectedRooms = new Dictionary<Direction, Room>();
@@ -184,6 +186,11 @@ public class Room : MonoBehaviour
 
     public void OnPlayerEntered(Player player)
     {
+        if(coverTile != null && coverTile.activeSelf)
+        {
+            coverTile.SetActive(false);
+        }
+
         if (currentEncounter != null)
         {
             currentEncounter.OnRoomEntered(player);
