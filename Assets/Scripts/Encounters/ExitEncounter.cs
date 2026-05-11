@@ -14,6 +14,8 @@ public class ExitEncounter : Encounter
         }
         else
         {
+            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log(SceneManager.sceneCount);
             UIManager.instance.ShowNextLevel();
         }
     }
