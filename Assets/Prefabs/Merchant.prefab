@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb3f1b18c46a1b6439d50cfdfa044fd1, type: 2}
+  - {fileID: 2100000, guid: f3fdf65a11dfb3c409d594b089f957ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -562,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 0
+  encounterPrompt: 
 --- !u!1001 &964253705461564839
 PrefabInstance:
   m_ObjectHideFlags: 0

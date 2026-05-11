@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 1
-  highlightColour: {r: 0.5018867, g: 0.28593314, b: 0.029355614, a: 0}
+  highlightColour: {r: 0.16104293, g: 0.3509434, b: 0.004635083, a: 0}
 --- !u!64 &968663430850334818
 MeshCollider:
   m_ObjectHideFlags: 0
