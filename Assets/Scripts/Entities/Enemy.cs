@@ -44,6 +44,7 @@ public abstract class Enemy : Entity
         public DamageType resistance;
 
         public GameObject partObject;
+        public HarvestItem partDrop;
     }
 
     [SerializeField] private BodyPartData[] bodyParts;

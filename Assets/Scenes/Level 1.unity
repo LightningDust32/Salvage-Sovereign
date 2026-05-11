@@ -5184,6 +5184,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1400959636}
     m_Modifications:
+    - target: {fileID: 2093556377818012617, guid: ae819e5fb833a3f4f81d5aec60f7c18e, type: 3}
+      propertyPath: encounters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093556377818012617, guid: ae819e5fb833a3f4f81d5aec60f7c18e, type: 3}
+      propertyPath: 'encounters.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7737241647792531830, guid: 3a82caa38a2a480498b1b359fcda6ac0, type: 3}
     - target: {fileID: 6113840103895947902, guid: ae819e5fb833a3f4f81d5aec60f7c18e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
@@ -12259,6 +12267,7 @@ MonoBehaviour:
   secondaryWeapon: {fileID: 0}
   currentArmour: {fileID: 0}
   currentGear: {fileID: 0}
+  inventorySize: 5
   weaponPool:
   - {fileID: 1267885933}
   - {fileID: 1474401394384914274}

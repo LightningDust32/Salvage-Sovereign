@@ -413,16 +413,19 @@ MonoBehaviour:
     weakness: 1
     resistance: 2
     partObject: {fileID: 2196605666861538608}
+    partDrop: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   - part: 2
     damageMultiplier: 3
     weakness: 2
     resistance: 0
     partObject: {fileID: 8438829158108205295}
+    partDrop: {fileID: 11400000, guid: 030d0c43e8d975c48a66961127b5dac5, type: 2}
   - part: 2
     damageMultiplier: 3
     weakness: 2
     resistance: 0
     partObject: {fileID: 2040083611266637104}
+    partDrop: {fileID: 11400000, guid: 030d0c43e8d975c48a66961127b5dac5, type: 2}
   effectTurns: 2
   weaknessAmount: 4
 --- !u!114 &76916856337334211
