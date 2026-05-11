@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42ba3d63229516c4f91c74c13e93bb67, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 42ba3d63229516c4f91c74c13e93bb67, type: 2}
@@ -2292,8 +2292,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
-  m_fontSizeBase: 23
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -2357,7 +2357,7 @@ GameObject:
   - component: {fileID: 1412634363}
   - component: {fileID: 1412634362}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2429,7 +2429,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 675342166}
         m_TargetAssemblyTypeName: LobbyButtons, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
