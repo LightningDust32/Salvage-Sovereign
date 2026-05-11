@@ -36,6 +36,7 @@ public class HarvestItem : ScriptableObject
     [Header("Weapon Modifiers")]
     [SerializeField] private DamageType overrideDamageType;
     [SerializeField] private bool changeDamageType;
+    [SerializeField] private Material material;
 
     bool isEquipped = false;
 
@@ -87,6 +88,11 @@ public class HarvestItem : ScriptableObject
     public void SetEquipped(bool state)
     {
         isEquipped = state;
+    }
+
+    public Material GetMaterial()
+    {
+        return material;
     }
 
     public bool GetIsEquipped()

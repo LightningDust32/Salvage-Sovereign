@@ -23,3 +23,4 @@ MonoBehaviour:
   speedBonus: 0
   overrideDamageType: 1
   changeDamageType: 1
+  material: {fileID: 2100000, guid: 01e270b95c787e84d8a416d970a50f2e, type: 2}

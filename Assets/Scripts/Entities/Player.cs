@@ -106,6 +106,8 @@ public class Player : Entity
 
     private void ApplyPersistentData()
     {
+        PersistentData.Load();
+
         // Apply permanent stat upgrades
         maxHealth += PersistentData.bonusHealth;
         strength += PersistentData.bonusStrength;
@@ -123,6 +125,8 @@ public class Player : Entity
         }
 
         currentWeapon = primaryWeapon;
+
+        currentGold += PersistentData.Gold;
     }
 
     private void OnEnable()

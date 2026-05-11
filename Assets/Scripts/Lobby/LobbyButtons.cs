@@ -1,8 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LobbyButtons : MonoBehaviour
 {
+    [SerializeField] TMP_Text goldtext;
+
+    private void Awake()
+    {
+        SetGoldText();
+    }
+
     public void UpgradeHealth(int cost)
     {
         if (PersistentData.bonusHealth > 0)
@@ -19,6 +27,7 @@ public class LobbyButtons : MonoBehaviour
         PersistentData.Gold -= cost;
         PersistentData.bonusHealth++;
 
+        SetGoldText();
         PersistentData.Save();
 
         Debug.Log("Health upgraded");
@@ -39,7 +48,7 @@ public class LobbyButtons : MonoBehaviour
 
         PersistentData.Gold -= cost;
         PersistentData.bonusStrength++;
-
+        SetGoldText();
         PersistentData.Save();
 
         Debug.Log("Strength upgraded");
@@ -60,7 +69,7 @@ public class LobbyButtons : MonoBehaviour
 
         PersistentData.Gold -= cost;
         PersistentData.bonusDefense++;
-
+        SetGoldText();
         PersistentData.Save();
 
         Debug.Log("Defense upgraded");
@@ -111,5 +120,10 @@ public class LobbyButtons : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SetGoldText()
+    {
+        goldtext.text = "Gold: " + PersistentData.Gold;
     }
 }

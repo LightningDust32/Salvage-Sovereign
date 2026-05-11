@@ -14,7 +14,12 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected DamageType damageType;
 
     [SerializeField] private HarvestItem currentMod; // serialized so you can see if it equipped in editor
+    private Material currentMaterial;
 
+    private void Awake()
+    {
+        currentMaterial = GetComponent<Material>();
+    }
 
     public virtual void Use(Entity attacker, Entity target)
     {
@@ -72,5 +77,7 @@ public abstract class Weapon : MonoBehaviour
         }
 
         currentMod = mod;
+        
+        GetComponent<MeshRenderer>().material = currentMod.GetMaterial();
     }
 }

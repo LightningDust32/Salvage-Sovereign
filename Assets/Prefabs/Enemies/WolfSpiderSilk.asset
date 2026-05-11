@@ -21,5 +21,6 @@ MonoBehaviour:
   strengthBonus: 0
   defenseBonus: 5
   speedBonus: 0
-  overrideDamageType: 1
-  changeDamageType: 1
+  overrideDamageType: 0
+  changeDamageType: 0
+  material: {fileID: 0}
