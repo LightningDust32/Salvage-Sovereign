@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 2850775395280792506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -2.48}
+  m_LocalPosition: {x: 2.92, y: 1, z: -1.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,6 +279,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6113840103895947902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4463465103889398450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2650946963576541777}
+  m_Layer: 0
+  m_Name: Furniture Slot (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2650946963576541777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463465103889398450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.21, y: 1, z: 3.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6113840103895947902}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6308286995458994081
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +345,7 @@ Transform:
   - {fileID: 3266740963736235380}
   - {fileID: 2963287600066510760}
   - {fileID: 7429878213158976500}
+  - {fileID: 2650946963576541777}
   - {fileID: 8241465031646896025}
   - {fileID: 1866982506604973956}
   - {fileID: 9032108300231361026}
@@ -342,11 +374,14 @@ MonoBehaviour:
   - {fileID: 9142844046250960057}
   furnitureSlots:
   - {fileID: 2850775395280792506}
+  - {fileID: 4463465103889398450}
   wallSlots: []
-  furniture: []
+  furniture:
+  - {fileID: 7234757000722695228, guid: 198c07975f7085b4d9de60f6ad8d48a9, type: 3}
+  - {fileID: 7921127223251092622, guid: b59d8e609fcb4cb47be42a0dca27693d, type: 3}
+  - {fileID: 6379523384179297302, guid: c768a7caaa64ef74cb08cc3fd5b5964b, type: 3}
   wallFurniture: []
-  encounters:
-  - {fileID: 7737241647792531830, guid: 3a82caa38a2a480498b1b359fcda6ac0, type: 3}
+  encounters: []
   roomCentre: {fileID: 3176574031588756807}
   currentEncounter: {fileID: 0}
   encounterChance: 0
