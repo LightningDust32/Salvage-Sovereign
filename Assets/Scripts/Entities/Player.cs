@@ -221,6 +221,7 @@ public class Player : Entity
     {
         bool isActive = minimapCamera.enabled;
 
+        isInteracting = !isActive;
         minimapCamera.enabled = !isActive;
         playerCamera.enabled = isActive;
     }
