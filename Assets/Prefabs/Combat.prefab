@@ -123,5 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 1
+  encounterPrompt: You hear scraping nearby
   enemyPrefabs:
   - {fileID: 4142531895385217500, guid: 937a4ce309e481a438bb330c0b3c616f, type: 3}

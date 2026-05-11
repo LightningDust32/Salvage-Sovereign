@@ -23,8 +23,6 @@ public enum RoomType
 
 public class Room : MonoBehaviour
 {
-    
-
     [SerializeField] private RoomType roomType;
 
     [SerializeField] GameObject[] entrances;
@@ -48,6 +46,7 @@ public class Room : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float encounterChance;
 
+    [SerializeField] string prompt;
 
     private void Start()
     {
@@ -84,6 +83,8 @@ public class Room : MonoBehaviour
                     currentEncounter = encounterObj.GetComponent<Encounter>();
 
                     encounterPlaced = true;
+
+                    prompt = currentEncounter.GetPrompt();
                 }
             }
 
@@ -159,6 +160,7 @@ public class Room : MonoBehaviour
 
     public void SetConnection(Direction dir, Room room)
     {
+        // in here, set the neighbouring room's prompt to be this room's
         if (connectedRooms.ContainsKey(dir))
         {
             connectedRooms[dir] = room;
@@ -195,5 +197,7 @@ public class Room : MonoBehaviour
         {
             currentEncounter.OnRoomEntered(player);
         }
+
+        // Show prompts for next room in here
     }
 }

@@ -5,6 +5,7 @@ public abstract class Encounter : MonoBehaviour
     [Header("Encounter Settings")]
     [SerializeField] protected bool triggerOnEnter = true;
     [SerializeField] protected bool disableWhenCleared = true;
+    [SerializeField] string encounterPrompt;
 
     protected bool isCleared = false;
 
@@ -44,5 +45,10 @@ public abstract class Encounter : MonoBehaviour
     public bool IsCleared()
     {
         return isCleared;
+    }
+
+    public string GetPrompt()
+    {
+        return encounterPrompt;
     }
 }

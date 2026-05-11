@@ -127,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 795e720ef2a7fff40b2eab7c5f9cd736, type: 2}
+  - {fileID: 2100000, guid: f3fdf65a11dfb3c409d594b089f957ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -235,7 +235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 795e720ef2a7fff40b2eab7c5f9cd736, type: 2}
+  - {fileID: 2100000, guid: f3fdf65a11dfb3c409d594b089f957ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -561,7 +561,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 795e720ef2a7fff40b2eab7c5f9cd736, type: 2}
+  - {fileID: 2100000, guid: f3fdf65a11dfb3c409d594b089f957ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -673,6 +673,7 @@ MonoBehaviour:
   coverTile: {fileID: 5281587674082175929}
   currentEncounter: {fileID: 0}
   encounterChance: 1
+  prompt: 
 --- !u!1 &9062133990853903158
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +772,7 @@ PrefabInstance:
     - target: {fileID: 8220949378445845540, guid: 2ccc610e502451a44aea3f082dbbec0c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 795e720ef2a7fff40b2eab7c5f9cd736, type: 2}
+      objectReference: {fileID: 2100000, guid: f3fdf65a11dfb3c409d594b089f957ce, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
