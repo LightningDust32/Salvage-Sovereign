@@ -7,15 +7,13 @@ public class ExitEncounter : Encounter
     {
         player.SetInteractionState(true);
 
-        if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount)
+        if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
         {
             Debug.Log("Last Level won");
             UIManager.instance.End();
         }
         else
         {
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
-            Debug.Log(SceneManager.sceneCount);
             UIManager.instance.ShowNextLevel();
         }
     }
