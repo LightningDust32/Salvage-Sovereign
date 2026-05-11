@@ -294,7 +294,7 @@ public class UIManager : MonoBehaviour
                 break;
 
             case ItemType.WeaponMod:
-                player.EquipWeaponMod(selectedItemIndex, player.GetPrimaryWeapon());
+                player.EquipWeaponMod(selectedItemIndex, player.GetCurrentWeapon());
                 break;
         }
 

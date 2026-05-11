@@ -61,6 +61,8 @@ public class Player : Entity
 
     private List<HarvestItem> inventory = new List<HarvestItem>();
 
+    [SerializeField] int inventorySize = 5;
+
     [SerializeField] private Weapon[] weaponPool;
 
     private bool isInteracting = false;
@@ -618,6 +620,17 @@ public class Player : Entity
     {
         if (item == null) return false;
 
+        if(inventory.Count == inventorySize - 1)
+        {
+            UIManager.instance.ShowDialogue("Inventory Full");;
+        }
+
+        if (inventory.Count == inventorySize)
+        {
+            UIManager.instance.ShowDialogue("Inventory Full");
+            return false;
+        }
+
         inventory.Add(item);
 
         UIManager.instance.RefreshInventoryUI();
@@ -853,6 +866,11 @@ public class Player : Entity
     public Weapon GetSecondaryWeapon()
     {
         return secondaryWeapon;
+    }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return currentWeapon;
     }
 
     private IEnumerator SmoothMove(Room targetRoom)
