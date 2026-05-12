@@ -3607,6 +3607,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: furniture.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: encounters.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3614,6 +3618,10 @@ PrefabInstance:
       propertyPath: 'encounters.Array.data[0]'
       value: 
       objectReference: {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
+    - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: furnitureSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2850775395280792506, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0

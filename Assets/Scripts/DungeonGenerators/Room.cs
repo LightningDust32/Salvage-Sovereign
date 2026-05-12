@@ -226,4 +226,9 @@ public class Room : MonoBehaviour
 
         return nearbyPrompt;
     }
+
+    public void ResetCentre()
+    {
+        roomCentre.transform.localPosition = new Vector3(0, 1, 0);
+    }
 }

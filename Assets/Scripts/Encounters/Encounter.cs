@@ -40,6 +40,11 @@ public abstract class Encounter : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        if(room.GetRoomType() == RoomType.Combat)
+        {
+            room.ResetCentre();
+        }
     }
 
     public bool IsCleared()
