@@ -53,6 +53,8 @@ public class Player : Entity
 
     private int currentGold;
 
+    private int currentLuck = 5;
+
     private int statusTurns;
 
     [Header("Equipment")]
@@ -113,7 +115,9 @@ public class Player : Entity
         // Apply permanent stat upgrades
         maxHealth += PersistentData.bonusHealth;
         strength += PersistentData.bonusStrength;
-        defense += PersistentData.bonusDefense;
+        maxStamina += PersistentData.bonusStamina;
+        speed += PersistentData.bonusSpeed;
+        currentLuck += PersistentData.bonusLuck;
 
         // Equip weapons from weapon selection
         if (PersistentData.primaryWeaponIndex >= 0 && PersistentData.primaryWeaponIndex < weaponPool.Length)
