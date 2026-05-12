@@ -559,14 +559,14 @@ MonoBehaviour:
   furniture: []
   wallFurniture: []
   encounters:
-  - {fileID: 7737241647792531830, guid: d11f4274e019bbf46919f9124058877b, type: 3}
+  - {fileID: 8395098081291732472, guid: 1eb9eb1719ac17041b73dc55352dc792, type: 3}
   - {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
-  - {fileID: 7737241647792531830, guid: 3a82caa38a2a480498b1b359fcda6ac0, type: 3}
   roomCentre: {fileID: 3176574031588756807}
   coverTile: {fileID: 3601114564775584532}
   currentEncounter: {fileID: 0}
   encounterChance: 0.5
   prompt: 
+  nearbyPrompt: 
 --- !u!1 &7208986298550718065
 GameObject:
   m_ObjectHideFlags: 0
