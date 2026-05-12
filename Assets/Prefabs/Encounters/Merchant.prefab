@@ -779,7 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 0
-  encounterPrompt: 
+  encounterPrompt: You hear the sound of coins nearby
 --- !u!1 &8578434932643071382
 GameObject:
   m_ObjectHideFlags: 0

@@ -280,4 +280,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 1
-  encounterPrompt: 
+  encounterPrompt: You feel like fortune smiles upon you

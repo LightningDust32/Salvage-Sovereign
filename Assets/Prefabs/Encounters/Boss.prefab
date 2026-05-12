@@ -123,5 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 1
+  encounterPrompt: You hear roaring nearby
   enemyPrefabs:
   - {fileID: 1772254205404988950, guid: 20378aa4c4b70ac479f96b6d1711457f, type: 3}
