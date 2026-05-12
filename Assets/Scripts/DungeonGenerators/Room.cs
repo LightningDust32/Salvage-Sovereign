@@ -47,6 +47,7 @@ public class Room : MonoBehaviour
     [SerializeField] private float encounterChance;
 
     [SerializeField] string prompt;
+    [SerializeField] private string nearbyPrompt;
 
     private void Start()
     {
@@ -160,7 +161,7 @@ public class Room : MonoBehaviour
 
     public void SetConnection(Direction dir, Room room)
     {
-        // in here, set the neighbouring room's prompt to be this room's
+        
         if (connectedRooms.ContainsKey(dir))
         {
             connectedRooms[dir] = room;
@@ -168,6 +169,16 @@ public class Room : MonoBehaviour
         else
         {
             connectedRooms.Add(dir, room);
+        }
+
+        if (currentEncounter != null)
+        {
+            room.SetNearbyPrompt(currentEncounter.GetPrompt());
+        }
+
+        if (room.currentEncounter != null)
+        {
+            SetNearbyPrompt(room.currentEncounter.GetPrompt());
         }
     }
 
@@ -198,6 +209,21 @@ public class Room : MonoBehaviour
             currentEncounter.OnRoomEntered(player);
         }
 
-        // Show prompts for next room in here
+        // Show prompt for next room in here
+    }
+
+    public void SetNearbyPrompt(string text)
+    {
+        nearbyPrompt = text;
+    }
+
+    public string GetPrompt()
+    {
+        if (!string.IsNullOrEmpty(prompt))
+        { 
+            return prompt;
+        }
+
+        return nearbyPrompt;
     }
 }

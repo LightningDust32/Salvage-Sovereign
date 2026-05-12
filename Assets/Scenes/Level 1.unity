@@ -7329,8 +7329,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ac256240777ac1c49a16f162b34021ec, type: 2}
     - target: {fileID: 8107199684623525804, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
+      propertyPath: prompt
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107199684623525804, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
       propertyPath: roomType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107199684623525804, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
+      propertyPath: nearbyPrompt
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8107199684623525804, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
       propertyPath: encounterChance
