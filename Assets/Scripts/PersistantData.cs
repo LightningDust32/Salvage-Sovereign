@@ -20,11 +20,11 @@ public static class PersistentData
     {
         PlayerPrefs.SetInt("Gold", Gold);
 
-        PlayerPrefs.SetInt("BonusHealth", bonusHealth);
-        PlayerPrefs.SetInt("swordDamage", bonusStrength);
+        PlayerPrefs.SetInt("bonusHealth", bonusHealth);
+        PlayerPrefs.SetInt("bonusStrength", bonusStrength);
         PlayerPrefs.SetInt("bonusLuck", bonusLuck);
         PlayerPrefs.SetInt("bonusSpeed", bonusSpeed);
-        PlayerPrefs.SetInt("BonusStamina", bonusStamina);
+        PlayerPrefs.SetInt("bonusStamina", bonusStamina);
 
         PlayerPrefs.SetInt("PrimaryWeapon", primaryWeaponIndex);
         PlayerPrefs.SetInt("SecondaryWeapon", secondaryWeaponIndex);
@@ -36,11 +36,11 @@ public static class PersistentData
     {
         Gold = PlayerPrefs.GetInt("Gold", 0);
 
-        bonusHealth = PlayerPrefs.GetInt("BonusHealth", 0);
-        bonusStrength = PlayerPrefs.GetInt("swordDamage", 0);
+        bonusHealth = PlayerPrefs.GetInt("bonusHealth", 0);
+        bonusStrength = PlayerPrefs.GetInt("bonusStrength", 0);
         bonusLuck = PlayerPrefs.GetInt("bonusLuck", 0);
         bonusSpeed = PlayerPrefs.GetInt("bonusSpeed", 0);
-        bonusStamina = PlayerPrefs.GetInt("BonusStamina", 0);
+        bonusStamina = PlayerPrefs.GetInt("bonusStamina", 0);
 
         primaryWeaponIndex = PlayerPrefs.GetInt("PrimaryWeapon", -1);
         secondaryWeaponIndex = PlayerPrefs.GetInt("SecondaryWeapon", -1);
