@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 2850775395280792506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.92, y: 1, z: -1.92}
+  m_LocalPosition: {x: 2.92, y: 0, z: -1.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 4463465103889398450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.68, y: 1, z: 3.13}
+  m_LocalPosition: {x: -2.68, y: 0, z: 3.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -378,10 +378,10 @@ MonoBehaviour:
   - {fileID: 4463465103889398450}
   wallSlots: []
   furniture:
-  - {fileID: 7234757000722695228, guid: 198c07975f7085b4d9de60f6ad8d48a9, type: 3}
-  - {fileID: 7921127223251092622, guid: b59d8e609fcb4cb47be42a0dca27693d, type: 3}
-  - {fileID: 6379523384179297302, guid: c768a7caaa64ef74cb08cc3fd5b5964b, type: 3}
-  - {fileID: 7234757000722695228, guid: 2e3a1458d0d738e46aa6fcf6df07c552, type: 3}
+  - {fileID: 2312084559065427064, guid: ba9b2b904ff982f419f910887847b01d, type: 3}
+  - {fileID: 3885792026077448382, guid: bdb4b563cb6f9a548b8397daeb1055d2, type: 3}
+  - {fileID: 4028453881915151217, guid: 6504035dd7625ef47af124eff22f8352, type: 3}
+  - {fileID: 2528334288720700491, guid: 657079127d0c3944a8ff12250ac693bc, type: 3}
   wallFurniture: []
   encounters: []
   roomCentre: {fileID: 3176574031588756807}
