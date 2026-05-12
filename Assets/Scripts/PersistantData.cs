@@ -22,7 +22,7 @@ public static class PersistentData
 
         PlayerPrefs.SetInt("BonusHealth", bonusHealth);
         PlayerPrefs.SetInt("swordDamage", bonusStrength);
-        PlayerPrefs.SetInt("hammerDamage", bonusLuck);
+        PlayerPrefs.SetInt("bonusLuck", bonusLuck);
         PlayerPrefs.SetInt("bonusSpeed", bonusSpeed);
         PlayerPrefs.SetInt("BonusStamina", bonusStamina);
 

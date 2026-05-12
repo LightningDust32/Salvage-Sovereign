@@ -15,6 +15,8 @@ public class LobbyButtons : MonoBehaviour
 
     private void Awake()
     {
+        PersistentData.Load();
+
         SetGoldText();
 
         SetCost(healthCost, CalculateUpgradeCost(25, PersistentData.bonusHealth));
