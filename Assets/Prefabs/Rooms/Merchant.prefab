@@ -593,7 +593,7 @@ MonoBehaviour:
   - {fileID: 8395098081291732472, guid: 1eb9eb1719ac17041b73dc55352dc792, type: 3}
   roomCentre: {fileID: 3153426861794552410}
   coverTile: {fileID: 8748062737401257718}
-  currentEncounter: {fileID: 0}
+  currentEncounter: {fileID: 768488270783722925, guid: 1eb9eb1719ac17041b73dc55352dc792, type: 3}
   encounterChance: 1
   prompt: 
   nearbyPrompt: 

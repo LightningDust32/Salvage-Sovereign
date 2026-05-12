@@ -209,7 +209,7 @@ public class Room : MonoBehaviour
             currentEncounter.OnRoomEntered(player);
         }
 
-        // Show nearby prompt in here
+        UIManager.instance.SetPrompt(nearbyPrompt);
     }
 
     public void SetNearbyPrompt(string text)

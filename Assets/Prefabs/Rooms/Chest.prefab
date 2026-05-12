@@ -346,9 +346,10 @@ MonoBehaviour:
   - {fileID: 6118172670133203896, guid: 5075910ba341b9a40a2368714a7becd1, type: 3}
   roomCentre: {fileID: 3176574031588756807}
   coverTile: {fileID: 833334791199439075}
-  currentEncounter: {fileID: 0}
+  currentEncounter: {fileID: 7794652108567434181, guid: 5075910ba341b9a40a2368714a7becd1, type: 3}
   encounterChance: 1
   prompt: 
+  nearbyPrompt: 
 --- !u!1 &7536875191412353482
 GameObject:
   m_ObjectHideFlags: 0
