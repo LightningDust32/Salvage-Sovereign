@@ -344,9 +344,9 @@ public class Player : Entity
         }
 
         currentEnemy = TurnManager.Instance.GetFirstAliveEnemy();
+        currentWeapon.Use(this, currentEnemy);
 
         float damage = strength + currentWeapon.GetDamage();
-
         currentEnemy.SetLastDamageType(currentWeapon.GetDamageType());
         currentEnemy.TakeDamage(damage);
 
