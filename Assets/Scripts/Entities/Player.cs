@@ -101,6 +101,7 @@ public class Player : Entity
         ApplyPersistentData();
 
         currentStamina = maxStamina;
+        currentHealth = maxHealth;
 
         if (currentWeapon != null)
         {

@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Entities\WolfSpider.cs" />
     <Compile Include="Assets\Scripts\Encounters\MerchantEncounter.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MenuButtons.cs" />
+    <Compile Include="Assets\Scripts\Managers\ProcessingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
