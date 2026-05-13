@@ -113,7 +113,7 @@ public class Player : Entity
         PersistentData.Load();
 
         // Apply permanent stat upgrades
-        maxHealth += PersistentData.bonusHealth;
+        maxHealth += PersistentData.bonusHealth * 5;
         strength += PersistentData.bonusStrength;
         maxStamina += PersistentData.bonusStamina;
         speed += PersistentData.bonusSpeed;
