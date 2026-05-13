@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1AF162D2-B8D7-CCB4-8CDF-5076582D7131}</ProjectGuid>
+    <ProjectGuid>{123B856E-695D-D9B2-99EF-1461867CC3CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Managers\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Encounters\ExitEncounter.cs" />
+    <Compile Include="Assets\InputSystem_Actions.cs" />
     <Compile Include="Assets\Scripts\Entities\ITurnActor.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Encounters\CombatEncounter.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Entities\WolfSpider.cs" />
     <Compile Include="Assets\Scripts\Encounters\MerchantEncounter.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MenuButtons.cs" />
+    <Compile Include="Assets\Scripts\Encounters\Lobby\UpgradeEncounter.cs" />
     <Compile Include="Assets\Scripts\Managers\ProcessingManager.cs" />
   </ItemGroup>
   <ItemGroup>
