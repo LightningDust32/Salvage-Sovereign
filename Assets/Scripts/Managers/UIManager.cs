@@ -548,7 +548,7 @@ public class UIManager : MonoBehaviour
     public void ResetLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void Quit()
