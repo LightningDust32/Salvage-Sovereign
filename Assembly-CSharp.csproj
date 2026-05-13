@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\PersistantData.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Player.cs" />
+    <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Managers\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Encounters\ExitEncounter.cs" />
     <Compile Include="Assets\InputSystem_Actions.cs" />
