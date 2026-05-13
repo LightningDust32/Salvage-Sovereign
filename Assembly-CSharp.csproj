@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Weapons\Hammer.cs" />
     <Compile Include="Assets\Scripts\Weapons\Spear.cs" />
     <Compile Include="Assets\Scripts\Entities\BodyPartTarget.cs" />
+    <Compile Include="Assets\Scripts\Encounters\Lobby\WeaponEncounter.cs" />
     <Compile Include="Assets\Scripts\PersistantData.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Player.cs" />
