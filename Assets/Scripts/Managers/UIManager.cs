@@ -98,6 +98,15 @@ public class UIManager : MonoBehaviour
 
     public void SetPrompt(string prompt)
     {
+        if(prompt == null)
+        {
+            return;
+        }
+
+        if(promptBox == null)
+        {
+            return;
+        }
         promptBox.text = prompt;
     }
 
