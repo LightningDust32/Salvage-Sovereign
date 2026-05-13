@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum BodyPart
@@ -30,6 +31,8 @@ public abstract class Enemy : Entity
 
     [SerializeField] private HarvestItem dropItem;
     [SerializeField] private float baseDropChance;
+
+    [SerializeField] private AudioClip attackSound;
 
     protected Player player;
     bool isAlive;
@@ -141,6 +144,11 @@ public abstract class Enemy : Entity
             Debug.Log("Enemy has no player target");
             EndTurn();
             return;
+        }
+
+        if(attackSound != null)
+        {
+            SoundManager.instance.PlaySound(attackSound);
         }
 
         float roll = Random.value;

@@ -5351,6 +5351,7 @@ MonoBehaviour:
   attackChance: 0.8
   dropItem: {fileID: 11400000, guid: 32fb7d7fdf6c8f2409f334b9741f8974, type: 2}
   baseDropChance: 1
+  attackSound: {fileID: 8300000, guid: 74eba0f44c4d31d4cacbb39175121450, type: 3}
   bodyParts:
   - part: 1
     damageMultiplier: 2
