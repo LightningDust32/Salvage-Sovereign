@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Entities\Slime.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerators\Room.cs" />
     <Compile Include="Assets\Scripts\Entities\Entity.cs" />
+    <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Encounters\Encounter.cs" />
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapons\Hammer.cs" />
@@ -75,8 +76,6 @@
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Managers\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Encounters\ExitEncounter.cs" />
-    <Compile Include="Assets\InputSystem_Actions.cs" />
-    <Compile Include="Assets\Scripts\InputSystem_Actions.cs" />
     <Compile Include="Assets\Scripts\Entities\ITurnActor.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Encounters\CombatEncounter.cs" />

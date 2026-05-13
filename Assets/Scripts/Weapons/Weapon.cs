@@ -31,14 +31,10 @@ public abstract class Weapon : MonoBehaviour
             return;
         }
 
-        Debug.Log(attacker.name + " attacks " + target.name + " with " + damageType);
-
         if(attackSound != null)
         {
             SoundManager.instance.PlaySound(attackSound);
         }
-
-        target.TakeDamage(GetDamage());
     }
 
     public float GetDamage()
