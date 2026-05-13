@@ -84,4 +84,5 @@ MonoBehaviour:
   damage: 2
   speed: 2
   damageType: 0
+  attackSound: {fileID: 8300000, guid: 6b8690e9b9642f646b58152062a06703, type: 3}
   currentMod: {fileID: 0}
