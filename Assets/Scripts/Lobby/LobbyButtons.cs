@@ -16,7 +16,6 @@ public class LobbyButtons : MonoBehaviour
     private void Awake()
     {
         PersistentData.Load();
-
         SetGoldText();
 
         SetCost(healthCost, CalculateUpgradeCost(25, PersistentData.bonusHealth));
@@ -189,7 +188,8 @@ public class LobbyButtons : MonoBehaviour
             // Prevent duplicate selection
             if (index == PersistentData.primaryWeaponIndex)
             {
-                Debug.Log("Weapon already selected as primary");
+                PersistentData.primaryWeaponIndex = -1;
+                Debug.Log("Primary Weapon Unequipped");
                 return;
             }
 
@@ -198,7 +198,8 @@ public class LobbyButtons : MonoBehaviour
         }
         else
         {
-            Debug.Log("Both weapons already selected");
+            PersistentData.secondaryWeaponIndex = -1;
+            Debug.Log("Secondary Weapon Unequipped");
             return;
         }
 
