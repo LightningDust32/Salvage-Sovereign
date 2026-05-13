@@ -10196,6 +10196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: b2b850580a4dfd547a87b25dd0f0648c, type: 2}
     - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: roomType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: encounterChance
       value: 1
       objectReference: {fileID: 0}
@@ -10204,6 +10208,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3221420691957832220, guid: e24d773f60c87274a82d7f335cce1fc4, type: 3}
     - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: furniture.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: encounters.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10211,6 +10219,10 @@ PrefabInstance:
       propertyPath: 'encounters.Array.data[0]'
       value: 
       objectReference: {fileID: 7737241647792531830, guid: e24d773f60c87274a82d7f335cce1fc4, type: 3}
+    - target: {fileID: 2093556377818012617, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: furnitureSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2963287600066510760, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10276,11 +10288,20 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 7429878213158976500, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429878213158976500, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429878213158976500, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.79
+      value: 4.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4463465103889398450, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a09aa47b841fcf4ca7b2d2e202c1fa1, type: 3}
