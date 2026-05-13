@@ -98,6 +98,15 @@ public class UIManager : MonoBehaviour
 
     public void SetPrompt(string prompt)
     {
+        if(prompt == null)
+        {
+            return;
+        }
+
+        if(promptBox == null)
+        {
+            return;
+        }
         promptBox.text = prompt;
     }
 
@@ -463,7 +472,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowNextLevel()
     {
-        Time.timeScale = 0.0f;
         PersistentData.Gold += player.GetGold();
         PersistentData.Save();
         nextLevelScreen.SetActive(true);
@@ -546,5 +554,10 @@ public class UIManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ExitEncounters()
+    {
+        player.SetInteractionState(false);
     }
 }

@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class UpgradeEncounter : Encounter
+public class WeaponEncounter : Encounter
 {
-    [SerializeField] GameObject upgradeScreen;
+    [SerializeField] GameObject weaponScreen;
 
     protected override void TriggerEncounter(Player player)
     {
         player.SetInteractionState(true);
 
-        upgradeScreen.SetActive(player.GetInteractionState());
+        weaponScreen.SetActive(player.GetInteractionState());
 
         player.FaceTarget(transform);
     }

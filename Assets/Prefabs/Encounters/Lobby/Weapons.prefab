@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5703396647487985485}
   - component: {fileID: 4062580594433864205}
   - component: {fileID: 5311296028131406684}
-  - component: {fileID: 4847313588837949780}
+  - component: {fileID: 4382006327027162406}
   m_Layer: 0
-  m_Name: Upgrades
+  m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4847313588837949780
+--- !u!114 &4382006327027162406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5036692907645855809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3478f9e7875eeba42b062cb670878354, type: 3}
+  m_Script: {fileID: 11500000, guid: a00619238647b8b429ab9913779e21bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerOnEnter: 1
   disableWhenCleared: 0
   encounterPrompt: 
-  upgradeScreen: {fileID: 0}
+  weaponScreen: {fileID: 0}

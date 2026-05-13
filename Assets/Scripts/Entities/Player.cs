@@ -873,6 +873,11 @@ public class Player : Entity
         isInteracting = state;
     }
 
+    public bool GetInteractionState()
+    {
+        return isInteracting;
+    }
+
     public Weapon GetPrimaryWeapon()
     {
         return primaryWeapon;

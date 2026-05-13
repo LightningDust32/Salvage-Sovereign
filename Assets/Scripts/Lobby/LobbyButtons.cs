@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LobbyButtons : MonoBehaviour
 {
     [SerializeField] GameObject upgradeScreen;
+    [SerializeField] GameObject weaponScreen;
     [SerializeField] TMP_Text goldtext;
     [SerializeField] TMP_Text healthCost;
     [SerializeField] TMP_Text staminaCost;
@@ -217,7 +218,7 @@ public class LobbyButtons : MonoBehaviour
     {
         if (!CanStartRun()) return;
 
-       SceneManager.LoadScene(2);
+       SceneManager.LoadScene(3);
     }
 
     public void MainMenu()
@@ -243,5 +244,11 @@ public class LobbyButtons : MonoBehaviour
         }
 
         return baseCost;
+    }
+
+    public void DisableScreens()
+    {
+        upgradeScreen.SetActive(false);
+        weaponScreen.SetActive(false);
     }
 }
