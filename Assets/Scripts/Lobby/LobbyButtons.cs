@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyButtons : MonoBehaviour
 {
+    [SerializeField] GameObject upgradeScreen;
     [SerializeField] TMP_Text goldtext;
     [SerializeField] TMP_Text healthCost;
     [SerializeField] TMP_Text staminaCost;

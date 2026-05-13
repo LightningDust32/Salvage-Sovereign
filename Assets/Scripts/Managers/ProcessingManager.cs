@@ -3,7 +3,7 @@ using UnityEngine.Rendering;
 
 public class ProcessingManager : MonoBehaviour
 {
-    [SerializeField] private VolumeProfile screenVolume;
+    [SerializeField] private Volume sceneVolume;
 
     public static ProcessingManager instance;
 
@@ -18,5 +18,12 @@ public class ProcessingManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void ChangeBloom()
+    {
+        
+    }
+
+
 
 }

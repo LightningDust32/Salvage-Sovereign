@@ -159,6 +159,9 @@ public class Player : Entity
 
         // Pause
         inputActions.Player.Pause.performed += context => UIManager.instance.Pause();
+
+        // Inventory
+        inputActions.Player.Inventory.performed += context => UIManager.instance.Inventory();
     }
 
     private void OnDisable()
