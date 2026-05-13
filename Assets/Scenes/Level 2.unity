@@ -17706,7 +17706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a61024da2c9cf4bbd8951f202b9477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenVolume: {fileID: 11400000, guid: 761cbcbb5cd013e4babaa57d238d7d21, type: 2}
+  sceneVolume: {fileID: 1773719801}
 --- !u!1 &1859825160
 GameObject:
   m_ObjectHideFlags: 0
