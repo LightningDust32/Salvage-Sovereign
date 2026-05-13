@@ -76,8 +76,6 @@ public class Player : Entity
 
         inputActions = new PlayerInput();
 
-        currentStamina = maxStamina;
-
         cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraHeight, cameraTransform.localPosition.z);  
     }
 
@@ -102,7 +100,9 @@ public class Player : Entity
 
         ApplyPersistentData();
 
-        if(currentWeapon != null)
+        currentStamina = maxStamina;
+
+        if (currentWeapon != null)
         {
             currentWeapon.gameObject.SetActive(true);
         }
@@ -113,7 +113,7 @@ public class Player : Entity
         PersistentData.Load();
 
         // Apply permanent stat upgrades
-        maxHealth += PersistentData.bonusHealth;
+        maxHealth += PersistentData.bonusHealth * 5;
         strength += PersistentData.bonusStrength;
         maxStamina += PersistentData.bonusStamina;
         speed += PersistentData.bonusSpeed;
@@ -734,6 +734,12 @@ public class Player : Entity
 
         if (item == null)
             return;
+
+        if(item.GetIsEquipped())
+        {
+            Debug.Log("Item Equipped");
+            return;
+        }
 
         int value = item.sellValue;
 
