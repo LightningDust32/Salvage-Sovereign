@@ -133,7 +133,6 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             pauseScreen.SetActive(false);
-            inventoryScreen.SetActive(false);
         }
     }
 
@@ -143,7 +142,6 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             inventoryScreen.SetActive(true);
-            pauseScreen.SetActive(false);
             currentInventory = player.GetInventory();
 
             RefreshInventoryUI();
@@ -152,7 +150,6 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             inventoryScreen.SetActive(false);
-            pauseScreen.SetActive(true);
         }
     }
     public void SetGoldText(int gold)
