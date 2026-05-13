@@ -49,6 +49,13 @@ public class Room : MonoBehaviour
     [SerializeField] string prompt;
     [SerializeField] private string nearbyPrompt;
 
+    private Room[] neighbours;
+
+    private void Awake()
+    {
+        neighbours = new Room[4];
+    }
+
     private void Start()
     {
         FurnishRoom();
@@ -174,11 +181,15 @@ public class Room : MonoBehaviour
         if (currentEncounter != null)
         {
             room.SetNearbyPrompt(currentEncounter.GetPrompt());
-        }
 
-        if (room.currentEncounter != null)
-        {
-            SetNearbyPrompt(room.currentEncounter.GetPrompt());
+            for (int i = 0; i < neighbours.Length; i++)
+            {
+                if (neighbours[i] == null)
+                {
+                    neighbours[i] = room;
+                    return;
+                }
+            }
         }
     }
 
@@ -230,5 +241,16 @@ public class Room : MonoBehaviour
     public void ResetCentre()
     {
         roomCentre.transform.localPosition = new Vector3(0, 1, 0);
+    }
+
+    public void ResetPrompts()
+    {
+        for (int i = 0; i < neighbours.Length; i++)
+        {
+            if (neighbours[i] != null)
+            {
+                neighbours[i].SetNearbyPrompt("");
+            }
+        }
     }
 }

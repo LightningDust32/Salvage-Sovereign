@@ -39,6 +39,7 @@ public abstract class Encounter : MonoBehaviour
         if (disableWhenCleared)
         {
             gameObject.SetActive(false);
+            room.ResetPrompts();
         }
 
         if(room.GetRoomType() == RoomType.Combat)
