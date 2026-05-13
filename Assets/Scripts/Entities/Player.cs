@@ -735,6 +735,12 @@ public class Player : Entity
         if (item == null)
             return;
 
+        if(item.GetIsEquipped())
+        {
+            Debug.Log("Item Equipped");
+            return;
+        }
+
         int value = item.sellValue;
 
         inventory.RemoveAt(index);
