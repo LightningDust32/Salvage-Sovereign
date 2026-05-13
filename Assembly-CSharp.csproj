@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Managers\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Encounters\ExitEncounter.cs" />
+    <Compile Include="Assets\InputSystem_Actions.cs" />
     <Compile Include="Assets\Scripts\Entities\ITurnActor.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Encounters\CombatEncounter.cs" />
