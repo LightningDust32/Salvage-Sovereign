@@ -4215,7 +4215,7 @@ PrefabInstance:
     - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: 'encounters.Array.data[0]'
       value: 
-      objectReference: {fileID: 703051029}
+      objectReference: {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
     - target: {fileID: 8802165960969201506, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -9971,20 +9971,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: exits.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: 'exits.Array.data[1]'
       value: 
-      objectReference: {fileID: 1981303144}
+      objectReference: {fileID: 0}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: entrances.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: 'entrances.Array.data[1]'
       value: 
-      objectReference: {fileID: 1981303144}
+      objectReference: {fileID: 0}
     - target: {fileID: 2850775395280792506, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -10063,10 +10063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6113840103895947902, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1981303145}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
 --- !u!4 &1030705985 stripped
@@ -12840,7 +12837,7 @@ Transform:
   m_GameObject: {fileID: 1392750692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 80, y: 1, z: 70}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17857,7 +17854,7 @@ PrefabInstance:
     - target: {fileID: 6462908334302616367, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: 'encounters.Array.data[0]'
       value: 
-      objectReference: {fileID: 703051029}
+      objectReference: {fileID: 5036692907645855809, guid: 08f54287ae3e7834a938c39c23b894fd, type: 3}
     - target: {fileID: 8802165960969201506, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -19005,37 +19002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!1 &1981303144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1981303145}
-  m_Layer: 0
-  m_Name: Door (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1981303145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981303144}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1030705985}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1983597348
 GameObject:
   m_ObjectHideFlags: 0

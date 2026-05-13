@@ -378,10 +378,10 @@ MonoBehaviour:
   - {fileID: 4463465103889398450}
   wallSlots: []
   furniture:
-  - {fileID: 2312084559065427064, guid: ba9b2b904ff982f419f910887847b01d, type: 3}
   - {fileID: 3885792026077448382, guid: bdb4b563cb6f9a548b8397daeb1055d2, type: 3}
   - {fileID: 4028453881915151217, guid: 6504035dd7625ef47af124eff22f8352, type: 3}
   - {fileID: 2528334288720700491, guid: 657079127d0c3944a8ff12250ac693bc, type: 3}
+  - {fileID: 2327854884263165038, guid: 337da7032e499154cb678a080dd2f799, type: 3}
   wallFurniture: []
   encounters: []
   roomCentre: {fileID: 3176574031588756807}
@@ -389,6 +389,7 @@ MonoBehaviour:
   currentEncounter: {fileID: 0}
   encounterChance: 0
   prompt: 
+  nearbyPrompt: 
 --- !u!1 &8241140841193541950
 GameObject:
   m_ObjectHideFlags: 0
