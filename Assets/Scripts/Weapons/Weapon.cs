@@ -13,7 +13,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float speed = 1f; 
     [SerializeField] protected DamageType damageType;
 
-    [SerializeField] private HarvestItem currentMod; // serialized so you can see if it equipped in editor
+    [SerializeField] protected AudioClip attackSound;
+
+    [SerializeField] private HarvestItem currentMod;
     private Material currentMaterial;
 
     private void Awake()
@@ -30,6 +32,11 @@ public abstract class Weapon : MonoBehaviour
         }
 
         Debug.Log(attacker.name + " attacks " + target.name + " with " + damageType);
+
+        if(attackSound != null)
+        {
+            SoundManager.instance.PlaySound(attackSound);
+        }
 
         target.TakeDamage(GetDamage());
     }
@@ -79,5 +86,11 @@ public abstract class Weapon : MonoBehaviour
         currentMod = mod;
         
         GetComponent<MeshRenderer>().material = currentMod.GetMaterial();
+    }
+
+    public void UnequipMod()
+    {
+        currentMod = null;
+        GetComponent<MeshRenderer>().material = currentMaterial;
     }
 }
