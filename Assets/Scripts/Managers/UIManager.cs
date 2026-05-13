@@ -547,4 +547,9 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ExitEncounters()
+    {
+        player.SetInteractionState(false);
+    }
 }

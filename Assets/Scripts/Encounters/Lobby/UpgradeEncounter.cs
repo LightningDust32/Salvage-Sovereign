@@ -8,6 +8,6 @@ public class UpgradeEncounter : Encounter
     {
         player.SetInteractionState(true);
 
-        upgradeScreen.SetActive(true);
+        upgradeScreen.SetActive(player.GetInteractionState());
     }
 }

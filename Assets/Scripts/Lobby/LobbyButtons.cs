@@ -217,7 +217,7 @@ public class LobbyButtons : MonoBehaviour
     {
         if (!CanStartRun()) return;
 
-       SceneManager.LoadScene(2);
+       SceneManager.LoadScene(3);
     }
 
     public void MainMenu()
