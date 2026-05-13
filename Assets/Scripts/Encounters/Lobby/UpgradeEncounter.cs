@@ -9,5 +9,7 @@ public class UpgradeEncounter : Encounter
         player.SetInteractionState(true);
 
         upgradeScreen.SetActive(player.GetInteractionState());
+
+        player.FaceTarget(transform);
     }
 }

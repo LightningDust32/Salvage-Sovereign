@@ -472,7 +472,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowNextLevel()
     {
-        Time.timeScale = 0.0f;
         PersistentData.Gold += player.GetGold();
         PersistentData.Save();
         nextLevelScreen.SetActive(true);

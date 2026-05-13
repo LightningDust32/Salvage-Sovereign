@@ -9,5 +9,7 @@ public class WeaponEncounter : Encounter
         player.SetInteractionState(true);
 
         weaponScreen.SetActive(player.GetInteractionState());
+
+        player.FaceTarget(transform);
     }
 }
