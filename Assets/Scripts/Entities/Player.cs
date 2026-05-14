@@ -335,6 +335,11 @@ public class Player : Entity
         defense += value;
     }
 
+    public void ChangeStrength(int value)
+    {
+        strength += value;
+    }
+
     public void Attack()
     {
         if (!isMyTurn) return;
