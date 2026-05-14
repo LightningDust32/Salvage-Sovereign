@@ -8106,7 +8106,7 @@ PrefabInstance:
     - target: {fileID: 4460036756980300417, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9f8612ee078e9d84783c62e3204bc243, type: 2}
     - target: {fileID: 4700306884393098893, guid: 6b168913e2191044fa1386388ba58b5f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -9372,7 +9372,7 @@ PrefabInstance:
     - target: {fileID: 959495881598212122, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9f8612ee078e9d84783c62e3204bc243, type: 2}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: currentEncounter
       value: 
@@ -14235,7 +14235,7 @@ PrefabInstance:
     - target: {fileID: 959495881598212122, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9f8612ee078e9d84783c62e3204bc243, type: 2}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: currentEncounter
       value: 
@@ -16920,7 +16920,7 @@ PrefabInstance:
     - target: {fileID: 959495881598212122, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f9851ce7b796d714ea4528112d5a508b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9f8612ee078e9d84783c62e3204bc243, type: 2}
     - target: {fileID: 2093556377818012617, guid: 307b5ae79ad604244982b067d2d47d6f, type: 3}
       propertyPath: currentEncounter
       value: 

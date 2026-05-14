@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f3e5e3a885a19478e975cb238ca643, type: 3}
   m_Name: GhoulChain
   m_EditorClassIdentifier: 
-  itemName: Specters Skull
+  itemName: Ghoul Chain
   sellValue: 5
   rarity: 0
   itemType: 1
