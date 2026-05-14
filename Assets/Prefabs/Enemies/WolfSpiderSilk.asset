@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Wolf Spider Silk
   sellValue: 20
   rarity: 2
-  itemType: 1
+  itemType: 4
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 0

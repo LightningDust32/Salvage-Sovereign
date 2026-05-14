@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55f3e5e3a885a19478e975cb238ca643, type: 3}
-  m_Name: SlimeEyes
+  m_Name: WolfSpiderLeg
   m_EditorClassIdentifier: 
-  itemName: Slime Eyes
-  sellValue: 10
-  rarity: 1
-  itemType: 5
+  itemName: Wolf Spider Leg
+  sellValue: 5
+  rarity: 0
+  itemType: 4
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 0
   defenseBonus: 0
-  speedBonus: 0
+  speedBonus: 5
   overrideDamageType: 1
-  changeDamageType: 0
+  changeDamageType: 1
   material: {fileID: 0}

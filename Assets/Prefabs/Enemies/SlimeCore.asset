@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Slime Slime
   sellValue: 5
   rarity: 0
-  itemType: 2
+  itemType: 3
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 5

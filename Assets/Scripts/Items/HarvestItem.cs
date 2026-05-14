@@ -2,9 +2,11 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Armour,
+    BuffPotions,
+    RecoveryPotions,
     Gear,
     WeaponMod,
+    Armour,
     None
 }
 
