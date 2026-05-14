@@ -32,14 +32,12 @@ public class UIManager : MonoBehaviour
 
     [Header("Pause UI")]
     [SerializeField] GameObject pauseScreen;
-    // Also would like to show the player stats here
-    // along with their equipped weapon and its stats added to the players
 
     [Header("Inventory UI")]
     [SerializeField] GameObject inventoryScreen;
 
     // Updated inventory method
-    [SerializeField] private TMP_Text inventoryListText; // centre
+    [SerializeField] private TMP_Text inventoryListText;
 
     [SerializeField] private TMP_Text selectedItemStats;
 
@@ -536,7 +534,13 @@ public class UIManager : MonoBehaviour
     public void OpenControls()
     {
         controlsScreen.SetActive(true);
-        inventoryScreen.SetActive(false);
+        pauseScreen.SetActive(false);
+    }
+
+    public void CloseControls()
+    {
+        controlsScreen.SetActive(false);
+        pauseScreen.SetActive(true);
     }
 
     public void BackToMenu()
