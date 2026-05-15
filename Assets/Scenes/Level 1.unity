@@ -18969,9 +18969,9 @@ MonoBehaviour:
   pauseScreen: {fileID: 57161457}
   inventoryScreen: {fileID: 1157090233}
   weaponImages:
-  - {fileID: 21300000, guid: 2a3f2e5065b43d548a5bbeddcc6fc2d6, type: 3}
-  - {fileID: 21300000, guid: 5214268b9f2a75646903a066a65b0300, type: 3}
-  - {fileID: 21300000, guid: e793d881f903b7941bafc8a82d01319d, type: 3}
+  - {fileID: 21300000, guid: 4960348348b84e14083d2ea3fb286f99, type: 3}
+  - {fileID: 21300000, guid: 984f670f719aac949a99059059cd1e87, type: 3}
+  - {fileID: 21300000, guid: 9424977f8a35fe34fbd5bdfff98e7cad, type: 3}
   equippedBox: {fileID: 21300000, guid: db97ff2a02e33744d8037e63c1af5c6c, type: 3}
   unequippedBox: {fileID: 21300000, guid: 8ebf488b7b27d574f882610b227d3a21, type: 3}
   primaryWeapon: {fileID: 1009061530}
