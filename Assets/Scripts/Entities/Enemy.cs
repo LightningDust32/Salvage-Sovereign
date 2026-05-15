@@ -72,6 +72,9 @@ public abstract class Enemy : Entity
             clickable.Initialize(this, partData.part);
             clickable.SetActive(false);
         }
+
+        UIManager.instance.SetEnemyHealthBar(currentHealth/maxHealth);
+        UIManager.instance.SetEnemyStaminaBar(currentStamina / maxStamina);
     }
 
     public override bool TakeTurn()
@@ -133,7 +136,7 @@ public abstract class Enemy : Entity
         UIManager.instance.ShowDialogue(name + " takes " + finalDamage + " damage");
 
         base.TakeDamage(finalDamage);
-
+        UIManager.instance.SetEnemyHealthBar(currentHealth / maxHealth);
         ClearHitData();
     }
 
@@ -163,6 +166,7 @@ public abstract class Enemy : Entity
             {
                 currentStamina -= specialAttackCost;
                 SpecialAttack();
+                UIManager.instance.SetEnemyStaminaBar(currentStamina / maxStamina);
             }
             else
             {
