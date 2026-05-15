@@ -167,13 +167,17 @@ public class TurnManager : MonoBehaviour
             {
                 if (playerWon)
                 {
-                    HarvestItem drop = enemy.TryDrop();
+                    HarvestItem[] drops = enemy.TryDrop();
 
-                    if (drop != null)
+                    if (drops != null)
                     {
-                        if (player.AddHarvestItem(drop))
+                        for (int i = 0; i < drops.Length; i++)
                         {
-                            Debug.Log("Collected: " + drop.itemName);
+                            if (player.AddHarvestItem(drops[i]))
+                            {
+                                Debug.Log("Collected: " + drops[i].itemName);
+
+                            }
                         }
                     }
                 }

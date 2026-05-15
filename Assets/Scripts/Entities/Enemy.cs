@@ -54,6 +54,7 @@ public abstract class Enemy : Entity
 
     private DamageType lastDamageType;
     private BodyPart lastTargetPart;
+    HarvestItem partItem;
     private bool hasTargetPart = false;
 
     private void Start()
@@ -217,6 +218,7 @@ public abstract class Enemy : Entity
         {
             if(part.part == targetPart)
             {
+                partItem = part.partDrop;
                 return part.damageMultiplier;
             }
         }
@@ -224,16 +226,23 @@ public abstract class Enemy : Entity
         return 1f; // no damage multiplier
     }
 
-    public HarvestItem TryDrop()
+    public HarvestItem[] TryDrop()
     {
+        HarvestItem[] drops = new HarvestItem[2];
+
         float roll = Random.value;
 
         if(roll <= baseDropChance)
         {
-            return dropItem;
+            drops[0] = dropItem;
         }
 
-        return null;
+        if (partItem != null)
+        {
+            drops[1] = partItem;
+        }
+
+        return drops;
     }
 
     // call in Encounter or turn 1, so enemy stores a reference to the player
