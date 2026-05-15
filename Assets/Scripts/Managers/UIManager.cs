@@ -37,6 +37,13 @@ public class UIManager : MonoBehaviour
 
     [Header("Inventory UI")]
     [SerializeField] GameObject inventoryScreen;
+    [SerializeField] Sprite[] weaponImages;
+    [SerializeField] Sprite equippedBox;
+    [SerializeField] Sprite unequippedBox;
+    [SerializeField] Image primaryWeapon;
+    [SerializeField] Image secondaryWeapon;
+    [SerializeField] Image primaryWeaponBox;
+    [SerializeField] Image secondaryWeaponBox;
 
     // Updated inventory method
     [SerializeField] private TMP_Text inventoryListText;
@@ -176,8 +183,30 @@ public class UIManager : MonoBehaviour
         BuildItemStats();
     }
 
+    public void ShowInventoryWeapons(int primary, int secondary)
+    {
+        primaryWeapon.sprite = weaponImages[primary];
+        secondaryWeapon.sprite = weaponImages[secondary];
+    }
+
+    public void ShowEquippedWeapon()
+    {
+        if(player.GetCurrentWeapon() == player.GetPrimaryWeapon())
+        {
+            primaryWeaponBox.sprite = equippedBox;
+            secondaryWeaponBox.sprite = unequippedBox;
+        }
+        else if (player.GetCurrentWeapon() == player.GetSecondaryWeapon())
+        {
+            secondaryWeaponBox.sprite = equippedBox;
+            primaryWeaponBox.sprite = unequippedBox;
+        }
+    }
+
     private void UpdateInventoryList()
     {
+        ShowInventoryWeapons(PersistentData.primaryWeaponIndex, PersistentData.secondaryWeaponIndex);
+        ShowEquippedWeapon();
 
         StringBuilder builder = new StringBuilder();
 
