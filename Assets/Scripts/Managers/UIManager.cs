@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueBox;
     [SerializeField] private Image staminaBar;
     [SerializeField] private Image healthBar;
+    [SerializeField] private Image enemyStaminaBar;
+    [SerializeField] private Image enemyHealthBar;
     [SerializeField] GameObject endingScreen;
     [SerializeField] GameObject nextLevelScreen;
     [SerializeField] GameObject deathScreen;
@@ -333,7 +335,25 @@ public class UIManager : MonoBehaviour
         if (staminaBar == null)
             return;
 
-        staminaBar.fillAmount = Mathf.Lerp(staminaBar.fillAmount, percent, 10f * Time.deltaTime);
+        staminaBar.fillAmount = percent;
+    }
+
+    public void SetEnemyHealthBar(float percent)
+    {
+        if (enemyHealthBar == null)
+        {
+            return;
+        }
+
+        enemyHealthBar.fillAmount = percent;
+    }
+
+    public void SetEnemyStaminaBar(float percent)
+    {
+        if (enemyStaminaBar == null)
+            return;
+
+        enemyStaminaBar.fillAmount = percent;
     }
 
     public void OpenMerchant(List<HarvestItem> inventory)
