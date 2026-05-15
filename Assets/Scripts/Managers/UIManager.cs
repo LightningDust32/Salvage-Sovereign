@@ -527,6 +527,7 @@ public class UIManager : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1.0f;
+        PersistentData.SaveInventory(player.GetInventory());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

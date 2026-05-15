@@ -134,6 +134,8 @@ public class Player : Entity
         currentWeapon = primaryWeapon;
 
         currentGold += PersistentData.Gold;
+
+        SetInventory(PersistentData.LoadInventory());
     }
 
     private void OnEnable()
@@ -655,6 +657,14 @@ public class Player : Entity
     public List<HarvestItem> GetInventory()
     {
         return inventory;
+    }
+
+    public void SetInventory(List<HarvestItem> loadedInventory)
+    {
+        if(loadedInventory.Count > 0)
+        {
+            inventory = loadedInventory;
+        }
     }
 
     public void RemoveHarvestItem(HarvestItem item)

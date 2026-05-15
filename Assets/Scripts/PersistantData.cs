@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 // Manager for permanent upgrades from the lobby area, and weapon selecting
 public static class PersistentData
@@ -15,6 +16,9 @@ public static class PersistentData
     // Weapon selection (store as index)
     public static int primaryWeaponIndex = -1;
     public static int secondaryWeaponIndex = -1;
+
+    // Store inventory contents between levels
+    private static List<HarvestItem> storedInventory = new List<HarvestItem>();
 
     public static void Save()
     {
@@ -50,5 +54,18 @@ public static class PersistentData
     {
         primaryWeaponIndex = -1;
         secondaryWeaponIndex = -1;
+    }
+
+    public static void SaveInventory(List<HarvestItem> playerInventory)
+    {
+        if(playerInventory.Count > 0)
+        {
+            storedInventory = playerInventory;
+        }
+    }
+
+    public static List<HarvestItem> LoadInventory()
+    {
+        return storedInventory;
     }
 }
