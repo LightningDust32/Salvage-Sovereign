@@ -448,6 +448,11 @@ MonoBehaviour:
   - {fileID: 2792920994442289269, guid: fca46376279efc347ab66ff474bcf023, type: 3}
   wallFurniture: []
   encounters: []
+  torches:
+  - {fileID: 3664614751845770282}
+  - {fileID: 804192822778574286}
+  maxTorches: 2
+  minTorches: 1
   roomCentre: {fileID: 3176574031588756807}
   coverTile: {fileID: 8384934279106974436}
   currentEncounter: {fileID: 0}
@@ -773,6 +778,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 354474197108452961, guid: 703f60c444908aa458f8a28742bdb0ed, type: 3}
   m_PrefabInstance: {fileID: 326961598514200853}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &804192822778574286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1126050316094059739, guid: 703f60c444908aa458f8a28742bdb0ed, type: 3}
+  m_PrefabInstance: {fileID: 326961598514200853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4430375969180406001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -830,6 +840,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703f60c444908aa458f8a28742bdb0ed, type: 3}
+--- !u!1 &3664614751845770282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1126050316094059739, guid: 703f60c444908aa458f8a28742bdb0ed, type: 3}
+  m_PrefabInstance: {fileID: 4430375969180406001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4147959430016417424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 354474197108452961, guid: 703f60c444908aa458f8a28742bdb0ed, type: 3}

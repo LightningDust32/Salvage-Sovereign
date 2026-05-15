@@ -34,6 +34,10 @@ public class Room : MonoBehaviour
     [SerializeField] GameObject[] wallFurniture;
     [SerializeField] GameObject[] encounters;
 
+    [SerializeField] List<GameObject> torches;
+    [SerializeField] int maxTorches;
+    [SerializeField] int minTorches;
+
     [SerializeField] GameObject roomCentre;
 
     [SerializeField] GameObject coverTile;
@@ -130,6 +134,17 @@ public class Room : MonoBehaviour
 
             Instantiate(prefab, slot.transform.position, slot.transform.rotation, transform);
         }
+
+        //randomizes which torch gets placed
+
+        int torchCount = Random.Range(minTorches, maxTorches + 1);
+        while (torches.Count > torchCount)
+        {
+            GameObject remove = torches[Random.Range(0, torches.Count)];
+            torches.Remove(remove);
+            remove.SetActive(false);
+        }
+        
     }
 
     private void ShuffleList(List<GameObject> list)

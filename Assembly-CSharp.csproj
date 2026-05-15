@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Weapons\Sword.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyBodyPart.cs" />
     <Compile Include="Assets\Scripts\Managers\TurnManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\Ghost.cs" />
     <Compile Include="Assets\Scripts\Encounters\TreasureEncounter.cs" />
     <Compile Include="Assets\Scripts\Lobby\LobbyButtons.cs" />
     <Compile Include="Assets\Scripts\Items\HarvestItem.cs" />
