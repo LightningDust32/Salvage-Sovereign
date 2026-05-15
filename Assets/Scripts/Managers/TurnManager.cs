@@ -10,8 +10,14 @@ public class TurnManager : MonoBehaviour
     private List<Entity> turnOrder;
     private int currentTurnIndex = 0;
 
+    [SerializeField] float turnTime = 3;
+
+    private float timer;
+
     private Player player;
     private bool battleactive;
+    private bool currentTurnStarted;
+    private bool waitingForNextTurn;
 
     void Awake()
     {
@@ -29,31 +35,51 @@ public class TurnManager : MonoBehaviour
         entities = newEntities;
 
         player = newEntities.OfType<Player>().FirstOrDefault();
-
+        timer = turnTime;
         StartNewRound();
     }
-
+    
     private void Update()
     {
         if (!battleactive) return;
 
         if (!BattleIsActive()) return;
 
+        if(timer >= 0)
+        {
+            timer = timer - 1 * Time.deltaTime;
+        }
+
         // Safety check
         if (turnOrder == null || turnOrder.Count == 0) return;
 
         Entity current = turnOrder[currentTurnIndex];
 
-        if (!current.IsAlive())
+        if (current == null || !current.IsAlive())
         {
             NextTurn();
             return;
         }
 
-        bool finished = current.TakeTurn();
-
-        if (finished)
+        if (!waitingForNextTurn)
         {
+            bool finished = current.TakeTurn();
+
+            // Turn JUST ended
+            if (finished)
+            {
+                waitingForNextTurn = true;
+                timer = turnTime;
+            }
+
+            return;
+        }
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0f)
+        {
+            waitingForNextTurn = false;
             NextTurn();
         }
     }
@@ -69,6 +95,8 @@ public class TurnManager : MonoBehaviour
             .ToList();
         
         currentTurnIndex = 0;
+
+        waitingForNextTurn = false;
 
         foreach (Entity entity in turnOrder)
         {
