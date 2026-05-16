@@ -17,6 +17,7 @@ public class CombatEncounter : Encounter
 
     private void StartCombat(Player player)
     {
+        UIManager.instance.ClearPrompt();
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
             Debug.LogWarning("No enemies assigned to CombatEncounter");
