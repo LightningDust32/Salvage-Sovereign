@@ -4,8 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class LobbyButtons : MonoBehaviour
 {
+    [SerializeField]
+    private string[] weaponNames =
+{
+    "Sword",
+    "Hammer",
+    "Spear"
+};
+
     [SerializeField] GameObject upgradeScreen;
     [SerializeField] GameObject weaponScreen;
+    [SerializeField] TMP_Text primaryWeaponText;
+    [SerializeField] TMP_Text secondaryWeaponText;
+
     [SerializeField] TMP_Text goldtext;
     [SerializeField] TMP_Text healthCost;
     [SerializeField] TMP_Text staminaCost;
@@ -25,6 +36,8 @@ public class LobbyButtons : MonoBehaviour
         SetCost(strengthCost, CalculateUpgradeCost(25, PersistentData.bonusStrength));
         SetCost(speedCost, CalculateUpgradeCost(25, PersistentData.bonusSpeed));
         SetCost(luckCost, CalculateUpgradeCost(25, PersistentData.bonusLuck));
+
+        RefreshWeaponText();
     }
 
     public void UpgradeHealth(int cost)
@@ -179,33 +192,72 @@ public class LobbyButtons : MonoBehaviour
 
     public void ChooseWeapon(int index)
     {
-        
+         if (PersistentData.primaryWeaponIndex == index)
+        {
+            PersistentData.primaryWeaponIndex = -1;
+            Debug.Log("Primary weapon unequipped");
+            RefreshWeaponText();
+            PersistentData.Save();
+
+            return;
+        }
+        if (PersistentData.secondaryWeaponIndex == index)
+        {
+            PersistentData.secondaryWeaponIndex = -1;
+            Debug.Log("Secondary weapon unequipped");
+            RefreshWeaponText();
+            PersistentData.Save();
+
+            return;
+        }
+
         if (PersistentData.primaryWeaponIndex == -1)
         {
             PersistentData.primaryWeaponIndex = index;
             Debug.Log("Primary weapon selected: " + index);
-        }
-        else if (PersistentData.secondaryWeaponIndex == -1)
-        {
-            // Prevent duplicate selection
-            if (index == PersistentData.primaryWeaponIndex)
-            {
-                PersistentData.primaryWeaponIndex = -1;
-                Debug.Log("Primary Weapon Unequipped");
-                return;
-            }
+            RefreshWeaponText();
+            PersistentData.Save();
 
-            PersistentData.secondaryWeaponIndex = index;
-            Debug.Log("Secondary weapon selected: " + index);
-        }
-        else
-        {
-            PersistentData.secondaryWeaponIndex = -1;
-            Debug.Log("Secondary Weapon Unequipped");
             return;
         }
 
-        PersistentData.Save();
+        if (PersistentData.secondaryWeaponIndex == -1)
+        {
+            PersistentData.secondaryWeaponIndex = index;
+            Debug.Log("Secondary weapon selected: " + index);
+            RefreshWeaponText();
+            PersistentData.Save();
+
+            return;
+        }
+
+        
+
+        Debug.Log("Both weapon slots are full");
+    }
+
+    private void RefreshWeaponText()
+    {
+        primaryWeaponText.text = "";
+        secondaryWeaponText.text = "";
+
+        if (PersistentData.primaryWeaponIndex != -1)
+        {
+            string primaryName =
+                weaponNames[PersistentData.primaryWeaponIndex];
+
+            primaryWeaponText.text =
+                $"{primaryName} Equipped To Primary";
+        }
+
+        if (PersistentData.secondaryWeaponIndex != -1)
+        {
+            string secondaryName =
+                weaponNames[PersistentData.secondaryWeaponIndex];
+
+            secondaryWeaponText.text =
+                $"{secondaryName} Equipped To Secondary";
+        }
     }
 
     public bool CanStartRun()
