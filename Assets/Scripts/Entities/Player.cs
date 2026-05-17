@@ -881,6 +881,23 @@ public class Player : Entity
         currentHealth = Mathf.Min(currentHealth, maxHealth);
     }
 
+    public void ConsumeItem(int index)
+    {
+        if (index < 0 || index >= inventory.Count)
+            return;
+
+        HarvestItem item = inventory[index];
+
+        if (item.GetItemType() != ItemType.Consumable)
+        {
+            Debug.Log("Item is not consumable");
+            return;
+        }
+
+        item.Consume(this);
+        inventory.RemoveAt(index);
+    }
+
 
     // Helper function to lock movement in states other than combat
     public void SetInteractionState(bool state)

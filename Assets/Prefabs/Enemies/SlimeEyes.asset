@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Slime Eyes
   sellValue: 10
   rarity: 1
-  itemType: 5
+  itemType: 4
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   overrideDamageType: 1
   changeDamageType: 0
   material: {fileID: 0}
+  consumableItem: {fileID: 0}

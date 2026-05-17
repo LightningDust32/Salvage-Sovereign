@@ -331,6 +331,9 @@ public class UIManager : MonoBehaviour
             case ItemType.WeaponMod:
                 player.EquipWeaponMod(selectedItemIndex, player.GetCurrentWeapon());
                 break;
+            case ItemType.Consumable:
+                player.ConsumeItem(selectedItemIndex);
+                break;
         }
 
         currentInventory = player.GetInventory();

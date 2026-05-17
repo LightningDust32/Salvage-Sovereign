@@ -15,12 +15,13 @@ MonoBehaviour:
   itemName: Wolf Spider Leg
   sellValue: 5
   rarity: 0
-  itemType: 4
+  itemType: 2
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 0
   defenseBonus: 0
   speedBonus: 5
-  overrideDamageType: 1
+  overrideDamageType: 0
   changeDamageType: 1
   material: {fileID: 0}
+  consumableItem: {fileID: 0}

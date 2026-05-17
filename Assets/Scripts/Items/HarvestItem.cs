@@ -2,8 +2,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    BuffPotions,
-    RecoveryPotions,
+    Consumable,
     Gear,
     WeaponMod,
     Armour,
@@ -39,6 +38,9 @@ public class HarvestItem : ScriptableObject
     [SerializeField] private DamageType overrideDamageType;
     [SerializeField] private bool changeDamageType;
     [SerializeField] private Material material;
+
+    [Header("Consumable Effect")]
+    [SerializeField] Consumable consumableItem;
 
     bool isEquipped = false;
 
@@ -100,5 +102,13 @@ public class HarvestItem : ScriptableObject
     public bool GetIsEquipped()
     {
         return isEquipped;
+    }
+
+    public void Consume(Player player)
+    {
+        if (consumableItem != null)
+        {
+            consumableItem.Use(player);
+        }
     }
 }
