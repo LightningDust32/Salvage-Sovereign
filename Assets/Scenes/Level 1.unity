@@ -2516,6 +2516,26 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3614506254676574124, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49632582
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614506254676574124, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.49632582
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614506254676574124, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5036474
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614506254676574124, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5036474
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614506254676574124, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.839
+      objectReference: {fileID: 0}
     - target: {fileID: 5083262870079096506, guid: 91abfdf61fb6b13469be50a246773b91, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -12708,7 +12728,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156971378}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
