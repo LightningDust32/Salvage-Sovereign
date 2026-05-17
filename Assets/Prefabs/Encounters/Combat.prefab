@@ -126,3 +126,4 @@ MonoBehaviour:
   encounterPrompt: You feel something watching you
   enemyPrefabs:
   - {fileID: 4142531895385217500, guid: 937a4ce309e481a438bb330c0b3c616f, type: 3}
+  - {fileID: 5443758693686676375, guid: 5503556308eaa08428cced8d10ec02e4, type: 3}
