@@ -15,12 +15,13 @@ MonoBehaviour:
   itemName: Wolf Spider Fangs
   sellValue: 10
   rarity: 1
-  itemType: 3
+  itemType: 2
   healthBonus: 0
   staminaBonus: 0
   strengthBonus: 0
   defenseBonus: 0
   speedBonus: 5
-  overrideDamageType: 0
-  changeDamageType: 0
-  material: {fileID: 0}
+  overrideDamageType: 2
+  changeDamageType: 1
+  material: {fileID: 2100000, guid: 48f9655825adaa2448344c1c9b086e77, type: 2}
+  consumableItem: {fileID: 0}

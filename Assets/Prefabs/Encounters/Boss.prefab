@@ -126,4 +126,5 @@ MonoBehaviour:
   encounterPrompt: You hear roaring nearby
   enemyPrefabs:
   - {fileID: 1772254205404988950, guid: 20378aa4c4b70ac479f96b6d1711457f, type: 3}
-  - {fileID: 5443758693686676375, guid: ed0d69b6b066d6d4488cedf22c86b6c0, type: 3}
+  - {fileID: 5443758693686676375, guid: c9eca4f6a9f440544802253d9db0c514, type: 3}
+  - {fileID: 5461698027435089104, guid: 643505f1c09191742b60067bd9ec012d, type: 3}

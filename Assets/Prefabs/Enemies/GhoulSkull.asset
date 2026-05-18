@@ -15,12 +15,13 @@ MonoBehaviour:
   itemName: Specters Skull
   sellValue: 5
   rarity: 0
-  itemType: 1
+  itemType: 2
   healthBonus: 0
   staminaBonus: 0
-  strengthBonus: 0
+  strengthBonus: 3
   defenseBonus: 0
   speedBonus: 0
-  overrideDamageType: 2
-  changeDamageType: 0
-  material: {fileID: 0}
+  overrideDamageType: 1
+  changeDamageType: 1
+  material: {fileID: 2100000, guid: 7953df2cdf795b444a3308ff28141c19, type: 2}
+  consumableItem: {fileID: 0}
