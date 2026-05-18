@@ -9,7 +9,7 @@ public class MenuButtons : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void GameCredits(bool credits)
     {
